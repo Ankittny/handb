@@ -380,7 +380,8 @@ class SystemController extends Controller
 
         } elseif (isset($shipping['shipping_method_id']) && !isset($shipping['update_address']) && !isset($shipping['save_address'])) {
             $addressId = ShippingAddress::insertGetId([
-                'customer_id' => auth('customer')->check() ? 0 : ((session()->has('guest_id') ? session('guest_id') : 0)),
+                // 'customer_id' => auth('customer')->check() ? 0 : ((session()->has('guest_id') ? session('guest_id') : 0)),
+                'customer_id' => auth('customer')->id() ?? ((session()->has('guest_id') ? session('guest_id') : 0)),
                 'is_guest' => auth('customer')->check() ? 0 : (session()->has('guest_id') ? 1 : 0),
                 'contact_person_name' => $shipping['contact_person_name'],
                 'address_type' => $shipping['address_type'],
@@ -390,7 +391,7 @@ class SystemController extends Controller
                 'zip' => $shipping['zip'],
                 'country' => $shipping['country'],
                 'phone' => $shipping['phone'],
-                'email' => auth('customer')->check() ? null : $shipping['email'],
+                'email' => auth('customer')->check() ? $shipping['contact_person_email'] : $shipping['email'],
                 'latitude' => $shipping['latitude'] ?? '',
                 'longitude' => $shipping['longitude'] ?? '',
                 'is_billing' => 0,
@@ -517,7 +518,6 @@ class SystemController extends Controller
             session()->forget('newCustomerRegister');
             session()->forget('newRegisterCustomerInfo');
         }
-
         return response()->json([], 200);
     }
 

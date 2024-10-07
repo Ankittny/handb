@@ -341,17 +341,17 @@
                                             </div>
                                         @endif
                                     </div>
-                                    @if(!empty($product->feature_key))       
+                                    @if(!empty($product->feature_key))
                                      <div class="hightlight d-flex ">
                                         <span class="">Highlight</span>
-                                         	<?php  
-                                       			echo $product->feature_key; 
+                                         	<?php
+                                       			echo $product->feature_key;
                                          	?>
-                                       
+
                                     </div>
                                     <hr>
                                     @endif
-                                    @if(!empty($product->return_policy))          
+                                    @if(!empty($product->return_policy))
                                       <div class="payment-secure mt-2">
                                           <P class="fw-semi-bold">Safe and Secure Payments.Easy returns.100% Authentic products.<p>
                                        </div>
@@ -383,7 +383,7 @@
                                                         {{translate('overview')}}
                                                     </a>
                                                 </li>
-                                              
+
                                               	 <li class="nav-item">
                                                     <a class="nav-link __inline-27" href="#features" data-toggle="tab"
                                                        role="tab">
@@ -402,8 +402,8 @@
                                                         {{translate('disclaimer')}}
                                                     </a>
                                                 </li>
-                                              
-                                              
+
+
                                                 <li class="nav-item">
                                                     <a class="nav-link __inline-27" href="#reviews" data-toggle="tab"
                                                        role="tab">
@@ -640,9 +640,9 @@
                                                         <div class="card-footer d-flex justify-content-center align-items-center">
                                                             <span class="text-capitalize">No features available</span>
                                                         </div>
-                                                    </div>    
+                                                    </div>
                                                 @endif
-                                                </div> 
+                                                </div>
                                                 <div class="tab-pane fade" id="ingredients1" role="tabpanel">
                                                 @if($product['ingredients1'] > 0)
                                                             <div class="col-12 overflow-scroll fs-13 text-justify details-text-justify rich-editor-html-content">
@@ -655,9 +655,9 @@
                                                         <div class="card-footer d-flex justify-content-center align-items-center">
                                                             <span class="text-capitalize">No ingredients available</span>
                                                         </div>
-                                                    </div>            
+                                                    </div>
                                                 @endif
-                                                </div> 
+                                                </div>
                                                 <div class="tab-pane fade" id="disclaimer" role="tabpanel">
                                                 @if($product['disclaimer'] > 0)
                                                             <div class="col-12 overflow-scroll fs-13 text-justify details-text-justify rich-editor-html-content">
@@ -670,9 +670,9 @@
                                                         <div class="card-footer d-flex justify-content-center align-items-center">
                                                             <span class="text-capitalize">No disclaimer available</span>
                                                         </div>
-                                                    </div>            
+                                                    </div>
                                                 @endif
-                                                </div> 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

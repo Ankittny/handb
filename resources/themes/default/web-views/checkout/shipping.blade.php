@@ -68,7 +68,7 @@
                                                                 <label>{{ translate('contact_person_name')}}
                                                                     <span class="text-danger">*</span>
                                                                 </label>
-                                                                <input type="text" class="form-control" name="contact_person_name" {{$shippingAddresses->count()==0?'required':''}} id="name">
+                                                                <input type="text" class="form-control" name="contact_person_name" {{$shippingAddresses->count()==0?'required':''}}  id="name">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
@@ -78,6 +78,10 @@
                                                                 </label>
                                                                 <input type="tel" class="form-control phone-input-with-country-picker-3" id="phone" {{$shippingAddresses->count()==0?'required':''}}>
                                                                 <input type="hidden" id="shipping_phone_view" class="country-picker-phone-number-3 w-50" name="phone" readonly>
+                                                                <input type="hidden" id="current-login-user-name"  name="current-login-user-name" value="{{auth('customer')->user()->f_name, auth('customer')->user()->l_name}}" >
+                                                                <input type="hidden" id="current-login-user-email"  name="contact_person_email" value="{{auth('customer')->user()->email}}">
+                                                                <input type="hidden" id="current-login-user-phone"  name="current-login-user-phone" value="{{auth('customer')->user()->phone}}">
+
                                                             </div>
                                                         </div>
                                                         @if(!auth('customer')->check())
@@ -101,20 +105,20 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-6">
+                                                        <div class="col-6" style="display: none">
                                                             <div class="form-group">
                                                                 <label>{{ translate('country')}}
                                                                     <span class="text-danger">*</span></label>
-                                                                <select name="country" id="country" class="form-control selectpicker" data-live-search="true" required>
+                                                                <select name="country" id="country" class="form-control" data-live-search="true" required>
                                                                     @forelse($countries as $country)
-                                                                        <option value="{{ $country['name'] }}">{{ $country['name'] }}</option>
+                                                                        <option value="India" selected>{{ $country['name'] }}</option>
                                                                     @empty
                                                                         <option value="">{{ translate('no_country_to_deliver') }}</option>
                                                                     @endforelse
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-6">
+                                                        <div class="col-12">
                                                             <div class="form-group">
                                                                 <label>{{ translate('State')}}<span  class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" name="state" id="state" {{$shippingAddresses->count()==0?'required':''}}>

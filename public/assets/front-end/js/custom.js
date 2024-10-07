@@ -1076,10 +1076,10 @@ function addToCart(form_id = "add-to-cart-form", redirect_to_checkout = false) {
                 }
                 if (response.status == 1) {
                     updateNavCart();
-                    toastr.success(response.message, {
-                        CloseButton: true,
-                        ProgressBar: true,
-                    });
+                    // toastr.success(response.message, {
+                    //     CloseButton: true,
+                    //     ProgressBar: true,
+                    // });
 
                     let actionAddToCartBtn = $(".action-add-to-cart-form");
                     $('.in_cart_key[name="key"]').val(response.in_cart_key);

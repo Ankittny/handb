@@ -37,8 +37,9 @@ addressItems.forEach(item => {
 function shipping_method_select(get_value){
     let shipping_method_id = $('.select_shipping_address.active input[name="shipping_method_id"]').val()
     let shipping_value= JSON.parse(get_value);
-    $('#name').val(shipping_value.contact_person_name);
-    $('#phone').val(shipping_value.phone);
+    $('#name').val(shipping_value.contact_person_name ? shipping_value.contact_person_name : $('#current-login-user-name').val());
+    $('#phone').val(shipping_value.phone ? shipping_value.phone : $('#current-login-user-phone').val());
+    $('#email').val(shipping_value.email ? shipping_value.email : $('#current-login-user-email').val());
     $('#address').val(shipping_value.address);
     $('#city').val(shipping_value.city);
     $('#zip').val(shipping_value.zip);

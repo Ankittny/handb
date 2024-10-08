@@ -147,7 +147,10 @@
                                                         <div class="col-12">
                                                             <div class="form-group mb-1">
                                                                 <label>{{ translate('address')}}<span class="text-danger">*</span></label>
-                                                                <textarea class="form-control" id="address" type="text" name="address" {{$shippingAddresses->count()==0?'required':''}}></textarea>
+                                                                <button id="getAddressBtn">Get Address</button>
+                                                                 <p id="address"></p>
+
+                                                                <textarea class="form-control" id="address" type="text" name="address" {{$shippingAddresses->count()==0?'required':''}}><p class="address"></p></textarea>
                                                                 <span class="fs-14 text-danger font-semi-bold opacity-0 map-address-alert">
                                                                     {{ translate('note') }}: {{ translate('you_need_to_select_address_from_your_selected_country') }}
                                                                 </span>
@@ -530,7 +533,52 @@
     </script>
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ theme_asset(path: 'public/assets/front-end/js/shipping.js') }}"></script>
+    <script>
+        document.getElementById('getAddressBtn').onclick = function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById('address').innerText = "Geolocation is not supported by this browser.";
+            }
+        };
 
+        function showPosition(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const apiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.display_name) {
+                        document.getElementById('address').innerText = `Address: ${data.display_name}`;
+                    } else {
+                        document.getElementById('address').innerText = "Address not found.";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching the address:', error);
+                    document.getElementById('address').innerText = "Error fetching the address.";
+                });
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById('address').innerText = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById('address').innerText = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById('address').innerText = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById('address').innerText = "An unknown error occurred.";
+                    break;
+            }
+        }
+    </script>
 
 
     @if(getWebConfig('map_api_status') ==1 )

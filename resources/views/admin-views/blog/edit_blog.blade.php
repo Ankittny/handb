@@ -35,8 +35,13 @@
                         </div>
                         <div class="form-group">
                            <label class="title-color">Category ID<span class="text-danger">*</span></label>
+                           <?php 
+                           $categorys = App\Models\BlogCategory::where('id', $data->cat_id)->first(); 
+                           ?>
                            <select name="cat_id" class="form-control js-select2-custom form-control action-get-request-onchange">
-                              <option value="" disabled selected>Select a category</option>
+                           <option value="{{ $categorys->cat_id ?? '' }}">
+                              {{ $categorys->name ?? 'null' }}
+                           </option>
                               @foreach($categories as $cat)
                                     <option value="{{ $cat->id }}">
                                        {{ $cat->name }} <!-- Change 'name' to the appropriate attribute for category display -->

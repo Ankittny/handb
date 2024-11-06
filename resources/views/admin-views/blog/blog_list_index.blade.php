@@ -139,8 +139,8 @@
                     <tr>
                         <td>{{ $blog->id }}</td>
                         <?php 
-                           $category_name = App\Models\BlogCategory::where('id', $blog->cat_id)->first()->name; 
-                           ?>
+                        $category_name = optional(App\Models\BlogCategory::find($blog->cat_id))->name ?? 'Null';
+                        ?>
                         <td>{{ $category_name }}</td>
                         <td>{{ $blog->title }}</td>
                         <td>{{ $blog->slug }}</td>
@@ -157,7 +157,7 @@
                                                    <i class="tio-delete"></i>
                                     </a>
                         </td>
-                        
+
                     </tr>
                     @endforeach
                 </tbody>

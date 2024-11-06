@@ -1,5 +1,5 @@
 <div class="__inline-9 rtl">
-    
+
     <footer class="page-footer font-small mdb-color rtl">
         <div class="pt-4 custom-light-primary-color-20">
             <div class="container-fluid text-center __pb-13px">
@@ -155,7 +155,7 @@
                                     </ul>
                                 @else
                                     <ul class="widget-list __pb-10px">
-                                       
+
                                         <li class="widget-list-item">
                                             <a class="widget-list-link" href="{{route('about-us')}}">
                                                 {{ translate('about_us')}}

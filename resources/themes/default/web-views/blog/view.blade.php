@@ -49,7 +49,7 @@
                     <div class="d-flex">
                         <div class="d-flex align-items-center justify-content-center p-3">
                             <div class="flash-deals-background-image image-default-bg-color">
-                                <img class="__img-125px" alt="" src="https://new.healthandblossom.com/public/assets/back-end/product/thumbnail/2024-09-25-66f3b85a86b47.webp">
+                                <img class="__img-125px" alt="" src="{{asset('public/assets/back-end/bloges/').'/'.$recent->image }}">
                             </div>
                         </div>
                         <div class="  pl-3 pr-3 pr-1 d-flex align-items-center">
@@ -71,8 +71,8 @@
 
         <section class="col-lg-9">
         @php
-            use App\Models\Blog; // Corrected the namespace
-            $blogs = Blog::all(); // Renamed variable for clarity
+        use App\Models\Blog; 
+        $blogs = Blog::paginate(10); // Limits the number of blogs to 10
         @endphp
         
             <div class="row" id="ajax-products">
@@ -116,6 +116,9 @@
                     </div>
                 </div>
                 @endforeach
+            </div>
+            <div class="pagination-container">
+                {{ $blogs->links() }}
             </div>
             
     </div>

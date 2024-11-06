@@ -53,11 +53,11 @@ class BlogRepository implements BlogInterface
         $blogcode = Blog::find($data['id']);
         if ($blogcode) {
             return $blogcode->update([
-                'cat_id' => $data['cat_id'],
-                'title' => $data['title'],
-                'description' => $data['description'],
-                'image' => $data['image'],
-                'slug'=>  $data['slug'],
+                'cat_id' => $request->cat_id,
+                'title' => $request->title,
+                'description' => $request->description,
+                'image' => $request->image_file,
+                'slug'=>  $request->slug,
               	'created_at' => now(),
                 'updated_at'=>now()
             ]);

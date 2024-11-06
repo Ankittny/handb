@@ -21,14 +21,14 @@
 @section('content')
     <div class="__inline-61">
         @php($decimalPointSettings = !empty(getWebConfig(name: 'decimal_point_settings')) ? getWebConfig(name: 'decimal_point_settings') : 0)
-        
+
                 @include('web-views.partials._home-top-slider',['main_banner'=>$main_banner])
 
         @if ($flashDeal['flashDeal'] && $flashDeal['flashDealProducts'])
             @include('web-views.partials._flash-deal', ['decimal_point_settings'=>$decimalPointSettings])
         @endif
  @include('web-views.partials._category-section-home')
-        
+
       @if ($featuredProductsList->count() > 0 )
             <div class="container-fluid py-4 rtl px-0 px-md-3">
                 <div class="__inline-62 pt-3">
@@ -99,8 +99,8 @@
             </div>
         @endif
 
-        
-       
+
+
 
         @include('web-views.partials._deal-of-the-day', ['decimal_point_settings'=>$decimalPointSettings])
 
@@ -171,8 +171,9 @@
         @endif
 
         @include('web-views.partials._Ingredients-section-home')
-        @include('web-views.partials.health-conscious')
-        
+
+        {{-- @include('web-views.partials.health-conscious') --}}
+
         @if ($homeCategories->count() > 0)
             @foreach($homeCategories as $category)
                 @include('web-views.partials._category-wise-product', ['decimal_point_settings'=>$decimalPointSettings])

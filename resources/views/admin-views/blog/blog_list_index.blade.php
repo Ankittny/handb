@@ -146,7 +146,7 @@
                         <td>{{ $blog->slug }}</td>
                         <td>{{ $blog->description }}</td>
                         <td>
-                           
+                        <img src="{{asset('public/assets/back-end/bloges/').'/'.$blog->image }}" alt="blog" class="img-thumbnail">
                         </td>
                         <td class="text-center d-flex gap-2">
                             <a href="{{ route('admin.update-blog-view', $blog->id) }}" class="btn btn-outline--primary btn-sm square-btn" title="Edit"><i class="tio-edit"></i></a>
@@ -157,6 +157,7 @@
                                                    <i class="tio-delete"></i>
                                     </a>
                         </td>
+                        
                     </tr>
                     @endforeach
                 </tbody>

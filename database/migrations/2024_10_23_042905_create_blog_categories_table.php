@@ -11,7 +11,7 @@ class CreateBlogCategoriesTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
-            $table->integer('status')->default(1)->after('slug');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (Schema::hasTable('blogs')) {
-            Schema::table('blogs', function (Blueprint $table) {
-                $table->unsignedBigInteger('cat_id')->after('id'); // Add after ID column
-                $table->string('title')->after('cat_id');
-                $table->string('slug')->after('title');
-                $table->text('description')->after('title');
-                $table->string('image')->nullable()->after('description')->nullable();
-                $table->integer('status')->default(1)->after('image');
-                $table->timestamps();
-            });
-        }
+        Schema::create('blogs', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('cat_id');
+            $table->string('title');
+            $table->string('slug');
+            $table->text('description');
+            $table->string('image')->nullable();
+            $table->integer('status')->default(1);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,11 +28,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        if (Schema::hasTable('blogs')) {
-            Schema::table('blogs', function (Blueprint $table) {
-                $table->dropColumn(['cat_id', 'title', 'description', 'image', 'status']);
-                $table->dropTimestamps();
-            });
-        }
+        Schema::dropIfExists('blogs');
     }
 };
+

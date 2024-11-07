@@ -42,9 +42,9 @@
                     </div>
                 </form>
             </div>
+
             <div class="mt-4">
                 @foreach($recent_posts as $recent)
-               
                 <div class="flash_deal_product rtl cursor-pointer mb-2 get-view-by-onclick" data-link="https://new.healthandblossom.com/product/organic-litchi-honey-181G0r">
                     <div class="d-flex">
                         <div class="d-flex align-items-center justify-content-center p-3">

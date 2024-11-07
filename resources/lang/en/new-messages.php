@@ -8696,11 +8696,4 @@ return [
 	"top-rated'" => "Top-rated ",
 	"blog_category_added_successfully" => "Blog category added successfully",
 	"blog_updated_successfully" => "Blog updated successfully",
-	"the_Role_field_is_required!" => "The Role field is required!",
-	"help_&_support_Section" => "Help & support Section",
-	"email_already_in_use" => "Email already in use",
-	"access_Denied" => "Access Denied",
-	"blogs" => "Blogs",
-	"role_not_found" => "Role not found",
-	"email_already_taken" => "Email already taken",
 ];

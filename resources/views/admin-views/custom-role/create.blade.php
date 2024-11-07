@@ -98,13 +98,6 @@
                                         for="system_settings">{{translate('system_settings')}}</label>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="form-group d-flex gap-2">
-                                <input type="checkbox" class="module-permission" name="modules[]" value="blogs" id="blogs">
-                                <label class="title-color mb-0 text-capitalize" style="{{$direction === "rtl" ? 'margin-right: 1.25rem;' : ''}};"
-                                        for="system_settings">{{translate('blogs')}}</label>
-                            </div>
-                        </div>
                     </div>
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn--primary">{{translate('submit')}}</button>

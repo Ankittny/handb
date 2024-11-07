@@ -128,7 +128,7 @@
                         <th class="text-capitalize">{{translate('category')}}</th>
                         <th class="text-capitalize">{{translate('title')}}</th>
                         <th class="text-capitalize">{{translate('slug')}}</th>
-                        <th class="text-capitalize">{{translate('description')}}</th>
+                        <!-- <th class="text-capitalize">{{translate('description')}}</th> -->
                         <th class="text-capitalize">{{translate('image')}}</th>
                         <th class="text-center">{{translate('action')}}</th>
                      </tr>
@@ -144,7 +144,7 @@
                         <td>{{ $category_name }}</td>
                         <td>{{ $blog->title }}</td>
                         <td>{{ $blog->slug }}</td>
-                        <td>{{ $blog->description }}</td>
+                        <!-- <td>{{ strip_tags($blog->description) }}</td> -->
                         <td>
                         <img src="{{asset('public/assets/back-end/bloges/').'/'.$blog->image }}" alt="blog" class="img-thumbnail">
                         </td>

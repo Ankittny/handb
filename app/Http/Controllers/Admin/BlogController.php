@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Contracts\Repositories\{BlogCategoryInterface,BlogInterface};
 use App\Models\{BlogCategory,Category};
-use App\Models\Blog as BlogDB ;
+use App\Models\Blog as BlogDB;
 use App\Traits\FileManagerTrait;
 
 

@@ -32,6 +32,10 @@
                                     <a href="">
                                         {{ $blog->title }}
                                     </a>
+                                    <?php $date = new DateTime($blog->updated_at); ?>
+                                    <h6 style="font-family: Arial, sans-serif; font-size: 14px; color: #555; float:right">
+                                    <strong>Author:</strong> Created by Admin | <strong>Created Date:</strong> {{ $date->format('d F Y'); }}
+                                    </h6>
                                 </div>
                                 <div class="justify-content-between ">
                                     <div class="product-price text-center d-flex flex-wrap justify-content-center align-items-center gap-8">

@@ -32,6 +32,19 @@
                            <input type="text" name="slug" class="form-control" id="slug-id" value="" placeholder="{{ translate('slug') }}" required>
                         </div>
                         <div class="form-group">
+                           <label class="title-color">Meta Title<span class="text-danger">*</span></label>
+                           <input type="text" name="meta_title" class="form-control" value="" placeholder="{{ translate('meta_title') }}" required>
+                        </div>
+                        <div class="form-group">
+                           <label class="title-color">Meta Description<span class="text-danger">*</span></label>
+                           <textarea name="meta_discription" class="form-control" placeholder="{{ translate('meta_discription') }}" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                           <label class="title-color">Keywords<span class="text-danger">*</span></label>
+                           <input type="text" name="keywords" class="form-control" value="" placeholder="{{ translate('keywords') }}" required>
+                        </div>
+                        <div class="form-group">
                            <label class="title-color">Category ID<span class="text-danger">*</span></label>
                            <select name="cat_id" class="form-control js-select2-custom form-control action-get-request-onchange" required>
                               <option value="" disabled selected>Select a category</option>
@@ -166,7 +179,7 @@
                <div class="table-responsive mt-4">
                         <div class="px-4 d-flex justify-content-lg-end">
                             {{ $bloglist->links() }}
-                        </div>
+               </div>
                </div>
             </div>
             <div class="table-responsive mt-4">

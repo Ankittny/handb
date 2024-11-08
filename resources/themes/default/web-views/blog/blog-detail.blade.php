@@ -28,11 +28,21 @@
                               
                             </div>
                             <div class="single-product-details">
+                            @php
+                                    $date = new \DateTime($blog->updated_at);
+                                @endphp
+                                <div style="float:right;">
+                                <span class="card-text text-muted fs-7 mb-0">
+                                    <b>Author:</b> Added by Admin | <b>Created date:</b> {{ $date->format('d F Y') }}
+                                </span>
+                                </div>
                                 <div class="frequengtly-ft">
                                     <a href="">
                                         {{ $blog->title }}
                                     </a>
                                 </div>
+
+
                                 <div class="justify-content-between ">
                                     <div class="product-price text-center d-flex flex-wrap justify-content-center align-items-center gap-8">
                                         <span class="text-accent text-accents text-dark">

@@ -17,7 +17,7 @@
                     Recent Post
                 </span>
             </div>
-            <div class="input-group-overlay search-form-mobile text-align-direction">
+            <!-- <div class="input-group-overlay search-form-mobile text-align-direction">
                 <form action="" method="get">
                     <div class="d-flex align-items-center gap-2">
                         <input class="form-control appended-form-control search-bar-input" type="search" autocomplete="off" data-given-value="" placeholder="Search for items..." name="name" value="">
@@ -41,11 +41,11 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> -->
 
             <div class="mt-4">
                 @foreach($recent_posts as $recent)
-                <div class="flash_deal_product rtl cursor-pointer mb-2 get-view-by-onclick" data-link="https://new.healthandblossom.com/product/organic-litchi-honey-181G0r">
+                <div class="flash_deal_product rtl cursor-pointer mb-2 get-view-by-onclick" data-link="{{ route('blog-detail', $recent->slug) }}">
                     <div class="d-flex">
                         <div class="d-flex align-items-center justify-content-center p-3">
                             <div class="flash-deals-background-image image-default-bg-color">

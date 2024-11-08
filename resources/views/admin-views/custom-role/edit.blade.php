@@ -130,6 +130,16 @@
                                        for="system_settings">{{translate('system_Settings')}}</label>
                             </div>
                         </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="form-group form-check">
+                                <input type="checkbox" name="modules[]" value="blogs"
+                                       class="form-check-input module-permission"
+                                       id="system_settings" {{in_array('blogs',(array)json_decode($role['module_access']))?'checked':''}}>
+                                <label class="form-check-label"
+                                       style="{{$direction === "rtl" ? 'margin-right: 1.25rem;' : ''}};"
+                                       for="blogs">{{translate('blogs')}}</label>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="d-flex justify-content-end gap-3">

@@ -130,7 +130,7 @@
                                        for="system_settings">{{translate('system_Settings')}}</label>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-3 col-sm-6"> 
                             <div class="form-group form-check">
                                 <input type="checkbox" name="modules[]" value="blogs"
                                        class="form-check-input module-permission"

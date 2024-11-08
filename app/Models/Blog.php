@@ -13,5 +13,5 @@ class Blog extends Model
     protected $table = 'blogs';
 
     // Allow mass assignment for these fields
-    protected $fillable = ['id','cat_id', 'title','description', 'image','slug'];
+    protected $fillable = ['id','cat_id', 'title','description', 'image','slug','meta_title','meta_discription','keywords'];
 }

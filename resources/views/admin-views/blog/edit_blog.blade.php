@@ -30,6 +30,18 @@
                         
                         </div>
                         <div class="form-group">
+                           <label class="title-color">Meta Title<span class="text-danger">*</span></label>
+                           <input type="text" name="meta_title" class="form-control" value="{{ $data->meta_title }}" placeholder="{{ translate('meta_title') }}">                        
+                        </div>
+                        <div class="form-group">
+                           <label class="title-color">Meta Description<span class="text-danger">*</span></label>
+                           <input type="text" name="meta_discription" class="form-control" value="{{ $data->meta_discription }}" placeholder="{{ translate('meta_discription') }}">                        
+                        </div>
+                        <div class="form-group">
+                           <label class="title-color">Keywords<span class="text-danger">*</span></label>
+                           <input type="text" name="keywords" class="form-control" value="{{ $data->keywords }}" placeholder="{{ translate('Keywords') }}">                        
+                        </div>
+                        <div class="form-group">
                            <label class="title-color">Slug<span class="text-danger">*</span></label>
                            <input type="text" name="slug" class="form-control" value="{{ $data->slug }}" placeholder="{{ translate('slug') }}" >                        
                         </div>
@@ -65,7 +77,7 @@
                                                    class="custom-file-input image-preview-before-upload"
                                                    data-preview="#viewer"
                                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
-                                                   required>
+                                                   >
                                             <label class="custom-file-label"
                                                    for="category-image">{{ translate('choose_File') }}</label>
                                         </div>

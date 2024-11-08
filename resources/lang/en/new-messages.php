@@ -8703,4 +8703,5 @@ return [
 	"blogs" => "Blogs",
 	"role_not_found" => "Role not found",
 	"email_already_taken" => "Email already taken",
+	"role_update" => "Role update",
 ];

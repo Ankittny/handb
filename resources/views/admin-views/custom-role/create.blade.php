@@ -91,10 +91,9 @@
                                         for="user_section">{{translate('user_management')}}</label>
                             </div>
                         </div>
-                       
 
                         <div class="col-sm-6 col-lg-3">
-                            <div class="form-group d-flex gap-2"> 
+                            <div class="form-group d-flex gap-2">
                                 <input type="checkbox" class="module-permission" name="modules[]" value="blogs" id="blogs">
                                 <label class="title-color mb-0 text-capitalize" style="{{$direction === "rtl" ? 'margin-right: 1.25rem;' : ''}};"
                                         for="system_settings">{{translate('blogs')}}</label>

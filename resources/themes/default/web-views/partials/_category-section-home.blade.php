@@ -42,7 +42,7 @@
                                                     <img alt="{{ $category->name }}"
                                                          src="{{ getStorageImages(path: $category->icon_full_url, type: 'category') }}">
                                                 </div>
-                                                <p class="text-center small mt-2">{{Str::limit($category->name, 12)}}</p>
+                                                <p class="text-center small mt-2 text-capitalize">{{Str::limit(strtolower($category->name), 12)}}</p>
                                             </a>
                                         </div>
                                     @endif

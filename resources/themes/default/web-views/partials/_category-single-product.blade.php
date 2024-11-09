@@ -54,7 +54,7 @@
             @endif
             <div class="">
                 <a href="{{route('product',$product->slug)}}" class="text-capitalize fw-semibold">
-                    {{ Str::limit($product['name'], 18) }}
+                    {{ Str::limit(strtolower($product['name']), 18) }}
                 </a>
             </div>
             <div class="justify-content-between ">

@@ -40,8 +40,8 @@
                                     </div>
                                     <div class="top-rated-details">
                                         <h6 class="widget-product-title">
-                                            <span class="ptr">
-                                                {{ Str::limit($top->product['name'],100) }}
+                                            <span class="ptr text-capitalize">
+                                                {{ Str::limit(strtolower($top->product['name']),100) }}
                                             </span>
                                         </h6>
                                         @php($overallRating = getOverallRating($top->product['reviews']))

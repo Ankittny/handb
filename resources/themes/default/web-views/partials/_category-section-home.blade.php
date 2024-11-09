@@ -18,7 +18,7 @@
                         <div class="d-none d-md-block">
                             <div class="row mt-3">
                                 @foreach($categories as $key => $category)
-                                    @if ($key<10)
+                                    @if ($key<11)
                                         <div class="text-center __m-5px __cate-item">
                                             <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
                                                 <div class="__img">

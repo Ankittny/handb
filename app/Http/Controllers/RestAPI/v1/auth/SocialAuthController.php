@@ -39,8 +39,12 @@ class SocialAuthController extends Controller
                 $res = $client->request('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
             } elseif ($request['medium'] == 'facebook') {
-                $res = $client->request('GET', 'https://graph.facebook.com/' . $unique_id . '?access_token=' . $token . '&&fields=id');
-              $data = json_decode($res->getBody()->getContents(), true);
+                $client = new \GuzzleHttp\Client([
+                    'debug' => true
+                ]);
+                $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,name&access_token=' . $token);
+                // $res = $client->request('GET', "https://graph.facebook.com/v21.0/me?fields=id,name&access_token=".$token);
+                $data = json_decode($res->getBody()->getContents(), true);
             } elseif ($request['medium'] == 'apple') {
                 $apple_login = BusinessSetting::where(['type'=>'apple_login'])->first();
                 if($apple_login){
@@ -74,6 +78,7 @@ class SocialAuthController extends Controller
                 $data = json_decode(base64_decode($claims),true);
             }
         } catch (\Exception $exception) {
+            dd($exception);
             Log::info('User created error', ['error' => $exception]);
             return response()->json(['error' => translate('wrong_credential')]);
         }

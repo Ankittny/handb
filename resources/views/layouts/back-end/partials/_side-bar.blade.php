@@ -21,7 +21,7 @@
             <div class="navbar-vertical-footer-offset pb-0">
                 <div class="navbar-brand-wrapper justify-content-between side-logo">
                     <a class="navbar-brand" href="{{route('admin.dashboard.index')}}" aria-label="Front">
-     
+
                       <img class="navbar-brand-logo-mini for-web-logo max-h-30"
                              src="{{asset('public/assets/back-end/company/').'/'.$eCommerceLogo['key']}}" alt="{{translate('logo')}}">
                     </a>
@@ -911,7 +911,7 @@
                             </li>
                         @endif
 
-                        @if(Helpers::module_permission_check('blogs')) 
+                        @if(Helpers::module_permission_check('blogs'))
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/notification*') ||  Request::is('admin/push-notification/*')  ?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:" title="{{translate('notifications')}}">
@@ -1148,40 +1148,7 @@
                                         class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('HSN Master')}}</span>
                                 </a>
                             </li>
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/notification*') ||  Request::is('admin/push-notification/*')  ?'active':''}}">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
-                                   href="javascript:" title="{{translate('notifications')}}">
-                                    <i class="tio-users-switch nav-icon"></i>
-                                    <span
-                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('Blog')}}</span>
-                                </a>
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
-                                    <li class="navbar-vertical-aside-has-menu {{!Request::is('admin/notification/push') && Request::is('admin/notification/*')?'active':''}}">
-                                        <a class="js-navbar-vertical-aside-menu-link nav-link"
-                                           href="{{url('admin\blog\cat_list')}}"
-                                           title="{{translate('blog_category')}}">
-                                            <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/icons/send-notification.svg') }}"
-                                                alt="{{translate('blog_category')}}" width="15" class="mr-2">
-                                            <span
-                                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-capitalize">
-                                            {{translate('blog_category')}}
-                                        </span>
-                                        </a>
-                                    </li>
-                                    <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/business-settings/'.PushNotification::INDEX[URI])|| Request::is('admin/push-notification/'.PushNotification::FIREBASE_CONFIGURATION[URI]) || Request::is('admin/push-notification/'.PushNotification::INDEX[URI]))?'active':''}}">
-                                        <a class="js-navbar-vertical-aside-menu-link nav-link text-capitalize"
-                                           href="{{url('admin\blog\blog_list')}}"
-                                           title="{{translate('push_notifications_setup')}}">
-                                            <img
-                                                src="{{ dynamicAsset(path: 'public/assets/back-end/img/icons/push-notification.svg') }}"
-                                                alt="{{translate('push_notification_svg')}}" width="15" class="mr-2">
-                                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate text-capitalize">
-                                            {{translate('blog_list')}}
-                                        </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+
                             <li class="navbar-vertical-aside-has-menu">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
                                    title="{{translate('3rd_Party')}}">

@@ -46,8 +46,8 @@
                                             </span>
                                         </div>
                                     @endif
-                                    <h6 class="font-semibold pt-1">
-                                        {{ Str::limit($deal_of_the_day->product['name'], 80) }}
+                                    <h6 class="font-semibold pt-1 text-capitalize">
+                                        {{ Str::limit(strtolower($deal_of_the_day->product['name']), 80) }}
                                     </h6>
                                     <div class="mb-4 pt-1 d-flex flex-wrap justify-content-center align-items-center text-center gap-8">
 
@@ -116,8 +116,8 @@
 
                                             </div>
                                         @endif
-                                        <h6 class="font-semibold pt-1">
-                                            {{ Str::limit($recommendedProduct['name'],30) }}
+                                        <h6 class="font-semibold pt-1 text-capitalize">
+                                            {{ Str::limit(strtolower($recommendedProduct['name']),30) }}
                                         </h6>
                                         <div class="mb-4 pt-1 d-flex flex-wrap justify-content-center align-items-center text-center gap-8">
                                             @if($recommendedProduct->discount > 0)

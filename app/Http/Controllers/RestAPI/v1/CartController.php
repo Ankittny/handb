@@ -98,7 +98,6 @@ class CartController extends Controller
         if ($validator->errors()->count() > 0) {
             return response()->json(['errors' => Helpers::error_processor($validator)]);
         }
-
         $cart = CartManager::add_to_cart($request);
         return response()->json($cart, 200);
     }

@@ -40,7 +40,7 @@
                     <div>
                         <a href="{{route('product',$product->slug)}}"
                            class="flash-product-title text-capitalize fw-semibold">
-                            {{ Str::limit($product['name'], 50) }}
+                            {{ Str::limit(strtolower($product['name']), 50) }}
                         </a>
                     </div>
                     <div class="d-flex flex-wrap gap-8 align-items-center row-gap-0">

@@ -23,7 +23,7 @@
                     <div>
                         <a href="{{route('product',$product->slug)}}"
                            class="flash-product-title text-capitalize fw-semibold">
-                            {{ Str::limit($product['name'], 80) }}
+                            {{ Str::limit(strtolower($product['name']), 80) }}
                         </a>
                     </div>
                     @if($overallRating[0] != 0 )

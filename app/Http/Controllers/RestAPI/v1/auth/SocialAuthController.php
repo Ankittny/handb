@@ -39,16 +39,11 @@ class SocialAuthController extends Controller
                 $res = $client->request('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
             } elseif ($request['medium'] == 'facebook') {
-                $client = new \GuzzleHttp\Client([
-                    'debug' => true
-                ]);
-                // $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,name,email&access_token=' . $token);
-                $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,name,email&access_token=' . $token, [
-                    'verify' => false // This disables SSL verification (not recommended for production)
-                ]);
+                $res = Http::withOptions([
+                    'verify' => false
+                ])->get('https://graph.facebook.com/v21.0/me?fields=id,name,email&access_token=' . $token);
 
-                // $res = $client->request('GET', "https://graph.facebook.com/v21.0/me?fields=id,name&access_token=".$token);
-                $data = json_decode($res->getBody()->getContents(), true);
+                $data = json_decode($res->body(), true);
             } elseif ($request['medium'] == 'apple') {
                 $apple_login = BusinessSetting::where(['type'=>'apple_login'])->first();
                 if($apple_login){

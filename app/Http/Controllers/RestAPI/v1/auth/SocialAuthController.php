@@ -42,7 +42,11 @@ class SocialAuthController extends Controller
                 $client = new \GuzzleHttp\Client([
                     'debug' => true
                 ]);
-                $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,name,email&access_token=' . $token);
+                // $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,name,email&access_token=' . $token);
+                $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,name,email&access_token=' . $token, [
+                    'verify' => false // This disables SSL verification (not recommended for production)
+                ]);
+
                 // $res = $client->request('GET', "https://graph.facebook.com/v21.0/me?fields=id,name&access_token=".$token);
                 $data = json_decode($res->getBody()->getContents(), true);
             } elseif ($request['medium'] == 'apple') {

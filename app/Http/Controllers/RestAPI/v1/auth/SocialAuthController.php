@@ -78,7 +78,6 @@ class SocialAuthController extends Controller
                 $data = json_decode(base64_decode($claims),true);
             }
         } catch (\Exception $exception) {
-            dd($exception);
             Log::info('User created error', ['error' => $exception]);
             return response()->json(['error' => translate('wrong_credential')]);
         }

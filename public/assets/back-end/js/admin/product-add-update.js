@@ -25,7 +25,8 @@ $(document).on('ready', function () {
             ['fontsize', ['fontsize']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
-            ['height', ['height']]
+            ['height', ['height']],
+            ['insert', ['link', 'picture', 'video']]
         ],
         callbacks: {
             onChange: function (contents, $editable) {

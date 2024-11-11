@@ -126,7 +126,7 @@ class SocialAuthController extends Controller
             return response()->json(['error_message' => translate('customer_not_found_or_account_has_been_suspended')]);
 
 
-        }elseif ( strcmp($email, $data['email']) === 0) {
+        }elseif (isset($data['email']) && strcmp($email, $data['email']) === 0) {
             $name = explode(' ', $data['name']);
             if (count($name) > 1) {
                 $fast_name = implode(" ", array_slice($name, 0, -1));

@@ -41,7 +41,6 @@ class SocialAuthController extends Controller
             } elseif ($request['medium'] == 'facebook') {
                 $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,email,name&access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
-                dd($data['email'],true);
             } elseif ($request['medium'] == 'apple') {
                 $apple_login = BusinessSetting::where(['type'=>'apple_login'])->first();
                 if($apple_login){
@@ -78,6 +77,8 @@ class SocialAuthController extends Controller
             Log::info('User created error', ['error' => $exception]);
             return response()->json(['error' => translate('wrong_credential')]);
         }
+
+        dd("sdfsfsdfsdf================>",($data));
         if($request['medium'] == 'apple' && isset($data['email'])){
             $fast_name = strstr($data['email'], '@', true);
             $user = User::where('email', $data['email'])->first();

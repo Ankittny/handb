@@ -81,19 +81,19 @@ class SocialAuthController extends Controller
             $fast_name = strstr($data['email'], '@', true);
             $user = User::where('email', $data['email'])->first();
             if (isset($user) == false) {
-                $user = User::create([
-                    'f_name' => $fast_name,
-                    'email' => $data['email'],
-                    'phone' => '',
-                    'password' => bcrypt($data['email']),
-                    'is_active' => 1,
-                    'login_medium' => $request['medium'],
-                    'social_id' => $data['sub'],
-                    'is_phone_verified' => 0,
-                    'is_email_verified' => 1,
-                    'referral_code' => Helpers::generate_referer_code(),
-                    'temporary_token' => Str::random(40)
-                ]);
+                $user = new User();
+                $user->f_name = $fast_name;
+                $user->email = $data['email'];
+                $user->phone = '';
+                $user->password = bcrypt($data['email']);
+                $user->is_active = 1;
+                $user->login_medium = $request['medium'];
+                $user->social_id = $data['sub'];
+                $user->is_phone_verified = 0;
+                $user->is_email_verified = 1;
+                $user->referral_code = Helpers::generate_referer_code();
+                $user->temporary_token = Str::random(40);
+                $user->save();
             } else {
                 $user->temporary_token = Str::random(40);
                 $user->save();
@@ -112,10 +112,7 @@ class SocialAuthController extends Controller
                 return response()->json(['token' => $token]);
             }
             return response()->json(['error_message' => translate('customer_not_found_or_account_has_been_suspended')]);
-
-        $user = User::where('email', $email)->first();
-        dd("sdfsdfsdfdsfsdf=>>>>>>>>>>>>>>>>>>>>>>>>",$user);
-        }elseif (isset($data['email']) && strcmp($email, $data['email']) === 0) {
+        } elseif (isset($data['email']) && strcmp($email, $data['email']) === 0) {
             $name = explode(' ', $data['name']);
             if (count($name) > 1) {
                 $fast_name = implode(" ", array_slice($name, 0, -1));

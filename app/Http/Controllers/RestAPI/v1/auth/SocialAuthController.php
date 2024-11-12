@@ -97,7 +97,6 @@ class SocialAuthController extends Controller
             } else {
                 $user->temporary_token = Str::random(40);
                 $user->save();
-                dd($user);
             }
             if(!isset($user->phone))
             {
@@ -149,7 +148,7 @@ class SocialAuthController extends Controller
                     'token_type' => 'update phone number',
                     'temporary_token' => $user->temporary_token ]);
             }
-
+            dd($user);
             $token = self::login_process_passport($user, $user['email'], $data['id']);
             if ($token != null) {
 

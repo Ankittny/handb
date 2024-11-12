@@ -39,13 +39,11 @@ class SocialAuthController extends Controller
                 $res = $client->request('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
             } elseif ($request['medium'] == 'facebook') {
-                $client = new \GuzzleHttp\Client([
-                    'debug' => false
-                ]);
+                // $client = new \GuzzleHttp\Client([
+                //     'debug' => false
+                // ]);
 
-                $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,email,name&access_token=' . $token, [
-                    'verify' => false
-                ]);
+                $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,email,name&access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
                 dd("test ankit",$data);
             } elseif ($request['medium'] == 'apple') {

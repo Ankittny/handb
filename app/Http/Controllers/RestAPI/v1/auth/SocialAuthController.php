@@ -113,7 +113,7 @@ class SocialAuthController extends Controller
             }
             return response()->json(['error_message' => translate('customer_not_found_or_account_has_been_suspended')]);
 
-
+            dd(strcmp($email, $data['email']));
         }elseif (isset($data['email']) && strcmp($email, $data['email']) === 0) {
             dd("sdfsdfsdfsdfsdfsdfdsfsdf");
             $name = explode(' ', $data['name']);

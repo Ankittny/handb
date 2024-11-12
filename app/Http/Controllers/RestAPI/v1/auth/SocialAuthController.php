@@ -39,7 +39,7 @@ class SocialAuthController extends Controller
                 $res = $client->request('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
             } elseif ($request['medium'] == 'facebook') {
-                $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,email,name,l_name,l_name&access_token=' . $token);
+                $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,email,name&access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
             } elseif ($request['medium'] == 'apple') {
                 $apple_login = BusinessSetting::where(['type'=>'apple_login'])->first();
@@ -113,9 +113,9 @@ class SocialAuthController extends Controller
             }
             return response()->json(['error_message' => translate('customer_not_found_or_account_has_been_suspended')]);
 
-
-        } elseif (isset($data['email']) && strcmp($email, $data['email']) < 0) {
-
+        $user = User::where('email', $email)->first();
+        dd("sdfsdfsdfdsfsdf=>>>>>>>>>>>>>>>>>>>>>>>>",$user);
+        }elseif (isset($data['email']) && strcmp($email, $data['email']) === 0) {
             $name = explode(' ', $data['name']);
             if (count($name) > 1) {
                 $fast_name = implode(" ", array_slice($name, 0, -1));

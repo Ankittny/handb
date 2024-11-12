@@ -149,7 +149,7 @@ class SocialAuthController extends Controller
                     'temporary_token' => $user->temporary_token ]);
             }
             $token = self::login_process_passport($user, $user['email'], $data['id']);
-            dd($token);
+            //dd($token);
             if ($token != null) {
 
                 CartManager::cart_to_db($request);
@@ -167,7 +167,7 @@ class SocialAuthController extends Controller
             'email' => $email,
             'password' => $password
         ];
-
+        dd($data);
         if (isset($user) && $user->is_active && auth()->attempt($data)) {
             $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
         } else {

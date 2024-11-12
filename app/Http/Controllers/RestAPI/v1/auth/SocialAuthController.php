@@ -35,27 +35,16 @@ class SocialAuthController extends Controller
         $unique_id = $request['unique_id'];
 
         try {
-            // Check the authentication medium and get user info accordingly
             if ($request['medium'] == 'google') {
-                // Get user info from Google
                 $res = $client->request('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
             } elseif ($request['medium'] == 'facebook') {
-                // Get user info from Facebook
                 $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,email,name&access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
-                dd("this is test", $data);  // Debugging the Facebook response, this will halt execution
-
-                // Clean the email from Facebook data (trim any unwanted whitespace/newline characters)
-                if (isset($data['email'])) {
-                    $email = trim($data['email']);
-                } else {
-                    $email = 'No email found';
-                }
+                dd("this is test",$data['email']);
             } elseif ($request['medium'] == 'apple') {
-                // Get user info from Apple
-                $apple_login = BusinessSetting::where(['type' => 'apple_login'])->first();
-                if ($apple_login) {
+                $apple_login = BusinessSetting::where(['type'=>'apple_login'])->first();
+                if($apple_login){
                     $apple_login = json_decode($apple_login->value)[0];
                 }
                 $teamId = $apple_login->team_id;
@@ -64,9 +53,8 @@ class SocialAuthController extends Controller
                 $aud = 'https://appleid.apple.com';
                 $iat = strtotime('now');
                 $exp = strtotime('+60days');
-                $keyContent = file_get_contents('storage/app/public/apple-login/' . $apple_login->service_file);
+                $keyContent = file_get_contents('storage/app/public/apple-login/'.$apple_login->service_file);
 
-                // Generate JWT token for Apple login
                 $token = JWT::encode([
                     'iss' => $teamId,
                     'iat' => $iat,
@@ -74,8 +62,7 @@ class SocialAuthController extends Controller
                     'aud' => $aud,
                     'sub' => $sub,
                 ], $keyContent, 'ES256', $keyId);
-
-                $redirect_uri = $apple_login->redirect_url ?? 'www.example.com/apple-callback';
+                $redirect_uri = $apple_login->redirect_url??'www.example.com/apple-callback';
                 $res = Http::asForm()->post('https://appleid.apple.com/auth/token', [
                     'grant_type' => 'authorization_code',
                     'code' => $unique_id,
@@ -84,28 +71,13 @@ class SocialAuthController extends Controller
                     'client_secret' => $token,
                 ]);
 
-                // Decode the JWT token to extract user data
                 $claims = explode('.', $res['id_token'])[1];
-                $data = json_decode(base64_decode($claims), true);
+                $data = json_decode(base64_decode($claims),true);
             }
-
-            // Now, process the email from the data
-            if (isset($data['email'])) {
-                // Clean up the email by trimming unwanted spaces/newlines
-                $email = trim($data['email']);
-            } else {
-                $email = 'No email available';
-            }
-
-            // Return or process the email as needed
-            return response()->json(['email' => $email]);
-
         } catch (\Exception $exception) {
-            // Log the error and return an appropriate response
             Log::info('User created error', ['error' => $exception]);
             return response()->json(['error' => translate('wrong_credential')]);
         }
-
         if($request['medium'] == 'apple' && isset($data['email'])){
             $fast_name = strstr($data['email'], '@', true);
             $user = User::where('email', $data['email'])->first();

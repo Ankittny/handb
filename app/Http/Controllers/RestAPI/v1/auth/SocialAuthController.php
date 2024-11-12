@@ -167,7 +167,7 @@ class SocialAuthController extends Controller
             'email' => $email,
             'password' => $password
         ];
-        dd($user);
+
         dd($data);
         if (isset($user) && $user->is_active && auth()->attempt($data)) {
             $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;

@@ -44,7 +44,7 @@ class SocialAuthController extends Controller
                 ]);
 
                 $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,name,email&access_token=' . $token, [
-                    'verify' => false // This disables SSL verification (not recommended for production)
+                    'verify' => false
                 ]);
 
                 // $res = Http::withOptions([
@@ -125,7 +125,7 @@ class SocialAuthController extends Controller
             }
             return response()->json(['error_message' => translate('customer_not_found_or_account_has_been_suspended')]);
 
-
+        dd("sdfsfsdfsdf================>",($data));
         }elseif (isset($data['email']) && strcmp($email, $data['email']) === 0) {
             $name = explode(' ', $data['name']);
             if (count($name) > 1) {

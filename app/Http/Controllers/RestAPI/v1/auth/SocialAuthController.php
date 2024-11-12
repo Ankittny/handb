@@ -88,7 +88,7 @@ class SocialAuthController extends Controller
             Log::info('User created error', ['error' => $exception]);
             return response()->json(['error' => translate('wrong_credential')]);
         }
-
+        dd("sdfsfsdfsdf================>",($data));
         if($request['medium'] == 'apple' && isset($data['email'])){
             $fast_name = strstr($data['email'], '@', true);
             $user = User::where('email', $data['email'])->first();
@@ -125,7 +125,7 @@ class SocialAuthController extends Controller
             }
             return response()->json(['error_message' => translate('customer_not_found_or_account_has_been_suspended')]);
 
-        dd("sdfsfsdfsdf================>",($data));
+
         }elseif (isset($data['email']) && strcmp($email, $data['email']) === 0) {
             $name = explode(' ', $data['name']);
             if (count($name) > 1) {

@@ -41,7 +41,8 @@ class SocialAuthController extends Controller
             } elseif ($request['medium'] == 'facebook') {
                 $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,email,name&access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
-                dd("this is test",$data['email']);
+                $email = "ankittny@gmail.com";
+                dd("this is test",$data['email'],$email);
             } elseif ($request['medium'] == 'apple') {
                 $apple_login = BusinessSetting::where(['type'=>'apple_login'])->first();
                 if($apple_login){

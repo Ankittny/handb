@@ -16,7 +16,7 @@ class User extends Authenticatable
 {
     use Notifiable, HasApiTokens,StorageTrait;
 
-    public mixed $email;
+    //public mixed $email;
 
     /**
      * The attributes that are mass assignable.
@@ -41,16 +41,16 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'is_active' => 'integer',
-        'is_phone_verified'=>'integer',
-        'is_email_verified' => 'integer',
-        'wallet_balance'=>'float',
-        'loyalty_point'=>'float',
-        'referred_by'=>'integer',
-        'email' => 'string',
-    ];
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    //     'is_active' => 'integer',
+    //     'is_phone_verified'=>'integer',
+    //     'is_email_verified' => 'integer',
+    //     'wallet_balance'=>'float',
+    //     'loyalty_point'=>'float',
+    //     'referred_by'=>'integer',
+    //     'email' => 'string',
+    // ];
 
     public function wish_list()
     {

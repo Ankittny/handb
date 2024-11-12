@@ -41,7 +41,7 @@ class SocialAuthController extends Controller
             } elseif ($request['medium'] == 'facebook') {
                 $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,email,name&access_token=' . $token);
                 $data = json_decode($res->getBody()->getContents(), true);
-                dd($data['email'],true);
+               // dd(strstr($data['email'], '@', true));
             } elseif ($request['medium'] == 'apple') {
                 $apple_login = BusinessSetting::where(['type'=>'apple_login'])->first();
                 if($apple_login){
@@ -116,6 +116,8 @@ class SocialAuthController extends Controller
 
 
         }elseif (isset($data['email']) && strcmp($email, $data['email']) === 0) {
+
+            echo "Sdfsdfsdfsdf"; die;
             $name = explode(' ', $data['name']);
             if (count($name) > 1) {
                 $fast_name = implode(" ", array_slice($name, 0, -1));

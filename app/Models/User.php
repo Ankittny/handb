@@ -56,7 +56,6 @@ use Laravel\Passport\HasApiTokens;
  */
 class User extends Authenticatable
 {
-    public mixed $email;
     use Notifiable, HasApiTokens,StorageTrait;
 
     /**

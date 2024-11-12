@@ -43,7 +43,7 @@ class SocialAuthController extends Controller
                     'debug' => false
                 ]);
 
-                $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,name,email&access_token=' . $token, [
+                $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,email,name&access_token=' . $token, [
                     'verify' => false
                 ]);
                 $data = json_decode($res->getBody()->getContents(), true);

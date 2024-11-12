@@ -81,22 +81,23 @@ class SocialAuthController extends Controller
             $fast_name = strstr($data['email'], '@', true);
             $user = User::where('email', $data['email'])->first();
             if (isset($user) == false) {
-                $user = new User();
-                $user->f_name = $fast_name;
-                $user->email = $data['email'];
-                $user->phone = '';
-                $user->password = bcrypt($data['email']);
-                $user->is_active = 1;
-                $user->login_medium = $request['medium'];
-                $user->social_id = $data['sub'];
-                $user->is_phone_verified = 0;
-                $user->is_email_verified = 1;
-                $user->referral_code = Helpers::generate_referer_code();
-                $user->temporary_token = Str::random(40);
-                $user->save();
+                $user = User::create([
+                    'f_name' => $fast_name,
+                    'email' => $data['email'],
+                    'phone' => '',
+                    'password' => bcrypt($data['email']),
+                    'is_active' => 1,
+                    'login_medium' => $request['medium'],
+                    'social_id' => $data['sub'],
+                    'is_phone_verified' => 0,
+                    'is_email_verified' => 1,
+                    'referral_code' => Helpers::generate_referer_code(),
+                    'temporary_token' => Str::random(40)
+                ]);
             } else {
                 $user->temporary_token = Str::random(40);
                 $user->save();
+                dd($user);
             }
             if(!isset($user->phone))
             {
@@ -106,6 +107,7 @@ class SocialAuthController extends Controller
             }
 
             $token = self::login_process_passport($user, $user['email'], $data['email']);
+
             if ($token != null) {
 
                 CartManager::cart_to_db($request);

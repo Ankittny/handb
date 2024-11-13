@@ -110,7 +110,6 @@ class SocialAuthController extends Controller
             $token = self::login_process_passport($user, $user['email'], $data['email']);
 
             if ($token != null) {
-
                 CartManager::cart_to_db($request);
                 return response()->json(['token' => $token]);
             }
@@ -125,6 +124,7 @@ class SocialAuthController extends Controller
                 $last_name = '';
             }
             $user = User::where('email', $email)->first();
+
             if (isset($user) == false) {
                 $user = User::create([
                     'f_name' => $fast_name,
@@ -150,11 +150,13 @@ class SocialAuthController extends Controller
                     'token_type' => 'update phone number',
                     'temporary_token' => $user->temporary_token ]);
             }
-            //dd($data['id']);
-            $token = self::login_process_passport($user, $user['email'], $data['id']);
-            //dd($token);
+            dd($user);
+            if(empty($user)){
+                $token = self::login_process_passport($user, $user['email'], $data['id']);
+            } else{
+                $token = self::login_process_passport($user, $user['email'], $user['social_id']);
+            }
             if ($token != null) {
-
                 CartManager::cart_to_db($request);
                 return response()->json(['token' => $token]);
             }

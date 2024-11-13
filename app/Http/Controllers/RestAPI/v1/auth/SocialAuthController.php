@@ -150,7 +150,6 @@ class SocialAuthController extends Controller
                     'token_type' => 'update phone number',
                     'temporary_token' => $user->temporary_token ]);
             }
-            dd($user);
             if(empty($user)){
                 $token = self::login_process_passport($user, $user['email'], $data['id']);
             } else{

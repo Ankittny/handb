@@ -36,7 +36,9 @@ class SocialAuthController extends Controller
 
         try {
             if ($request['medium'] == 'google') {
-                $res = $client->request('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' . $token);
+                $res = $client->request('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?access_token=' . $token,[
+                'verify' => false,
+                ]);
                 $data = json_decode($res->getBody()->getContents(), true);
             } elseif ($request['medium'] == 'facebook') {
                 $res = $client->request('GET', 'https://graph.facebook.com/v21.0/me?fields=id,email,name&access_token=' . $token);
@@ -148,6 +150,7 @@ class SocialAuthController extends Controller
                     'token_type' => 'update phone number',
                     'temporary_token' => $user->temporary_token ]);
             }
+            //dd($data['id']);
             $token = self::login_process_passport($user, $user['email'], $data['id']);
             //dd($token);
             if ($token != null) {
@@ -167,8 +170,6 @@ class SocialAuthController extends Controller
             'email' => $email,
             'password' => $password
         ];
-
-        dd($data);
         if (isset($user) && $user->is_active && auth()->attempt($data)) {
             $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
         } else {

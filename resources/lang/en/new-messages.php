@@ -8708,4 +8708,9 @@ return [
 	"role_updated_successfully" => "Role updated successfully",
 	"keywords" => "Keywords",
 	"meta_discription" => "Meta discription",
+	"vendor_Analytics" => "Vendor Analytics",
+	"active_Vendors " => "Active Vendors ",
+	"inactive_Vendors " => "Inactive Vendors ",
+	"store_Logo" => "Store Logo",
+	"blog_deleted_successfully" => "Blog deleted successfully",
 ];

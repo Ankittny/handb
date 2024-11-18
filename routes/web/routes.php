@@ -64,7 +64,7 @@ Route::group(['prefix' => 'blog-detail'],function(){
     });
 });
 
-      
+
 
 
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestCheck']], function () {

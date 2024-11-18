@@ -74,22 +74,22 @@
                     $blogs = Blog::paginate(10); // Limits the number of blogs to 10
                 @endphp
 
-                <div class="row" id="ajax-products">
+                <div class="row">
                     @foreach ($blogs as $blog)
                         <div class=" col-lg-3 col-md-4 col-sm-4 col-6  p-2">
-                            <div class="product-single-hover style--card">
+                            <div class="hidden-text">
                                 <div class="overflow-hidden position-relative">
-                                    <div class=" inline_product clickable d-flex justify-content-center">
-                                        <div class="d-flex justify-content-end">
-                                            <span class="for-discount-value-null"></span>
-                                        </div>
-
-                                        <div class="p-10px pb-0">
+                                    <div class="inline_product product-fix clickable ">
+                                        <div class=" lias-int">
                                             <a href="{{ route('blog-detail', $blog->slug) }}" class="w-100"></a>
                                             <img alt=""
                                                 src="{{ asset('public/assets/back-end/bloges/') . '/' . $blog->image }}">
                                             </a>
                                         </div>
+                                        <div class="text-timedate d-flex gap-2 mt-2">
+                                            <p>Celigin</p>
+                                            <span>Nov 18, 2024</span>
+                                           </div>
 
                                         <!-- <div class="quick-view">
                                         <a class="btn-circle stopPropagation action-product-quick-view" href="https://new.healthandblossom.com/blog-detail/new-test-detail:" data-product-id="616">

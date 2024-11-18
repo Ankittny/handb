@@ -9,7 +9,7 @@
 @section('content')
 <div class="container-fluid pb-5 mb-2 mb-md-4 rtl __inline-35" dir="ltr">
     <div class="row">
-        
+
         <div class="col-lg-12">
             <div class="row" id="ajax-products">
                 <div class=" col-lg-12 col-md-12 col-sm-12 col-12  p-2">
@@ -25,7 +25,7 @@
                                     </a>
                                 </div>
 
-                              
+
                             </div>
                             <div class="single-product-details">
                             @php
@@ -33,7 +33,7 @@
                                 @endphp
                                 <div style="float:right;">
                                 <span class="card-text text-muted fs-7 mb-0">
-                                    <b>Author:</b> Added by Admin | <b>Created date:</b> {{ $date->format('d F Y') }}
+                                    <b>Author:</b> Added by Admin | <b>Date:</b> {{ $date->format('d F Y') }}
                                 </span>
                                 </div>
                                 <div class="frequengtly-ft">
@@ -46,7 +46,7 @@
                                 <div class="justify-content-between ">
                                     <div class="product-price text-center d-flex flex-wrap justify-content-center align-items-center gap-8">
                                         <span class="text-accent text-accents text-dark">
-                                            {{ strip_tags($blog->description) }} </span>
+                                         <?= $blog->description ?> </span>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
 </div>
 

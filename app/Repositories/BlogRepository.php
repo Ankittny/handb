@@ -55,23 +55,27 @@ class BlogRepository implements BlogInterface
           	'image',
             'slug',
             'created_at',
-            'updated_at' 
+            'updated_at'
         ]);
 
-        // Find the Hsncode model by ID
         $blogcode = Blog::find($data['id']);
         if ($blogcode) {
-            return $blogcode->update([
-                'cat_id' => $request->cat_id,
+            $update_data = [
                 'title' => $request->title,
                 'meta_title' => $request->meta_title,
                 'meta_discription' => $request->meta_discription,
                 'keywords' => $request->keywords,
-                'image' => $request->image_file,
                 'slug'=>  $request->slug,
               	'created_at' => now(),
                 'updated_at'=>now()
-            ]);
+            ];
+            if (!empty($request->image_file)) {
+                $update_data['image'] = $request->image_file;
+            }
+            if (!empty($request->cat_id)) {
+                $update_data['cat_id'] = $request->cat_id;
+            }
+            return $blogcode->update($update_data);
         }
 
         // If no record was found, return false
@@ -96,16 +100,16 @@ class BlogRepository implements BlogInterface
     public function delete(object $request): bool
     {
         $id = $request->input('blogId');
-        $hsn = Blog::find($id); 
-       
+        $hsn = Blog::find($id);
+
         if (!$hsn) {
-            return false; 
+            return false;
         }
 
         $hsn->status = 0;
-        $updated = $hsn->save(); 
-    
+        $updated = $hsn->save();
+
         return $updated;
     }
-    
+
 }

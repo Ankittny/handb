@@ -14,23 +14,23 @@ use App\Traits\FileManagerTrait;
 
 class BlogController extends Controller
 {
-    use FileManagerTrait; 
+    use FileManagerTrait;
     public function __construct(
         private readonly BlogCategoryInterface         $blogcatRepo,
         private readonly BlogInterface                 $blogRepo,
     )
     {
-     } 
+     }
      public function index(Request $request)
      {
          $query = BlogCategory::select('id', 'name', 'slug')->where('status',1);
              if ($request->has('searchValue') && $request->searchValue !== '') {
              $query->where('name', 'LIKE', '%' . $request->searchValue . '%'); // Use LIKE for partial matches
          }
-     
+
          // Limit the results to 10
          $blogCategories = $query->paginate(10);
-     
+
          // Return the view with the categories
          return view(Blog::LIST[VIEW], compact('blogCategories'));
      }
@@ -41,16 +41,16 @@ class BlogController extends Controller
              if ($request->has('searchValue') && $request->searchValue !== '') {
              $query->where('title', 'LIKE', '%' . $request->searchValue . '%'); // Use LIKE for partial matches
          }
-     
+
          // Limit the results to 10
          $bloglist = $query->paginate(10);
          $categories = BlogCategory::all();
          $languages = getWebConfig(name: 'pnc_language') ?? null;
          return view(Blog::LISTBLOG[VIEW], compact('bloglist','categories','languages'));
      }
-     
-     
-    
+
+
+
     public function add(Request $request){
 
         $slugExists = BlogCategory::where('slug', $request->slug)->exists();
@@ -58,7 +58,7 @@ class BlogController extends Controller
             Toastr::error(translate('slug_already_exist'));
             return redirect()->route('admin.home-blog');
         }
-       
+
         if($this->blogcatRepo->add(request: $request)){
             Toastr::success(translate('blog_category_added_successfully'));
             return redirect()->route('admin.home-blog');
@@ -80,12 +80,11 @@ class BlogController extends Controller
         }
       }
       public function updatedata(Request $request){
-
         if($this->blogcatRepo->update(request: $request)){
             Toastr::success(translate('blog_updated_successfully'));
             return redirect()->route('admin.home-blog');
         }
-      } 
+      }
     public function updateBlog(Request $request){
         if($this->blogcatRepo->add(request: $request)){
             Toastr::success(translate('blog_added_successfully'));
@@ -106,8 +105,10 @@ class BlogController extends Controller
     }
 
     public function blogUpdatedata(Request $request){
-      $imageName = $this->upload('bloges/', 'webp', $request->file('image'));
-      $request->merge(['image_file' => $imageName]);
+      if($request->hasFile('image')){
+          $imageName = $this->upload('bloges/', 'webp', $request->file('image'));
+          $request->merge(['image_file' => $imageName]);
+      }
       if($this->blogRepo->update(request: $request)){
         Toastr::success(translate('blog_updated_successfully'));
         return redirect()->route('admin.blog-list-blog');
@@ -129,8 +130,8 @@ class BlogController extends Controller
     }
 
 
-    
 
- 
+
+
 
 }

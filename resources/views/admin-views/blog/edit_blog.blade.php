@@ -27,41 +27,35 @@
                            <label class="title-color">Title<span class="text-danger">*</span></label>
                            <input type="text" name="title" class="form-control" value="{{ $data->title }}" placeholder="{{ translate('title') }}">
                            <input type="hidden" value="{{ $data->id }}" name="id">
-                        
+
                         </div>
                         <div class="form-group">
                            <label class="title-color">Meta Title<span class="text-danger">*</span></label>
-                           <input type="text" name="meta_title" class="form-control" value="{{ $data->meta_title }}" placeholder="{{ translate('meta_title') }}">                        
+                           <input type="text" name="meta_title" class="form-control" value="{{ $data->meta_title }}" placeholder="{{ translate('meta_title') }}">
                         </div>
                         <div class="form-group">
                            <label class="title-color">Meta Description<span class="text-danger">*</span></label>
-                           <input type="text" name="meta_discription" class="form-control" value="{{ $data->meta_discription }}" placeholder="{{ translate('meta_discription') }}">                        
+                           <input type="text" name="meta_discription" class="form-control" value="{{ $data->meta_discription }}" placeholder="{{ translate('meta_discription') }}">
                         </div>
                         <div class="form-group">
                            <label class="title-color">Keywords<span class="text-danger">*</span></label>
-                           <input type="text" name="keywords" class="form-control" value="{{ $data->keywords }}" placeholder="{{ translate('Keywords') }}">                        
+                           <input type="text" name="keywords" class="form-control" value="{{ $data->keywords }}" placeholder="{{ translate('Keywords') }}">
                         </div>
                         <div class="form-group">
                            <label class="title-color">Slug<span class="text-danger">*</span></label>
-                           <input type="text" name="slug" class="form-control" value="{{ $data->slug }}" placeholder="{{ translate('slug') }}" >                        
+                           <input type="text" name="slug" class="form-control" value="{{ $data->slug }}" placeholder="{{ translate('slug') }}" >
                         </div>
                         <div class="form-group">
                            <label class="title-color">Category ID<span class="text-danger">*</span></label>
-                           <?php 
-                           $categorys = App\Models\BlogCategory::where('id', $data->cat_id)->first(); 
-                           ?>
                            <select name="cat_id" class="form-control js-select2-custom form-control action-get-request-onchange">
-                           <option value="{{ $categorys->cat_id ?? '' }}">
-                              {{ $categorys->name ?? 'null' }}
-                           </option>
                               @foreach($categories as $cat)
-                                    <option value="{{ $cat->id }}">
+                                    <option value="{{ $cat->id }}" {{ $cat->id == $data->cat_id ? 'selected' : '' }}>
                                        {{ $cat->name }} <!-- Change 'name' to the appropriate attribute for category display -->
                                     </option>
                               @endforeach
                            </select>
                         </div>
-                        
+
                         <div class="form-group pt-2">
                                          <label class="title-color" for="{{ $lang }}_description">
                                             {{ translate('description') }} ({{ strtoupper($lang) }})
@@ -84,12 +78,12 @@
                         </div>
                   </div>
                   <div class="col-lg-6 mt-4 mt-lg-0 from_part_2">
-                                    <div class="form-group">
-                                        <div class="text-center mx-auto">
-                                            <img class="upload-img-view" id="viewer" alt=""
-                                                 src="{{ dynamicAsset(path: 'public/assets/back-end/img/image-place-holder.png') }}">
-                                        </div>
-                                    </div>
+                            <div class="form-group">
+                                <div class="text-center mx-auto">
+                                    <img class="upload-img-view" id="viewer" alt="blog"
+                                            src="{{ asset('public/assets/back-end/bloges/') . '/' . $data->image }}">
+                                </div>
+                            </div>
                      </div>
                </div>
                <div class="d-flex flex-wrap gap-2 justify-content-end">
@@ -100,8 +94,8 @@
 
          </div>
       </div>
-      
-      
+
+
       <div class="js-nav-scroller hs-nav-scroller-horizontal d-none">
          <span class="hs-nav-scroller-arrow-prev d-none">
          <a class="hs-nav-scroller-arrow-link" href="javascript:">

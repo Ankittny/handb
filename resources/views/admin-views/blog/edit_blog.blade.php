@@ -27,28 +27,27 @@
                            <label class="title-color">Title<span class="text-danger">*</span></label>
                            <input type="text" name="title" class="form-control" value="{{ $data->title }}" placeholder="{{ translate('title') }}">
                            <input type="hidden" value="{{ $data->id }}" name="id">
-                        
                         </div>
                         <div class="form-group">
                            <label class="title-color">Meta Title<span class="text-danger">*</span></label>
-                           <input type="text" name="meta_title" class="form-control" value="{{ $data->meta_title }}" placeholder="{{ translate('meta_title') }}">                        
+                           <input type="text" name="meta_title" class="form-control" value="{{ $data->meta_title }}" placeholder="{{ translate('meta_title') }}">
                         </div>
                         <div class="form-group">
                            <label class="title-color">Meta Description<span class="text-danger">*</span></label>
-                           <input type="text" name="meta_discription" class="form-control" value="{{ $data->meta_discription }}" placeholder="{{ translate('meta_discription') }}">                        
+                           <input type="text" name="meta_discription" class="form-control" value="{{ $data->meta_discription }}" placeholder="{{ translate('meta_discription') }}">
                         </div>
                         <div class="form-group">
                            <label class="title-color">Keywords<span class="text-danger">*</span></label>
-                           <input type="text" name="keywords" class="form-control" value="{{ $data->keywords }}" placeholder="{{ translate('Keywords') }}">                        
+                           <input type="text" name="keywords" class="form-control" value="{{ $data->keywords }}" placeholder="{{ translate('Keywords') }}">
                         </div>
                         <div class="form-group">
                            <label class="title-color">Slug<span class="text-danger">*</span></label>
-                           <input type="text" name="slug" class="form-control" value="{{ $data->slug }}" placeholder="{{ translate('slug') }}" >                        
+                           <input type="text" name="slug" class="form-control" value="{{ $data->slug }}" placeholder="{{ translate('slug') }}" >
                         </div>
                         <div class="form-group">
                            <label class="title-color">Category ID<span class="text-danger">*</span></label>
-                           <?php 
-                           $categorys = App\Models\BlogCategory::where('id', $data->cat_id)->first(); 
+                           <?php
+                           $categorys = App\Models\BlogCategory::where('id', $data->cat_id)->first();
                            ?>
                            <select name="cat_id" class="form-control js-select2-custom form-control action-get-request-onchange">
                            <option value="{{ $categorys->cat_id ?? '' }}">
@@ -61,12 +60,12 @@
                               @endforeach
                            </select>
                         </div>
-                        
+
                         <div class="form-group pt-2">
-                                         <label class="title-color" for="{{ $lang }}_description">
-                                            {{ translate('description') }} ({{ strtoupper($lang) }})
-                                        </label>
-                                        <textarea class="summernote {{ $lang == $defaultLanguage ? 'description' : '' }}" name="description">{{ $data->description }}</textarea>
+                            <label class="title-color" for="{{ $lang }}_description">
+                                {{ translate('description') }} ({{ strtoupper($lang) }})
+                            </label>
+                            <textarea class="summernote {{ $lang == $defaultLanguage ? 'description' : '' }}" name="description">{{ $data->description }}</textarea>
                         </div>
                         @endforeach
                         <div class="from_part_2">
@@ -100,8 +99,7 @@
 
          </div>
       </div>
-      
-      
+
       <div class="js-nav-scroller hs-nav-scroller-horizontal d-none">
          <span class="hs-nav-scroller-arrow-prev d-none">
          <a class="hs-nav-scroller-arrow-link" href="javascript:">

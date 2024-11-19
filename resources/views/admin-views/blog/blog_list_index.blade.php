@@ -55,12 +55,12 @@
                               @endforeach
                            </select>
                         </div>
-                        
+
                         <div class="form-group pt-2">
-                                         <label class="title-color" for="{{ $lang }}_description">
-                                            {{ translate('description') }} ({{ strtoupper($lang) }})
-                                        </label>
-                                        <textarea class="summernote {{ $lang == $defaultLanguage ? 'description' : '' }}" name="description">{{ old('description') }}</textarea>
+                            <label class="title-color" for="{{ $lang }}_description">
+                                {{ translate('description') }} ({{ strtoupper($lang) }})
+                            </label>
+                            <textarea class="summernote {{ $lang == $defaultLanguage ? 'description' : '' }}" name="description">{{ old('description') }}</textarea>
                         </div>
                         @endforeach
                         <div class="from_part_2">
@@ -76,7 +76,7 @@
                                                    for="category-image">{{ translate('choose_File') }}</label>
                                         </div>
                      </div>
-                     
+
                   </div>
                   <div class="col-lg-6 mt-4 mt-lg-0 from_part_2">
                                     <div class="form-group">
@@ -95,7 +95,7 @@
 
          </div>
       </div>
-      
+
       <div class="card mt-3">
          <div class="card-body">
             <div class="px-3 py-4 light-bg">
@@ -147,11 +147,11 @@
                      </tr>
                   </thead>
                   <tbody>
-                     
+
                     @foreach($bloglist as $blog)
                     <tr>
                         <td>{{ $blog->id }}</td>
-                        <?php 
+                        <?php
                         $category_name = optional(App\Models\BlogCategory::find($blog->cat_id))->name ?? 'Null';
                         ?>
                         <td>{{ $category_name }}</td>
@@ -216,7 +216,7 @@
     <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/spartan-multi-image-picker.js') }}"></script>
     <script src="{{ dynamicAsset(path: 'public/assets/back-end/plugins/summernote/summernote.min.js') }}"></script>
     <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/admin/product-add-update.js') }}"></script>
-    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/admin/product-add-colors-img.js') }}"></script>
+    {{-- <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/admin/product-add-colors-img.js') }}"></script> --}}
     <script>
         $('.category-title-name').on('change keyup keypress', function () {
             var slugValue = $(this).val().replace(/\s+/g, '-');
@@ -224,6 +224,3 @@
         });
     </script>
 @endpush
-
-
-

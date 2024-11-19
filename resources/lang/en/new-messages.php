@@ -8708,4 +8708,6 @@ return [
 	"role_updated_successfully" => "Role updated successfully",
 	"keywords" => "Keywords",
 	"meta_discription" => "Meta discription",
+	"about_healthandblossom" => "About healthandblossom",
+	"blog_deleted_successfully" => "Blog deleted successfully",
 ];

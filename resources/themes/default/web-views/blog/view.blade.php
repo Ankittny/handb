@@ -76,6 +76,9 @@
 
                 <div class="row">
                     @foreach ($blogs as $blog)
+                    @php
+                      $date = new \DateTime($blog->updated_at);
+                    @endphp
                         <div class=" col-lg-3 col-md-4 col-sm-4 col-6  p-2">
                             <div class="hidden-text">
                                 <div class="overflow-hidden position-relative">
@@ -87,9 +90,9 @@
                                             </a>
                                         </div>
                                         <div class="text-timedate d-flex gap-2 mt-2">
-                                            <p>Celigin</p>
-                                            <span>Nov 18, 2024</span>
-                                           </div>
+                                            <p>Admin</p>
+                                             <span>{{ \Carbon\Carbon::parse($blog->updated_at)->format('d F Y') }}</span>
+                                            </div>
 
                                         <!-- <div class="quick-view">
                                         <a class="btn-circle stopPropagation action-product-quick-view" href="https://new.healthandblossom.com/blog-detail/new-test-detail:" data-product-id="616">

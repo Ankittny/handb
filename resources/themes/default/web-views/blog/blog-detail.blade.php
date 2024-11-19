@@ -28,7 +28,7 @@
 
                             </div>
                             <div class="single-product-details">
-                            @php
+                                @php
                                     $date = new \DateTime($blog->updated_at);
                                 @endphp
                                 <div style="float:right;">
@@ -37,9 +37,7 @@
                                 </span>
                                 </div>
                                 <div class="frequengtly-ft">
-                                    <a href="">
-                                        {{ $blog->title }}
-                                    </a>
+                                    {{ $blog->title }}
                                 </div>
 
 

@@ -8709,5 +8709,9 @@ return [
 	"keywords" => "Keywords",
 	"meta_discription" => "Meta discription",
 	"about_healthandblossom" => "About healthandblossom",
+	"vendor_Analytics" => "Vendor Analytics",
+	"active_Vendors " => "Active Vendors ",
+	"inactive_Vendors " => "Inactive Vendors ",
+	"store_Logo" => "Store Logo",
 	"blog_deleted_successfully" => "Blog deleted successfully",
 ];

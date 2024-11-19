@@ -27,6 +27,7 @@ class BlogController extends Controller
              if ($request->has('searchValue') && $request->searchValue !== '') {
              $query->where('name', 'LIKE', '%' . $request->searchValue . '%'); // Use LIKE for partial matches
          }
+
          // Limit the results to 10
          $blogCategories = $query->paginate(10);
          // Return the view with the categories
@@ -78,7 +79,6 @@ class BlogController extends Controller
         }
       }
       public function updatedata(Request $request){
-
         if($this->blogcatRepo->update(request: $request)){
             Toastr::success(translate('blog_updated_successfully'));
             return redirect()->route('admin.home-blog');
@@ -104,8 +104,10 @@ class BlogController extends Controller
     }
 
     public function blogUpdatedata(Request $request){
-      $imageName = $this->upload('bloges/', 'webp', $request->file('image'));
-      $request->merge(['image_file' => $imageName]);
+      if($request->hasFile('image')){
+          $imageName = $this->upload('bloges/', 'webp', $request->file('image'));
+          $request->merge(['image_file' => $imageName]);
+      }
       if($this->blogRepo->update(request: $request)){
         Toastr::success(translate('blog_updated_successfully'));
         return redirect()->route('admin.blog-list-blog');

@@ -27,12 +27,13 @@ $('.delete-blog').on('click', function () {
     }).then((result) => {
         if (result.value) {
             $.ajax({
-                url: deleteUrl, 
+                url: deleteUrl,
                 type: 'POST',
                 data: {
                     blogId: blogId,
                 },
                 success: function(response) {
+                    location.reload();
                 },
                 error: function(xhr, status, error) {
                     console.error('Error:', error);
@@ -41,7 +42,7 @@ $('.delete-blog').on('click', function () {
             });
         }
         else{
-           
+
         }
     })
 });

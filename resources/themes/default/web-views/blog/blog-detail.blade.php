@@ -1,6 +1,6 @@
 @extends('layouts.front-end.app')
 
-@section('title',translate('contact_us'))
+@section('title',translate('healthandblossom blog details'))
 
 @push('css_or_js')
 <link rel="stylesheet" href="{{ theme_asset(path: 'public/assets/front-end/plugin/intl-tel-input/css/intlTelInput.css') }}">

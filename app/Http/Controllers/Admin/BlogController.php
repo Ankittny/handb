@@ -30,7 +30,6 @@ class BlogController extends Controller
 
          // Limit the results to 10
          $blogCategories = $query->paginate(10);
-
          // Return the view with the categories
          return view(Blog::LIST[VIEW], compact('blogCategories'));
      }

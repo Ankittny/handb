@@ -47,6 +47,11 @@
                         </div>
                         <div class="form-group">
                            <label class="title-color">Category ID<span class="text-danger">*</span></label>
+
+                           <?php
+                             $categorys = App\Models\BlogCategory::where('id', $data->cat_id)->first();
+                           ?>
+
                            <select name="cat_id" class="form-control js-select2-custom form-control action-get-request-onchange">
                               @foreach($categories as $cat)
                                     <option value="{{ $cat->id }}" {{ $cat->id == $data->cat_id ? 'selected' : '' }}>
@@ -57,10 +62,10 @@
                         </div>
 
                         <div class="form-group pt-2">
-                                         <label class="title-color" for="{{ $lang }}_description">
-                                            {{ translate('description') }} ({{ strtoupper($lang) }})
-                                        </label>
-                                        <textarea class="summernote {{ $lang == $defaultLanguage ? 'description' : '' }}" name="description">{{ $data->description }}</textarea>
+                            <label class="title-color" for="{{ $lang }}_description">
+                                {{ translate('description') }} ({{ strtoupper($lang) }})
+                            </label>
+                            <textarea class="summernote {{ $lang == $defaultLanguage ? 'description' : '' }}" name="description">{{ $data->description }}</textarea>
                         </div>
                         @endforeach
                         <div class="from_part_2">

@@ -8708,6 +8708,7 @@ return [
 	"role_updated_successfully" => "Role updated successfully",
 	"keywords" => "Keywords",
 	"meta_discription" => "Meta discription",
+	"about_healthandblossom" => "About healthandblossom",
 	"vendor_Analytics" => "Vendor Analytics",
 	"active_Vendors " => "Active Vendors ",
 	"inactive_Vendors " => "Inactive Vendors ",

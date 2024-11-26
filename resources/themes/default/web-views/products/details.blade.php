@@ -421,133 +421,135 @@
                                 </div>
                             </div> -->
                             <?php
-                                $features = strip_tags($product->features);
-                                $ingredients = strip_tags($product->ingredients1);
-                                $disclaimer = strip_tags($product->disclaimer);
-                                $details = strip_tags($product->details);
+                            $features = strip_tags($product->features);
+                            $ingredients = strip_tags($product->ingredients1);
+                            $disclaimer = strip_tags($product->disclaimer);
+                            $details = strip_tags($product->details);
                             ?>
-                            <div class="menu--caret-accordion open">
-                                <div class="card-header flex-between">
-                                    <div>
-                                        <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
-                                            features
-                                        </label>
+                            <div class="vp-front-accordian">
+                                <div class="menu--caret-accordion open">
+                                    <div class="card-header flex-between">
+                                        <div>
+                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
+                                                features
+                                            </label>
+                                        </div>
+                                        <div class="px-2 cursor-pointer menu--caret">
+                                            <strong class="pull-right for-brand-hover">
+                                                <i class="tio-next-ui fs-13"></i>
+                                            </strong>
+                                        </div>
                                     </div>
-                                    <div class="px-2 cursor-pointer menu--caret">
-                                        <strong class="pull-right for-brand-hover">
-                                            <i class="tio-next-ui fs-13"></i>
-                                        </strong>
-                                    </div>
-                                </div>
-                                <div class="card-body p-0 ms-2 d--none" id="collapse-414" style="display: block">
-                                    <div class="menu--caret-accordion">
-                                        <div class="for-hover-label card-header flex-between">
-                                            <div>
-                                                <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
-                                                {{ $features }}
-                                                </label>
+                                    <div class="card-body p-0 ms-2 d--none" id="collapse-414" style="display: block">
+                                        <div class="menu--caret-accordion">
+                                            <div class="for-hover-label card-header flex-between">
+                                                <div>
+                                                    <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
+                                                        {{ $features }}
+                                                    </label>
+                                                </div>
+                                                <div class="px-2 cursor-pointer menu--caret">
+                                                    <strong class="pull-right">
+                                                    </strong>
+                                                </div>
                                             </div>
-                                            <div class="px-2 cursor-pointer menu--caret">
-                                                <strong class="pull-right">
-                                                </strong>
+                                            <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
                                             </div>
                                         </div>
-                                        <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                            <div class="menu--caret-accordion">
-                                <div class="card-header flex-between">
-                                    <div>
-                                        <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
-                                            ingredients
-                                        </label>
-                                    </div>
-                                    <div class="px-2 cursor-pointer menu--caret">
-                                        <strong class="pull-right for-brand-hover">
-                                            <i class="tio-next-ui fs-13"></i>
-                                        </strong>
                                     </div>
                                 </div>
-                                <div class="card-body p-0 ms-2 d--none" id="collapse-414" style="display: none;">
-                                    <div class="menu--caret-accordion">
-                                        <div class="for-hover-label card-header flex-between">
-                                            <div>
-                                                <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
-                                                {{ $ingredients }}
-                                                </label>
-                                            </div>
-                                            <div class="px-2 cursor-pointer menu--caret">
-                                                <strong class="pull-right">
-                                                </strong>
-                                            </div>
+                                <div class="menu--caret-accordion">
+                                    <div class="card-header flex-between">
+                                        <div>
+                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
+                                                ingredients
+                                            </label>
                                         </div>
-                                        <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
+                                        <div class="px-2 cursor-pointer menu--caret">
+                                            <strong class="pull-right for-brand-hover">
+                                                <i class="tio-next-ui fs-13"></i>
+                                            </strong>
                                         </div>
-                                    </div> 
-                                </div>
-                            </div>
-                            <div class="menu--caret-accordion">
-                                <div class="card-header flex-between">
-                                    <div>
-                                        <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
-                                            Overview
-                                        </label>
                                     </div>
-                                    <div class="px-2 cursor-pointer menu--caret">
-                                        <strong class="pull-right for-brand-hover">
-                                            <i class="tio-next-ui fs-13"></i>
-                                        </strong>
-                                    </div>
-                                </div>
-                                <div class="card-body p-0 ms-2 d--none" id="collapse-414" style="display: none;">
-                                    <div class="menu--caret-accordion">
-                                        <div class="for-hover-label card-header flex-between">
-                                            <div>
-                                                <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
-                                                {{$details}}
-                                                </label>
+                                    <div class="card-body p-0 ms-2 d--none" id="collapse-414" style="display: none;">
+                                        <div class="menu--caret-accordion">
+                                            <div class="for-hover-label card-header flex-between">
+                                                <div>
+                                                    <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
+                                                        {{ $ingredients }}
+                                                    </label>
+                                                </div>
+                                                <div class="px-2 cursor-pointer menu--caret">
+                                                    <strong class="pull-right">
+                                                    </strong>
+                                                </div>
                                             </div>
-                                            <div class="px-2 cursor-pointer menu--caret">
-                                                <strong class="pull-right">
-                                                </strong>
+                                            <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
                                             </div>
                                         </div>
-                                        <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                            <div class="menu--caret-accordion">
-                                <div class="card-header flex-between">
-                                    <div>
-                                        <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
-                                            Disclaimer
-                                        </label>
-                                    </div>
-                                    <div class="px-2 cursor-pointer menu--caret">
-                                        <strong class="pull-right for-brand-hover">
-                                            <i class="tio-next-ui fs-13"></i>
-                                        </strong>
                                     </div>
                                 </div>
-                                <div class="card-body p-0 ms-2 d--none" id="collapse-414" style="display: none;">
-                                    <div class="menu--caret-accordion">
-                                        <div class="for-hover-label card-header flex-between">
-                                            <div>
-                                                <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
-                                                {{$disclaimer}}
-                                                </label>
+                                <div class="menu--caret-accordion">
+                                    <div class="card-header flex-between">
+                                        <div>
+                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
+                                                Overview
+                                            </label>
+                                        </div>
+                                        <div class="px-2 cursor-pointer menu--caret">
+                                            <strong class="pull-right for-brand-hover">
+                                                <i class="tio-next-ui fs-13"></i>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0 ms-2 d--none" id="collapse-414" style="display: none;">
+                                        <div class="menu--caret-accordion">
+                                            <div class="for-hover-label card-header flex-between">
+                                                <div>
+                                                    <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
+                                                        {{$details}}
+                                                    </label>
+                                                </div>
+                                                <div class="px-2 cursor-pointer menu--caret">
+                                                    <strong class="pull-right">
+                                                    </strong>
+                                                </div>
                                             </div>
-                                            <div class="px-2 cursor-pointer menu--caret">
-                                                <strong class="pull-right">
-                                                </strong>
+                                            <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
                                             </div>
                                         </div>
-                                        <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
+                                    </div>
+                                </div>
+                                <div class="menu--caret-accordion">
+                                    <div class="card-header flex-between">
+                                        <div>
+                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
+                                                Disclaimer
+                                            </label>
                                         </div>
-                                    </div> 
+                                        <div class="px-2 cursor-pointer menu--caret">
+                                            <strong class="pull-right for-brand-hover">
+                                                <i class="tio-next-ui fs-13"></i>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0 ms-2 d--none" id="collapse-414" style="display: none;">
+                                        <div class="menu--caret-accordion">
+                                            <div class="for-hover-label card-header flex-between">
+                                                <div>
+                                                    <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
+                                                        {{$disclaimer}}
+                                                    </label>
+                                                </div>
+                                                <div class="px-2 cursor-pointer menu--caret">
+                                                    <strong class="pull-right">
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

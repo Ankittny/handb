@@ -9515,3 +9515,9 @@ body *::-webkit-scrollbar-thumb {
 .product-fix{
     margin-top: -22px;
 }
+.for-hover-label::first-letter{
+    text-transform: uppercase;
+}
+.vp-front-accordian{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}

@@ -430,7 +430,7 @@
                                 <div class="menu--caret-accordion open">
                                     <div class="card-header flex-between">
                                         <div>
-                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="">
+                                            <label class="for-hover-label cursor-pointer " >
                                                 features
                                             </label>
                                         </div>
@@ -444,7 +444,7 @@
                                         <div class="menu--caret-accordion">
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
-                                                    <label class="cursor-pointer get-view-by-onclick" data-link="">
+                                                    <label class="cursor-pointer" >
                                                         {{ $features }}
                                                     </label>
                                                 </div>
@@ -461,7 +461,7 @@
                                 <div class="menu--caret-accordion">
                                     <div class="card-header flex-between">
                                         <div>
-                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="">
+                                            <label class="for-hover-label cursor-pointer " >
                                                 ingredients
                                             </label>
                                         </div>
@@ -475,7 +475,7 @@
                                         <div class="menu--caret-accordion">
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
-                                                    <label class="cursor-pointer get-view-by-onclick" data-link="">
+                                                    <label class="cursor-pointer" >
                                                         {{ $ingredients }}
                                                     </label>
                                                 </div>
@@ -492,7 +492,7 @@
                                 <div class="menu--caret-accordion">
                                     <div class="card-header flex-between">
                                         <div>
-                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="">
+                                            <label class="for-hover-label cursor-pointer " >
                                                 Overview
                                             </label>
                                         </div>
@@ -506,7 +506,7 @@
                                         <div class="menu--caret-accordion">
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
-                                                    <label class="cursor-pointer get-view-by-onclick" data-link="">
+                                                    <label class="cursor-pointer " >
                                                         {{$details}}
                                                     </label>
                                                 </div>
@@ -523,7 +523,7 @@
                                 <div class="menu--caret-accordion">
                                     <div class="card-header flex-between">
                                         <div>
-                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="">
+                                            <label class="for-hover-label cursor-pointer " >
                                                 Disclaimer
                                             </label>
                                         </div>
@@ -537,7 +537,7 @@
                                         <div class="menu--caret-accordion">
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
-                                                    <label class="cursor-pointer get-view-by-onclick" data-link="">
+                                                    <label class="cursor-pointer " >
                                                         {{$disclaimer}}
                                                     </label>
                                                 </div>

@@ -430,7 +430,7 @@
                                 <div class="menu--caret-accordion open">
                                     <div class="card-header flex-between">
                                         <div>
-                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
+                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="">
                                                 features
                                             </label>
                                         </div>
@@ -444,7 +444,7 @@
                                         <div class="menu--caret-accordion">
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
-                                                    <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
+                                                    <label class="cursor-pointer get-view-by-onclick" data-link="">
                                                         {{ $features }}
                                                     </label>
                                                 </div>
@@ -453,7 +453,7 @@
                                                     </strong>
                                                 </div>
                                             </div>
-                                            <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
+                                            <div class="card-body p-0 ms-2 d--none" id="collapse-428">
                                             </div>
                                         </div>
                                     </div>
@@ -461,7 +461,7 @@
                                 <div class="menu--caret-accordion">
                                     <div class="card-header flex-between">
                                         <div>
-                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
+                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="">
                                                 ingredients
                                             </label>
                                         </div>
@@ -475,7 +475,7 @@
                                         <div class="menu--caret-accordion">
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
-                                                    <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
+                                                    <label class="cursor-pointer get-view-by-onclick" data-link="">
                                                         {{ $ingredients }}
                                                     </label>
                                                 </div>
@@ -492,7 +492,7 @@
                                 <div class="menu--caret-accordion">
                                     <div class="card-header flex-between">
                                         <div>
-                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
+                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="">
                                                 Overview
                                             </label>
                                         </div>
@@ -506,7 +506,7 @@
                                         <div class="menu--caret-accordion">
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
-                                                    <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
+                                                    <label class="cursor-pointer get-view-by-onclick" data-link="">
                                                         {{$details}}
                                                     </label>
                                                 </div>
@@ -523,7 +523,7 @@
                                 <div class="menu--caret-accordion">
                                     <div class="card-header flex-between">
                                         <div>
-                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=414&amp;data_from=category&amp;page=1">
+                                            <label class="for-hover-label cursor-pointer get-view-by-onclick" data-link="">
                                                 Disclaimer
                                             </label>
                                         </div>
@@ -537,7 +537,7 @@
                                         <div class="menu--caret-accordion">
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
-                                                    <label class="cursor-pointer get-view-by-onclick" data-link="https://new.healthandblossom.com/products?id=428&amp;data_from=category&amp;page=1">
+                                                    <label class="cursor-pointer get-view-by-onclick" data-link="">
                                                         {{$disclaimer}}
                                                     </label>
                                                 </div>

@@ -24,7 +24,9 @@
                         <div class="store-contents d-flex justify-content-center pr-lg-4">
                             @if($web_config['ios']['status'])
                                 <div class="me-2 mb-2">
-                                    <a class="" target="_blank" href="{{ $web_config['ios']['link'] }}" role="button">
+                                    <a class="" target="_blank" href="#" role="button">
+
+                                    {{-- <a class="" target="_blank" href="{{ $web_config['ios']['link'] }}" role="button"> --}}
                                         <img width="100" src="{{theme_asset(path: "public/assets/front-end/png/apple_app.png")}}"
                                              alt="">
                                     </a>

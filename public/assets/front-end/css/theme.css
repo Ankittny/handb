@@ -13509,7 +13509,7 @@ label:not(.form-check-label):not(.custom-control-label):not(
     animation: fadeInUp 0.3s;
     -webkit-animation: fadeInUp 0.3s;
     -moz-animation: fadeInUp 0.3s;
-    
+
 }
 
 @media (max-width: 767.98px) {
@@ -19330,7 +19330,7 @@ html[dir="rtl"] .badge-style {
     height: 100%;
     z-index: -1;
   }
-  
+
   .coupon::before {
     left: 0;
     background-image: radial-gradient(
@@ -19339,7 +19339,7 @@ html[dir="rtl"] .badge-style {
       #433737 26px
     );
   }
-  
+
   .coupon::after {
     right: 0;
     background-image: radial-gradient(
@@ -19348,13 +19348,13 @@ html[dir="rtl"] .badge-style {
       #433737 26px
     );
   }
-  
+
   .coupon > div {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   .left {
     width: 60%;
     border-right: 2px dashed rgba(0, 0, 0, 0.13);
@@ -19366,12 +19366,12 @@ html[dir="rtl"] .badge-style {
     color: #fff;
     font-size: 13px;
   }
-  
+
   .center {
     flex-grow: 1;
     text-align: center;
   }
-  
+
   .right {
     width: 120px;
     background-image: radial-gradient(
@@ -19386,7 +19386,7 @@ html[dir="rtl"] .badge-style {
     font-weight: 400;
     transform: rotate(-90deg);
   }
-  
+
   .center h2 {
     background: #000;
     color: gold;
@@ -19395,7 +19395,7 @@ html[dir="rtl"] .badge-style {
     white-space: nowrap;
     margin-bottom: 2px;
   }
-  
+
   .center h3 {
     font-size: 15px;
     color: #fff;
@@ -19406,7 +19406,7 @@ html[dir="rtl"] .badge-style {
     font-weight: 600;
     letter-spacing: 2px;
   }
-  
+
   @media screen and (max-width:500px){
     .coupon {
       display:grid;
@@ -19417,7 +19417,7 @@ html[dir="rtl"] .badge-style {
     }
     .right div {
       transform: rotate(0deg);
-      
+
     }
   }
 
@@ -19425,7 +19425,11 @@ html[dir="rtl"] .badge-style {
   .left {
     width: 100%;
     /* border-right: 2px dashed rgba(0, 0, 0, 0.13); */
-}
+   }
   }
+
+.app-section strong{
+    margin-left: 45px;
+}
 
 

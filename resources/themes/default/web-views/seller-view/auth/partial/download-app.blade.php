@@ -11,9 +11,12 @@
                     <div class="mt-5">
                         <h3 class="mb-2 text-capitalize">{{$downloadVendorApp?->title ?? translate('download_free_vendor_app')}}</h3>
                         <p class="max-w-500 mb-4">{{$downloadVendorApp?->sub_title}}</p>
-                        <div class="d-flex gap-3 flex-wrap">
+<strong>Android App</strong>
+                        <div class="d-flex gap-3 flex-wrap mt-3">
+
                             @if(isset($downloadVendorApp->download_google_app) && $downloadVendorApp?->download_google_app_status ==1)
-                                <a href="{{$downloadVendorApp?->download_google_app}}"><img width="130" src="{{theme_asset('/public/assets/front-end/img/media/google-btn.png')}}" alt=""></a>
+                            <a href="{{$downloadVendorApp?->download_google_app}}">
+                                    <img width="200" src="{{theme_asset('/public/assets/front-end/img/media/google-btn.png')}}" alt=""></a>
                             @endif
                             @if(isset($downloadVendorApp->download_apple_app) && $downloadVendorApp?->download_apple_app_status ==1)
                                 <a href="{{$downloadVendorApp?->download_apple_app}}"><img width="130" src="{{theme_asset('/public/assets/front-end/img/media/app-btn.png')}}" alt=""></a>

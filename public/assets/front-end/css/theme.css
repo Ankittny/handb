@@ -19421,4 +19421,11 @@ html[dir="rtl"] .badge-style {
     }
   }
 
+  @media screen and (max-width:425px){
+  .left {
+    width: 100%;
+    /* border-right: 2px dashed rgba(0, 0, 0, 0.13); */
+}
+  }
+
 

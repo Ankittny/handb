@@ -26,8 +26,7 @@
                         <div class="px-3 px-md-0">
                             <h4 class="pb-2 mt-4 fs-18 text-capitalize">{{ translate('shipping_address')}}</h4>
                         </div>
-
-                        @php($shippingAddresses= \App\Models\ShippingAddress::where(['customer_id'=>auth('customer')->id(), 'is_guest'=>0])->get())
+                        @php($shippingAddresses= \App\Models\ShippingAddress::where(['customer_id'=>auth('customer')->check() ? auth('customer')->id() : session('guest_id')])->get())
                         <form method="post" class="card __card" id="address-form">
                             <div class="card-body p-0">
                                 <ul class="list-group">
@@ -104,7 +103,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                     
+
                                                       <input type="hidden" name="country" id="country" value="India">
                                                         <div class="col-12">
                                                             <div class="form-group">

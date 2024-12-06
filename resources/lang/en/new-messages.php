@@ -8728,4 +8728,5 @@ return [
 	"enter_Captcha" => "Enter Captcha",
 	"enter-Captcha" => "Enter-Captcha",
 	"confirm_Captcha" => "Confirm Captcha",
+	"healthandblossom Blogs" => "Healthandblossom Blogs",
 ];

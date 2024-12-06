@@ -32,7 +32,7 @@
                                 <div class="invalid-feedback">{{ translate('please_enter_your_last_name') }}!</div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label class="form-label font-semibold">{{ translate('email_address') }}</label>
                                 <input class="form-control text-align-direction" type="email" value="{{old('email') }}" name="email"
@@ -84,6 +84,27 @@
                             </div>
 
                         </div>
+                        <div class="col-sm-6">
+                                @php($recaptcha = getWebConfig(name: 'recaptcha'))
+                                @if(isset($recaptcha) && $recaptcha['status'] == 1)
+                                    <div id="recaptcha_element" class="w-100" data-type="image"></div>
+                                @else
+                                <div class="row top-mt">
+                                    <div class="col-11 pr-2">
+                                          <!-- <label class="form-label font-semibold">{{ translate('confirm_password') }}</label> -->
+                                        <input type="text" class="form-control border" name="default_recaptcha_value_customer_regi" value=""
+                                                placeholder="{{ translate('enter_captcha_value') }}" autocomplete="off">
+                                    </div>
+                                    <div class="col-1 input-icons mb-2 w-100 rounded bg-white">
+                                        <a href="javascript:" class="d-flex align-items-center align-items-center get-regi-recaptcha-verify" data-link="{{ URL('/customer/auth/code/captcha') }}">
+                                            <img alt="" src="{{ URL('/customer/auth/code/captcha/1?captcha_session_id=default_recaptcha_id_customer_regi') }}" class="input-field rounded " id="default_recaptcha_id">
+                                            <i class="tio-refresh icon cursor-pointer p-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                @endif
+                            </div>
+                        
 
                         @if ($web_config['ref_earning_status'])
                         <div class="col-sm-12">
@@ -103,12 +124,12 @@
                                     <label class="custom-control custom-checkbox m-0 d-flex">
                                         <input type="checkbox" class="custom-control-input" name="remember" id="inputChecked">
                                         <span class="custom-control-label">
-                                            <span>{{ translate('i_agree_to_Your') }}</span> <a class="font-size-sm text-primary text-force-underline" target="_blank" href="{{ route('terms') }}">{{ translate('terms_and_condition') }}</a>
+                                            <span>{{ translate('i_agree_to_Your') }}</span> <a class=" text-primary text-force-underline" target="_blank" href="{{ route('terms') }}">{{ translate('terms_and_condition') }}</a>
                                         </span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <!-- <div class="col-sm-6">
                                 @php($recaptcha = getWebConfig(name: 'recaptcha'))
                                 @if(isset($recaptcha) && $recaptcha['status'] == 1)
                                     <div id="recaptcha_element" class="w-100" data-type="image"></div>
@@ -126,7 +147,7 @@
                                     </div>
                                 </div>
                                 @endif
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="web-direction">

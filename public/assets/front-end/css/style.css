@@ -9576,3 +9576,10 @@ body *::-webkit-scrollbar-thumb {
     margin-top: 4px;
 
 }
+.login-card{
+    margin: auto;
+    width: 70%;
+}
+.top-mt{
+    margin-top: 30px;
+}

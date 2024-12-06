@@ -8724,4 +8724,8 @@ return [
 	"FAQ_list" => "FAQ list",
 	"download_app_section" => "Download app section",
 	"download_app" => "Download app",
+	"Enter_Password" => "Enter Password",
+	"enter_Captcha" => "Enter Captcha",
+	"enter-Captcha" => "Enter-Captcha",
+	"confirm_Captcha" => "Confirm Captcha",
 ];

@@ -90,12 +90,12 @@
                                     <div id="recaptcha_element" class="w-100" data-type="image"></div>
                                 @else
                                 <div class="row top-mt">
-                                    <div class="col-11 pr-2">
+                                    <div class="col-8 pr-2">
                                           <!-- <label class="form-label font-semibold">{{ translate('confirm_password') }}</label> -->
                                         <input type="text" class="form-control border" name="default_recaptcha_value_customer_regi" value=""
                                                 placeholder="{{ translate('enter_captcha_value') }}" autocomplete="off">
                                     </div>
-                                    <div class="col-1 input-icons mb-2 w-100 rounded bg-white">
+                                    <div class="col-4 input-icons mb-2 w-100 rounded bg-white">
                                         <a href="javascript:" class="d-flex align-items-center align-items-center get-regi-recaptcha-verify" data-link="{{ URL('/customer/auth/code/captcha') }}">
                                             <img alt="" src="{{ URL('/customer/auth/code/captcha/1?captcha_session_id=default_recaptcha_id_customer_regi') }}" class="input-field rounded " id="default_recaptcha_id">
                                             <i class="tio-refresh icon cursor-pointer p-2"></i>
@@ -104,7 +104,7 @@
                                 </div>
                                 @endif
                             </div>
-                        
+
 
                         @if ($web_config['ref_earning_status'])
                         <div class="col-sm-12">

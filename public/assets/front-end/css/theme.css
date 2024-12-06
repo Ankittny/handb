@@ -19300,7 +19300,7 @@ html[dir="rtl"] .badge-style {
     left: 0 !important;
 }
 .dropdown-menu {
-    min-width: 304px !important;
+    min-width: 135px !important;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }

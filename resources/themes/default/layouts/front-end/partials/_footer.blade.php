@@ -21,7 +21,7 @@
                             </div>
                         @endif
 
-                        <div class="store-contents d-flex justify-content-center pr-lg-4">
+                        <div class="store-contents d-flex justify-content-center pr-lg-5">
                             @if($web_config['ios']['status'])
                                 <div class="me-2 mb-2">
                                     <a class="" target="_blank" href="#" role="button">

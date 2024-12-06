@@ -9522,3 +9522,9 @@ body *::-webkit-scrollbar-thumb {
 .vp-front-accordian{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
+.pop-up-hidden
+{
+    font-weight: 300;
+    font-size: 24px;
+}

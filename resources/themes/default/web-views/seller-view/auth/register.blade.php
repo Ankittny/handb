@@ -106,7 +106,7 @@
     </form>
 
 
-    <div class="modal fade registration-success-modal" tabindex="-1" aria-labelledby="toggle-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centeredregistration-success-modal" tabindex="-1" aria-labelledby="toggle-modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-lg">
                 <div class="modal-header border-0 pb-0 d-flex justify-content-end">

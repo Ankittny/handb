@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-   @if(url()->current()=="https://healthandblossom.com")
+   @if(url()->current()=="https://dev.healthandblossom.com")
     <title>Best Online Organic Product Store</title>
     <meta name="title" content="Best Online Organic Product Store - Health and Blossom">
     <meta name="og:title" content="Best Online Organic Product Store - Health and Blossom">

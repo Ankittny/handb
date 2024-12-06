@@ -1,8 +1,25 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ session()->get('direction') ?? 'ltr' }}">
+
 <head>
-    <meta charset="utf-8">
-  @include(VIEW_FILE_NAMES['robots_meta_content_partials'])
+<meta charset="utf-8">
+   @if(url()->current()=="https://healthandblossom.com")
+    <title>Best Online Organic Product Store</title>
+    <meta name="title" content="Best Online Organic Product Store - Health and Blossom">
+    <meta name="og:title" content="Best Online Organic Product Store - Health and Blossom">
+    <meta name="keywords" content="Best Online Organic Product Store">
+    <meta name="og:keywords" content="Best Online Organic Product Store">
+    <meta name="og:site_name" content="healthandblossom">
+    <meta name="og:url" content="https://healthandblossom.com/">
+    <meta name="description" content="Shop Health and Blossom for the finest organic products! Discover a wide range of natural foods, beauty essentials, and wellness items, all sourced for quality and sustainability. Embrace a healthier lifestyle today!">
+    <meta name="og:description" content="Shop Health and Blossom for the finest organic products! Discover a wide range of natural foods, beauty essentials, and wellness items, all sourced for quality and sustainability. Embrace a healthier lifestyle today!">
+    <meta name="og:type" content="">
+    <meta name="og:image" content="https://healthandblossom.com/public/assets/back-end/company/2024-09-20-66ed3608c0209.webp">
+
+   @else
+  	<link rel="canonical" href="{{url()->current() ?? ""}}" />
+    @include(VIEW_FILE_NAMES['robots_meta_content_partials'])
+   @endif
     <title>@yield('title')</title>
     <meta name="_token" content="{{csrf_token()}}">
 
@@ -12,6 +29,25 @@
     <meta name="yandex-verification" content="{{getWebConfig('yandex_webmaster_code')}}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@healthandblossom">
+    <meta name="twitter:description" content="Shop Health and Blossom for the finest organic products! Discover a wide range of natural foods, beauty essentials, and wellness items, all sourced for quality and sustainability. Embrace a healthier ">
+    <meta name="twitter:app:name:iphone" content="">
+    <meta name="twitter:app:id:iphone" content="">
+    <meta name="twitter:app:name:ipad" content="">
+    <meta name="twitter:app:id:ipad" content="">
+    <meta name="twitter:app:name:googleplay" content="">
+    <meta name="twitter:app:id:googleplay" content="">
+    <meta name="twitter:app:country" content="">
+
+
+
+
+
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('public/assets/back-end/company/').'/'.$web_config['fav_icon']['key']}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('public/assets/back-end/company/').'/'.$web_config['fav_icon']['key']}}">
     <link rel="stylesheet" media="screen" href="{{ theme_asset(path: 'public/assets/front-end/vendor/simplebar/dist/simplebar.min.css') }}">
@@ -28,9 +64,28 @@
     <link rel="stylesheet" href="{{ theme_asset(path: 'public/assets/back-end/vendor/icon-set/style.css') }}">
     <link rel="stylesheet" href="{{ theme_asset(path: 'public/assets/front-end/css/owl.carousel.min.css') }}">
 
-    @stack('css_or_js')
 
-    
+  	<script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Health and Blossom",
+        "alternateName": "H&B",
+        "url": "https://healthandblossom.com/",
+        "logo": "https://healthandblossom.com/public/assets/back-end/company/2024-09-20-66ed3608c0209.webp",
+        "sameAs": [
+          "",
+          "https://www.facebook.com/HealthandBeautyBlossom/",
+          "https://www.instagram.com/healthandblossom/",
+          "",
+          "https://www.linkedin.com/company/healthandblossom",
+          ""
+        ]
+      }
+	</script>
+
+
+    @stack('css_or_js')
 
     <link rel="stylesheet" href="{{ theme_asset(path: 'public/assets/front-end/css/home.css') }}"/>
     <link rel="stylesheet" href="{{ theme_asset(path: 'public/assets/front-end/css/responsive1.css') }}"/>
@@ -74,7 +129,7 @@
         })(window,document,'script','dataLayer','{{$google_tag_manager_id}}');</script>
     <!-- End Google Tag Manager -->
     @endif
-  
+
     <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

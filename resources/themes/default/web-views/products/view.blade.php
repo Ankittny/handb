@@ -177,7 +177,7 @@
                             <div class="__cate-side-title pt-0">
                                 <span class="widget-title font-semibold">{{translate('price')}} </span>
                             </div>
-                            <input type="range" class="form-range" min="0" max="5" id="customRange2">
+                        
 
                             <div class="d-flex justify-content-between align-items-center __cate-side-price">
                                 <div class="__w-35p">

@@ -9545,6 +9545,7 @@ body *::-webkit-scrollbar-thumb {
 .vp-front-accordian{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+<<<<<<< HEAD
 .form-range{
     width: 92%;
 }
@@ -9560,3 +9561,11 @@ body *::-webkit-scrollbar-thumb {
     font-size: 13px;
 }
 
+=======
+
+.pop-up-hidden
+{
+    font-weight: 300;
+    font-size: 24px;
+}
+>>>>>>> bdcb613c718d6c48acb8eb34e74a20845185ad4e

@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header border-0 p-0">
                     <button type="button" class="close __close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span class="pop-up-hidden" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body cursor-pointer __p-3px get-view-by-onclick" data-link="{{ $web_config['popup_banner']['url'] }}">

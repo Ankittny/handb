@@ -420,12 +420,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <?php
-                            $features = strip_tags($product->features);
-                            $ingredients = strip_tags($product->ingredients1);
-                            $disclaimer = strip_tags($product->disclaimer);
-                            $details = strip_tags($product->details);
-                            ?>
+
                             <div class="vp-front-accordian">
                                 <div class="menu--caret-accordion open">
                                     <div class="card-header flex-between">
@@ -445,7 +440,7 @@
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
                                                     <label class="cursor-pointer" >
-                                                        {{ $features }}
+                                                        <?= $product->features ?? "" ?>
                                                     </label>
                                                 </div>
                                                 <div class="px-2 cursor-pointer menu--caret">
@@ -476,7 +471,7 @@
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
                                                     <label class="cursor-pointer" >
-                                                        {{ $ingredients }}
+                                                       <?= $product->ingredients1 ?? "" ?>
                                                     </label>
                                                 </div>
                                                 <div class="px-2 cursor-pointer menu--caret">
@@ -488,6 +483,42 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                </div>
+
+
+
+                                <div class="menu--caret-accordion">
+                                    <div class="card-header flex-between">
+                                        <div>
+                                            <label class="for-hover-label cursor-pointer " >
+                                                How To Use
+                                            </label>
+                                        </div>
+                                        <div class="px-2 cursor-pointer menu--caret">
+                                            <strong class="pull-right for-brand-hover">
+                                                <i class="tio-next-ui fs-13"></i>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0 ms-2 d--none" id="collapse-414" style="display: none;">
+                                        <div class="menu--caret-accordion">
+                                            <div class="for-hover-label card-header flex-between">
+                                                <div>
+                                                    <label class="cursor-pointer" >
+                                                       <?= $product->how_to_use ?? "" ?>
+                                                    </label>
+                                                </div>
+                                                <div class="px-2 cursor-pointer menu--caret">
+                                                    <strong class="pull-right">
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="menu--caret-accordion">
                                     <div class="card-header flex-between">
@@ -507,7 +538,7 @@
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
                                                     <label class="cursor-pointer " >
-                                                        {{$details}}
+                                                        <?= $product->details ?? "" ?>
                                                     </label>
                                                 </div>
                                                 <div class="px-2 cursor-pointer menu--caret">
@@ -538,7 +569,7 @@
                                             <div class="for-hover-label card-header flex-between">
                                                 <div>
                                                     <label class="cursor-pointer " >
-                                                        {{$disclaimer}}
+                                                        <?= $product->disclaimer ?? "" ?>
                                                     </label>
                                                 </div>
                                                 <div class="px-2 cursor-pointer menu--caret">

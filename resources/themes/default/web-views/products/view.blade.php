@@ -77,7 +77,7 @@
 
     <div class="container-fluid py-3" dir="{{Session::get('direction')}}">
         <div class="search-page-header">
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-2 align-items-center">
                 <h5 class="font-semibold mb-1">{{translate(str_replace('_',' ',$data['data_from']))}} {{translate('products')}} {{ isset($data['brand_name']) ? '('.$data['brand_name'].')' : ''}}</h5>
                 <div><span>{{$products->total()}}</span> {{translate('items_found')}}</div>
             </div>
@@ -177,7 +177,7 @@
                             <div class="__cate-side-title pt-0">
                                 <span class="widget-title font-semibold">{{translate('price')}} </span>
                             </div>
-                        
+
 
                             <div class="d-flex justify-content-between align-items-center __cate-side-price">
                                 <div class="__w-35p">

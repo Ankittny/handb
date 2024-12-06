@@ -321,15 +321,15 @@
 
                     <ul class="navbar-nav">
                         <div class="d-flex text-white gap-d mx-3 ">
-                        <li>Organic Food</li>
-                        <li>Skin Care</li>
-                        <li>Hair Care</li>
-                        <li>Bath And Body Care</li>
-                        <li>Oral & Dental Care</li>
-                        <li>Organic Food</li>
-                        <li>Skin Care</li>
-                        <li>Hair Care</li>
-                       
+                        <li><a href="{{url('products?id=414&data_from=category&page=1')}}">Organic Food</a></li>
+                        <li><a href="{{url('products?id=216&data_from=category&page=1')}}">Skin Care</a></li>
+                        <li><a href="{{url('products?id=217&data_from=category&page=1')}}">Hair Care</a></li>
+                        <li><a href="{{url('products?id=218&data_from=category&page=1')}}">Bath And Body Care</a></li>
+                        <li><a href="{{url('products?id=221&data_from=category&page=1')}}">Baby Care</a></li>
+                        <li><a href="{{url('products?id=222&data_from=category&page=1')}}">Pet Care</a></li>
+                        <li><a href="{{url('products?id=223&data_from=category&page=1')}}">Health & Wellness</a></li>
+                        <li><a href="{{url('products?id=224&data_from=category&page=1')}}">Fashion & Apparel</a></li>
+
                         </div>
                         {{-- <li class="nav-item dropdown d-none d-md-block {{request()->is('/')?'active':''}}">
                             <a class="nav-link" href="{{route('home')}}">{{ translate('home')}}</a>

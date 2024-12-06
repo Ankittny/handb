@@ -320,6 +320,17 @@
                     </ul>
 
                     <ul class="navbar-nav">
+                        <div class="d-flex text-white gap-d mx-3 ">
+                        <li>Organic Food</li>
+                        <li>Skin Care</li>
+                        <li>Hair Care</li>
+                        <li>Bath And Body Care</li>
+                        <li>Oral & Dental Care</li>
+                        <li>Organic Food</li>
+                        <li>Skin Care</li>
+                        <li>Hair Care</li>
+                       
+                        </div>
                         {{-- <li class="nav-item dropdown d-none d-md-block {{request()->is('/')?'active':''}}">
                             <a class="nav-link" href="{{route('home')}}">{{ translate('home')}}</a>
                         </li> --}}

@@ -42,7 +42,7 @@
     <div class="row g-3 mt-1">
     @foreach($product as $item)
         <div class="col-xl-2 col-sm-3 col-6">
-            <div class="product-single-hover style--card">
+            <div class="product-single-hover style--cards">
                 <div class="overflow-hidden position-relative">
                     <div class="inline_product clickable d-flex justify-content-center">
                         <div class="d-flex justify-content-end">

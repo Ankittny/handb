@@ -1021,7 +1021,7 @@ a {
 
 .__search-sidebar .form-control-sm {
     border-radius: 5px;
-    border: 1px solid rgba(27, 127, 237, 0.5);
+    border: 1px solid #413737;
 }
 
 .__search-sidebar .input-group-append-overlay,
@@ -1044,7 +1044,7 @@ a {
     appearance: auto;
     width: 100%;
     border-radius: 5px !important;
-    border: 1px solid rgba(27, 127, 237, 0.5);
+    border: 1px solid #413737;
     color: #212629;
 }
 
@@ -1052,7 +1052,7 @@ a {
     width: 35px;
     height: 35px;
     border-radius: 3px;
-    background: #1b7fed;
+    background: #413737;
     padding: 0;
     display: flex;
     align-items: center;
@@ -9411,7 +9411,7 @@ body *::-webkit-scrollbar-thumb {
         padding-left: 15px;
     }
 }
-@media (max-width: 1248px) and (min-width: 1025px) { 
+@media (max-width: 1248px) and (min-width: 1025px) {
     .gap-d {
         gap: 24px !important;
     }
@@ -9421,7 +9421,7 @@ body *::-webkit-scrollbar-thumb {
     }
 }
 
-@media (max-width: 1024px) and (min-width: 992px) { 
+@media (max-width: 1024px) and (min-width: 992px) {
     .gap-d {
         gap: 18px !important;
     }
@@ -9545,7 +9545,6 @@ body *::-webkit-scrollbar-thumb {
 .vp-front-accordian{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-<<<<<<< HEAD
 .form-range{
     width: 92%;
 }
@@ -9561,11 +9560,19 @@ body *::-webkit-scrollbar-thumb {
     font-size: 13px;
 }
 
-=======
-
 .pop-up-hidden
 {
     font-weight: 300;
     font-size: 24px;
 }
->>>>>>> bdcb613c718d6c48acb8eb34e74a20845185ad4e
+
+.navbar-nav li a{
+    color: #fff;
+}
+.product-list-filter-on-viewpage
+{
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 4px;
+
+}

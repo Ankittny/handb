@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ session()->get('direction') ?? 'ltr' }}">
-
 <head>
 <meta charset="utf-8">
    @if(url()->current()=="https://dev.healthandblossom.com")

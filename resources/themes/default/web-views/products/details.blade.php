@@ -365,63 +365,9 @@
                                                 </div>
                                             </div>
                             </form>
-                            <!-- <div class="accordion" id="accordionExample">
-                                <div class="card">
-                                    <div class="card-header" id="headingOne">
-                                        <h2 class="mb-0">
-                                            <button class="btn text-uppercase btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 
-                                                features
-                                            </button>
-                                        </h2>
-                                    </div>
 
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            Promotes skin cell regeneration & enhances skin youthfulness </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="headingTwo">
-                                        <h2 class="mb-0">
-                                            <button class="btn  text-uppercase  btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                ingredients
-                                            </button>
-                                        </h2>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            Argan Oil, Aloe Extracts, Lavender Extracts, Calendula, Aqua Essence, Eco-certified Preservatives </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="headingThree">
-                                        <h2 class="mb-0">
-                                            <button class="btn  text-uppercase btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                Overview
-                                        </h2>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            Our Body Butter with Aloe & Argan helps in promotes skin cell regeneration & enhances skin youthfulness which can lead to more revitalized appearance. It protects skin from free radicals and oxidative stress. This helps minimize the appearance of wrinkles, fine lines, and other signs of aging. </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="headingfour">
-                                        <h2 class="mb-0">
-                                            <button class="btn  text-uppercase btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
-                                                Disclaimer
-                                            </button>
-                                        </h2>
-                                    </div>
-                                    <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            For External Use Only: This product is intended for external use only. Avoid contact with eyes, mouth, and other sensitive areas. If accidental contact occurs, rinse thoroughly with water.Patch Test Recommended: We recommend performing a patch test before using this product, especially if you have sensitive skin. Apply a small amount on the inner forearm and wait 24 hours. If irritation or redness occurs, discontinue use immediately.Allergic Reactions: This product contains natural ingredients such as almond oil and rose extract. If you have a known allergy to any of the ingredients, please consult with a healthcare professional before use. Discontinue use if any adverse reactions occur.Not for Medical Use: This product is not intended to diagnose, treat, cure, or prevent any disease. It is a cosmetic product designed to moisturize and nourish the skin.Storage Instructions: Store in a cool, dry place, away from direct sunlight. Keep out of reach of children.Shelf Life: Use within 12 months of opening. Check the packaging for the expiration date. </div>
-                                    </div>
-                                </div>
-                            </div> -->
-
-                            <div class="vp-front-accordian">
+                            <!-- <div class="vp-front-accordian">
                                 <div class="menu--caret-accordion open">
                                     <div class="card-header flex-between">
                                         <div>
@@ -579,6 +525,73 @@
                                             </div>
                                             <div class="card-body p-0 ms-2 d--none" id="collapse-428" style="">
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="accordion__custom custom-cr" id="accordion">
+                                <div class="">
+                                    <div class="card-header card-head-txt" id="heading-0">
+                                        <h6 class="faq-title txt-mb-title mb-0 py-2 collapsed" data-toggle="collapse" data-target="#collapse-0" aria-expanded="false" aria-controls="collapse-0">
+                                            Features
+                                        </h6>
+                                    </div>
+
+                                    <div id="collapse-0" class="collapse show" aria-labelledby="heading-0" data-parent="#accordion" style="">
+                                        <div class="card-body">
+                                            You can manage customer inquiries directly through our platform's messaging system, ensuring quick and efficient communication.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header card-head-txt" id="heading-1">
+                                        <h6 class="faq-title txt-mb-title mb-0 py-2 collapsed" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+                                            Ingredients
+                                        </h6>
+                                    </div>
+
+                                    <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordion" style="">
+                                        <div class="card-body">
+                                            Log in to your seller account, go to the "Upload Products" section, and fill in the product details and images.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header card-head-txt" id="heading-2">
+                                        <h6 class="faq-title txt-mb-title mb-0 py-2 collapsed" data-toggle="collapse" data-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                                            How To Use
+                                        </h6>
+                                    </div>
+
+                                    <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion" style="">
+                                        <div class="card-body">
+                                            Our platform charges a small commission on each sale. There are no upfront listing fees.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header card-head-txt" id="heading-3">
+                                        <h6 class="faq-title txt-mb-title mb-0 py-2 collapsed" data-toggle="collapse" data-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+                                            Overview
+                                        </h6>
+                                    </div>
+
+                                    <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion" style="">
+                                        <div class="card-body">
+                                            To register, click on the "Sign Up" button, fill in your details, and verify your account via email.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header card-head-txt" id="heading-5">
+                                        <h6 class="faq-title txt-mb-title mb-0 py-2 collapsed" data-toggle="collapse" data-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
+                                        Disclaimer 
+                                        </h6>
+                                    </div>
+
+                                    <div id="collapse-5" class="collapse" aria-labelledby="heading-5" data-parent="#accordion" style="">
+                                        <div class="card-body">
+                                            To register, click on the "Sign Up" button, fill in your details, and verify your account via email.
                                         </div>
                                     </div>
                                 </div>

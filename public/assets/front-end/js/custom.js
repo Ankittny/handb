@@ -1179,7 +1179,7 @@ function orderSummaryStickyFunction() {
     const stickyElement = $(".bottom-sticky3");
     const offsetElement = $(".__cart-total_sticky .proceed_to_next_button");
 
-    const elementOffset = offsetElement.offset().top;
+    const elementOffset = offsetElement.length ? offsetElement.offset().top : 0;
     const scrollTop = $(window).scrollTop();
     if (scrollTop >= elementOffset - $(window).height() + 50) {
         stickyElement.addClass("stick");

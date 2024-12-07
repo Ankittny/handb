@@ -18,7 +18,7 @@
                 <section>
                     <div class="container">
                         <div class="create-an-account p-3 p-sm-4">
-                            <img src="{{theme_asset('assets/img/media/form-bg.png')}}" alt="" class="create-an-accout-bg-img">
+                            <img src="{{theme_asset('public/assets/front-end/img/media/form-bg.png')}}" alt="" class="create-an-accout-bg-img">
                             <div class="row">
                                 @include('web-views.seller-view.auth.partial.header')
                                 <div class="col-lg-8">
@@ -106,7 +106,7 @@
     </form>
 
 
-    <div class="modal-dialog modal-dialog-centeredregistration-success-modal" tabindex="-1" aria-labelledby="toggle-modal" aria-hidden="true">
+    <div class="modal fade registration-success-modal" tabindex="-1" aria-labelledby="toggle-modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-lg">
                 <div class="modal-header border-0 pb-0 d-flex justify-content-end">

@@ -43,12 +43,12 @@
                 <h2 class="h3 mb-4">{{translate('forgot_password').'?'}}</h2>
                 <p class="font-size-md">{{translate('follow_steps')}}</p>
                 <ol class="list-unstyled font-size-md">
-                    <li><span class="text-primary mr-2">1.</span>{{translate('fill_in_your_email_address_below').'.'}}</li>
+                    <li><span class="text-primary mr-2">1.</span>{{translate('Fill in your email address below.').'.'}}</li>
                     <li>
-                        <span class="text-primary mr-2">2.</span>{{translate('we_will_send_email you a temporary code').'.'}}
+                        <span class="text-primary mr-2">2.</span>{{translate('We will send email you a temporary code.').'.'}}
                     </li>
                     <li>
-                        <span class="text-primary mr-2">3.</span>{{translate('use_the_code_to_change_your_password_on_our_secure_website').'.'}}
+                        <span class="text-primary mr-2">3.</span>{{translate('Use the code to change your password on our secure website').'.'}}
                     </li>
                 </ol>
                 @php($verificationBy = getWebConfig('forgot_password_verification'))

@@ -46,7 +46,7 @@ class ProductListController extends Controller
      public function ingredients(Request $request){
 
           $ingredients_ids = [$request->id];
-          $categoris = Category::where('id', $request->id)->select('id', 'name','icon','description')->first();
+          $categoris = Category::where('id', $request->id)->select('id', 'name','icon','description','content_writing_area')->first();
 
           $product = Product::whereRaw("JSON_CONTAINS(`ingredients_id`, json_array(?))", [$ingredients_ids[0]] )->get();
           // dd($product,$categoris);

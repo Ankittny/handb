@@ -12,7 +12,7 @@
                 <section>
                     <div class="container">
                         <div class="create-an-account p-3 p-sm-4">
-                            <img src="{{theme_asset('assets/img/media/form-bg.png')}}" alt="" class="create-an-accout-bg-img">
+                            <img src="{{theme_asset('public/assets/front-end/img/media/form-bg.png')}}" alt="" class="create-an-accout-bg-img">
                             <div class="row">
                                 @include('theme-views.seller-views.auth.partial.header')
                                 <div class="col-lg-8">

@@ -297,6 +297,13 @@
                                                 class="text-truncate">{{translate('sub_Sub_Categories')}}</span>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{{route('admin.category.ingredient')}}"
+                                           title="{{translate('ingredients')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('ingredients')}}</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/brand*')?'active':''}}">

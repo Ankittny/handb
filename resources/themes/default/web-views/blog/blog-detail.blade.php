@@ -39,8 +39,8 @@
                                 <div class="frequengtly-ft">
                                     {{ $blog->title }}
                                 </div>
-
-
+                                
+        
                                 <div class="justify-content-between ">
                                     <div class="product-price text-center d-flex flex-wrap justify-content-center align-items-center gap-8">
                                         <span class="text-accent text-accents text-dark">

@@ -539,7 +539,7 @@
 
                                     <div id="collapse-0" class="collapse show" aria-labelledby="heading-0" data-parent="#accordion" style="">
                                         <div class="card-body">
-                                            You can manage customer inquiries directly through our platform's messaging system, ensuring quick and efficient communication.
+                                            <?= $product->features  ?>
                                         </div>
                                     </div>
                                 </div>
@@ -552,7 +552,7 @@
 
                                     <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordion" style="">
                                         <div class="card-body">
-                                            Log in to your seller account, go to the "Upload Products" section, and fill in the product details and images.
+                                        <?= $product->ingredients1  ?>
                                         </div>
                                     </div>
                                 </div>
@@ -565,7 +565,7 @@
 
                                     <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion" style="">
                                         <div class="card-body">
-                                            Our platform charges a small commission on each sale. There are no upfront listing fees.
+                                        <?= $product->how_to_use  ?>
                                         </div>
                                     </div>
                                 </div>
@@ -578,7 +578,7 @@
 
                                     <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion" style="">
                                         <div class="card-body">
-                                            To register, click on the "Sign Up" button, fill in your details, and verify your account via email.
+                                        <?= $product->details  ?>
                                         </div>
                                     </div>
                                 </div>
@@ -591,7 +591,7 @@
 
                                     <div id="collapse-5" class="collapse" aria-labelledby="heading-5" data-parent="#accordion" style="">
                                         <div class="card-body">
-                                            To register, click on the "Sign Up" button, fill in your details, and verify your account via email.
+                                        <?= $product->disclaimer  ?>
                                         </div>
                                     </div>
                                 </div>

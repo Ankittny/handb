@@ -325,8 +325,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     Route::group(['prefix' => 'category', 'as' => 'category.','middleware'=>['module:product_management']], function () {
         Route::controller(CategoryController::class)->group(function (){
             Route::get(Category::LIST[URI], 'index')->name('view');
+            Route::get(Category::INGREDIENTS[URI], 'getIngredientsView')->name('ingredient');
             Route::post(Category::ADD[URI], 'add')->name('store');
             Route::get(Category::UPDATE[URI], 'getUpdateView')->name('update');
+            Route::get(Category::INGREDIENTUPDATE[URI], 'getIngredientUpdateView')->name('ingredient-update');
             Route::post(Category::UPDATE[URI], 'update');
             Route::post(Category::DELETE[URI], 'delete')->name('delete');
             Route::post(Category::STATUS[URI], 'updateStatus')->name('status');

@@ -8729,4 +8729,10 @@ return [
 	"enter-Captcha" => "Enter-Captcha",
 	"confirm_Captcha" => "Confirm Captcha",
 	"healthandblossom Blogs" => "Healthandblossom Blogs",
+	"ingredient_Setup" => "Ingredient Setup",
+	"ingredient_Name" => "Ingredient Name",
+	"ingredient_Category" => "Ingredient Category",
+	"ingredient_Image" => "Ingredient Image",
+	"ingredient_Logo" => "Ingredient Logo",
+	"ingredient" => "Ingredient",
 ];

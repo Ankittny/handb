@@ -9442,9 +9442,9 @@ body *::-webkit-scrollbar-thumb {
 /* .card-header {
     border-bottom:none !important
 } */
-.card-body{
+/* .card-body{
     text-align: justify;
-}
+} */
 .card-header button{
     display: flex;
     align-items: center;

@@ -692,12 +692,12 @@
                                                     </div>
                                                 </div>
                                                 @else
-                                                <div class="row pt-2 pb-3">
+                                                <div class="row  pb-3">
                                                     <div class="col-lg-4 col-md-5 ">
                                                         <div
-                                                            class=" row d-flex justify-content-center align-items-center">
+                                                            class=" row d-flex  align-items-center">
                                                             <div
-                                                                class="col-12 d-flex justify-content-center align-items-center">
+                                                                class="col-12 d-flex align-items-center">
                                                                 <h2 class="overall_review mb-2 __inline-28">
                                                                     {{$overallRating[0]}}
                                                                 </h2>
@@ -715,7 +715,7 @@
                                                                         @endfor
                                                             </div>
                                                             <div
-                                                                class="col-12 d-flex justify-content-center align-items-center mt-2">
+                                                                class="col-12 d-flex  align-items-center mt-2">
                                                                 <span class="text-center">
                                                                     {{$productReviews->total()}} {{translate('ratings')}}
                                                                 </span>

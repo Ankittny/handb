@@ -692,7 +692,7 @@
                                                     </div>
                                                 </div>
                                                 @else
-                                                <div class="row pt-2 pb-3">
+                                                <div class="row  pb-3">
                                                     <div class="col-lg-4 col-md-5 ">
                                                         <div
                                                             class=" row d-flex  align-items-center">

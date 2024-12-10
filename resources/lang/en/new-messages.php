@@ -8735,4 +8735,5 @@ return [
 	"ingredient_Image" => "Ingredient Image",
 	"ingredient_Logo" => "Ingredient Logo",
 	"ingredient" => "Ingredient",
+	"blog_banner" => "Blog banner",
 ];

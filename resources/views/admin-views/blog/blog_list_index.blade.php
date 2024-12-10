@@ -64,7 +64,7 @@
                         </div>
                         @endforeach
                         <div class="from_part_2">
-                                        <label class="title-color">{{ translate('category_Logo') }}</label>
+                                        <label class="title-color">{{ translate('blog_banner') }}</label>
                                         <span class="text-info"><span class="text-danger">*</span> {{ THEME_RATIO[theme_root_path()]['Category Image'] }}</span>
                                         <div class="custom-file text-left">
                                             <input type="file" name="image" id="category-image"
@@ -159,7 +159,7 @@
                         <td>{{ $blog->slug }}</td>
                         <!-- <td>{{ strip_tags($blog->description) }}</td> -->
                         <td>
-                        <img src="{{asset('public/assets/back-end/bloges/').'/'.$blog->image }}" alt="blog" class="img-thumbnail">
+                        <img src="{{asset('public/assets/back-end/bloges/').'/'.$blog->image }}" alt="blog" class="img-thumbnail" style="width: 60px; height: 60px;">
                         </td>
                         <td class="text-center d-flex gap-2">
                             <a href="{{ route('admin.update-blog-view', $blog->id) }}" class="btn btn-outline--primary btn-sm square-btn" title="Edit"><i class="tio-edit"></i></a>

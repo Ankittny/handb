@@ -16,11 +16,11 @@ enum Category
     
     const ADD = [
         URI => 'add-new',
-        VIEW => 'admin-views.brand.add-new'
+        VIEW => 'admin-views.brand.add-new' 
     ];
     const UPDATE = [
         URI => 'update/{id}',
-        VIEW => 'admin-views.category.category-edit'
+        VIEW => 'admin-views.category.category-edit' 
     ];
 
     const INGREDIENTUPDATE = [

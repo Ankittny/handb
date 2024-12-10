@@ -323,7 +323,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
 
     // Category
     Route::group(['prefix' => 'category', 'as' => 'category.','middleware'=>['module:product_management']], function () {
-        Route::controller(CategoryController::class)->group(function (){
+        Route::controller(CategoryController::class)->group(function (){ 
             Route::get(Category::LIST[URI], 'index')->name('view');
             Route::get(Category::INGREDIENTS[URI], 'getIngredientsView')->name('ingredient');
             Route::post(Category::ADD[URI], 'add')->name('store');

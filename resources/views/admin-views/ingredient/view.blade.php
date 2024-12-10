@@ -12,7 +12,7 @@
             <h2 class="h1 mb-0 d-flex gap-10">
                 <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/brand-setup.png') }}" alt="">
                 {{ translate('ingredient_Setup') }}
-            </h2>
+            </h2> 
         </div>
         <div class="row">
             <div class="col-md-12">

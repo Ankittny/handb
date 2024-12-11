@@ -31,13 +31,8 @@
                                 @php
                                     $date = new \DateTime($blog->updated_at);
                                 @endphp
-                                <div style="float:right;">
-                                <span class="card-text text-muted fs-7 mb-0">
-                                    <b>Author:</b> Added by Admin | <b>Date:</b> {{ $date->format('d F Y') }}
-                                </span>
-                                </div>
                                 <div class="frequengtly-ft">
-                                    {{ $blog->title }}
+                                  <h4 class="text-center fw-bold"> {{ $blog->title }}</h4> 
                                 </div>
                                 
         
@@ -50,6 +45,11 @@
                             </div>
                         </div>
                     </div>
+                    <div style="float:right;">
+                                <span class="card-text text-muted fs-7 mb-0">
+                                    <b>Author:</b> Added by Admin | <b>Date:</b> {{ $date->format('d F Y') }}
+                                </span>
+                                </div>
                 </div>
             </div>
         </div>

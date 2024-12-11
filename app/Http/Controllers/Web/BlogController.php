@@ -9,7 +9,7 @@ use App\Models\Blog;
 class BlogController extends Controller
 {
     public function home(){
-        $recent_posts = Blog::select('cat_id', 'title', 'description', 'image', 'slug', 'status','created_at')
+        $recent_posts = Blog::select('cat_id', 'title', 'description', 'image', 'slug', 'status','created_at')->where('status', 1)
         ->orderBy('created_at', 'desc') // Order by latest posts
         ->take(5) // Limit to the latest five
         ->get();

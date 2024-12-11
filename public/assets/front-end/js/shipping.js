@@ -366,6 +366,7 @@ function checkoutFromShipping() {
             $('#loading').show();
         },
         success: function (data) {
+            
             // console.log(errors)
             // console.log(data.errors)
             if (data.errors) {

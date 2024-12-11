@@ -46,6 +46,13 @@
 
                 <div class="mt-4">
                     @foreach ($recent_posts as $recent)
+                        @if ($recent_posts->isEmpty())
+                            <div class="col-12 text-center">
+                                <!-- Example using Font Awesome icon -->
+                                <i class="fa fa-sad-tear fa-4x"></i> <!-- You can change this to any icon you like -->
+                                <p>No blogs available at the moment.</p>
+                            </div>
+                        @endif
                         <div class="flash_deal_product rtl cursor-pointer mb-2 get-view-by-onclick"
                             data-link="{{ route('blog-detail', $recent->slug) }}">
                             <div class="d-flex">
@@ -71,10 +78,19 @@
             <section class="col-lg-9">
                 @php
                     use App\Models\Blog;
-                    $blogs = Blog::paginate(10); // Limits the number of blogs to 10
+                    $blogs = Blog::where('status', 1)->paginate(10); // Limits the number of blogs to 10
                 @endphp
 
                 <div class="row">
+                @if ($blogs->isEmpty())
+                <div class="col-12 text-center" style="margin-top: 100px;">
+                    <!-- Using an empty circle icon (Font Awesome) -->
+                    <i class="fa fa-circle-o fa-5x text-muted"></i> <!-- Big, empty circle icon -->
+                    <h2 class="mt-3 text-muted">No blogs available at the moment.</h2> <!-- Centered message with margin -->
+                </div>
+                @endif
+
+
                     @foreach ($blogs as $blog)
                     @php
                       $date = new \DateTime($blog->updated_at);

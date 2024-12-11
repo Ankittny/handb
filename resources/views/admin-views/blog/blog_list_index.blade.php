@@ -84,8 +84,8 @@
                                             <img class="upload-img-view" id="viewer" alt=""
                                                  src="{{ dynamicAsset(path: 'public/assets/back-end/img/image-place-holder.png') }}">
                                         </div>
-                                    </div>
-                     </div>
+                  </div>
+                  </div>
                </div>
                <div class="d-flex flex-wrap gap-2 justify-content-end">
                   <button type="reset" id="reset" class="btn btn-secondary">Reset</button>

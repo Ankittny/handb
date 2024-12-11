@@ -17,6 +17,35 @@
                     <div class="mb-2">{{translate('Order').' # '.($data['order']->id ?? '432121')}} </div>
                     <div>{{date('d M, Y : h:i:A' ,strtotime($data['order']->created_at ?? now()))}}</div>
                 </div>
+                <div style="float:right">
+                <?php
+                use App\Models\ShippingAddress;
+                $lastInsertedRecord = ShippingAddress::where('is_guest', 1)
+                ->orderBy('id', 'desc')  // Order by ID in descending order
+                ->first();
+                ?>
+                <?php $user = Auth::guard('customer')->user(); ?>
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td>{{ Auth::guard('customer')->user() ? Auth::guard('customer')->user()->name : $lastInsertedRecord->contact_person_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone:</td>
+                        <td>{{ Auth::guard('customer')->user() ? Auth::guard('customer')->user()->phone : $lastInsertedRecord->phone }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>{{ Auth::guard('customer')->user() ? Auth::guard('customer')->user()->email : $lastInsertedRecord->email }}</td>
+                    </tr>
+                </table>
+            <h1>
+                <?php
+                
+                ?>
+            </h1>
+
+                </div>
             </div>
             <div class="{{$template['order_information_status'] == 1 ? '' : 'd-none'}}" id="order-information">
                 <table class="email-table">

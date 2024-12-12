@@ -100,9 +100,9 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 my-2 text-center {{Session::get('direction') === "rtl" ? 'text-sm-right' : 'text-sm-left'}}">
                     <div class="flash_deal_title">
-                      Use Code: {{$web_config['flash_deals']->title}}
+                      {{$web_config['flash_deals']->title}}
                     </div>
-                    <span class="fs-14 font-weight-normal">{{translate('To')}}  {{translate('avail')}} {{translate('the_offer')}}</span>
+                    {{-- <span class="fs-14 font-weight-normal">{{translate('To')}}  {{translate('avail')}} {{translate('the_offer')}}</span> --}}
                 </div>
 
                 <section class="col-lg-12">

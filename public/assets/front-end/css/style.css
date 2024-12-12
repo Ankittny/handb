@@ -9598,6 +9598,17 @@ body *::-webkit-scrollbar-thumb {
 .card-body{
     border-bottom: 1px solid rgba(0, 0, 0, 0.085) !important;
 }
+
 .flash-deal-text span{
     font-size: 15px !important;
 }
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++ BLOG ============================== */
+.text-muted {
+    color: #000 !important;
+}
+.text-accent{
+  font-family: 'Open sans';
+}
+

@@ -287,8 +287,12 @@ class SystemController extends Controller
     {
         $shipping = [];
         $billing = [];
+        
         parse_str($request['shipping'], $shipping);
         parse_str($request['billing'], $billing);
+        // $contact_person_name = $shipping['contact_person_name'];
+        // $contact_person_email = $shipping['email'];
+        // $contact_person_phone = $shipping['phone'];
 
         if (isset($shipping['phone'])) {
             $shippingPhoneValue = preg_replace('/[^0-9]/', '', $shipping['phone']);
@@ -513,7 +517,7 @@ class SystemController extends Controller
                 return response()->json(['errors' => translate('Already_registered')], 403);
             }else{
                 $newCustomerRegister = self::getRegisterNewCustomer(request: $request, address: $newCustomerAddress);
-                session()->put('newCustomerRegister', $newCustomerRegister);
+                session()->put('newCustomerRegister', $newCustomerRegister); 
             }
         } else {
             session()->forget('newCustomerRegister');

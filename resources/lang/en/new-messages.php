@@ -8735,4 +8735,12 @@ return [
 	"ingredient_Image" => "Ingredient Image",
 	"ingredient_Logo" => "Ingredient Logo",
 	"ingredient" => "Ingredient",
+	"blog_banner" => "Blog banner",
+	"registration" => "Registration",
+	"account_activation" => "Account activation",
+	"account_suspended" => "Account suspended",
+	"registration_denied" => "Registration denied",
+	"registration_approved" => "Registration approved",
+	"4517 Washington Ave. Manchester, Kentucky 39495" => "4517 Washington Ave. Manchester  Kentucky 39495",
+	"healthandblossom blog details" => "Healthandblossom blog details",
 ];

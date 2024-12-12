@@ -25,9 +25,9 @@
                     <a href="{{route('flash-deals',[$web_config['flash_deals']?$web_config['flash_deals']['id']:0])}}" class="countdown-card bg-transparent">
                         <div class="flash-deal-text web-text-primary">
                             <div>
-                                <span>Use Code: {{$web_config['flash_deals']->title}}</span>
+                                <span>{{$web_config['flash_deals']->title}}</span>
                             </div>
-                            <small>{{translate('To')}}  {{translate('Avail')}} {{translate('The_offer')}}</small>
+                            {{-- <small class="d-flex justify-content-center">{{translate('To')}}  {{translate('Avail')}} {{translate('The_offer')}}</small> --}}
                         </div>
                         <div class="text-center text-white">
                             <div class="countdown-background">

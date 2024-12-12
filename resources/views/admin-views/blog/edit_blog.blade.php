@@ -25,7 +25,7 @@
                   <div class="col-lg-6">
                         <div class="form-group">
                            <label class="title-color">Title<span class="text-danger">*</span></label>
-                           <input type="text" name="title" class="form-control" value="{{ $data->title }}" placeholder="{{ translate('title') }}">
+                           <input type="text" name="title" class="form-control category-title-name" value="{{ $data->title }}" placeholder="{{ translate('title') }}">
                            <input type="hidden" value="{{ $data->id }}" name="id">
 
                         </div>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                            <label class="title-color">Slug<span class="text-danger">*</span></label>
-                           <input type="text" name="slug" class="form-control" value="{{ $data->slug }}" placeholder="{{ translate('slug') }}" >
+                           <input type="text" name="slug" class="form-control" id="slug-id" value="{{ $data->slug }}" placeholder="{{ translate('slug') }}" >
                         </div>
                         <div class="form-group">
                            <label class="title-color">Category ID<span class="text-danger">*</span></label>
@@ -89,7 +89,7 @@
                                             src="{{ asset('public/assets/back-end/bloges/') . '/' . $data->image }}">
                                 </div>
                             </div>
-                     </div>
+                  </div>
                </div>
                <div class="d-flex flex-wrap gap-2 justify-content-end">
                   <button type="reset" id="reset" class="btn btn-secondary">Reset</button>

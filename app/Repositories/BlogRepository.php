@@ -65,6 +65,7 @@ class BlogRepository implements BlogInterface
                 'meta_title' => $request->meta_title,
                 'meta_discription' => $request->meta_discription,
                 'keywords' => $request->keywords,
+                'description' => $request->description,
                 'slug'=>  $request->slug,
               	'created_at' => now(),
                 'updated_at'=>now()

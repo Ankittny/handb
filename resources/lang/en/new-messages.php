@@ -8743,4 +8743,10 @@ return [
 	"registration_approved" => "Registration approved",
 	"4517 Washington Ave. Manchester, Kentucky 39495" => "4517 Washington Ave. Manchester  Kentucky 39495",
 	"healthandblossom blog details" => "Healthandblossom blog details",
+	"Pending_Order" => "Pending Order",
+	"pending_order" => "Pending order",
+	"If you need help, or you have any other questions, feel free to email us" => "If you need help  or you have any other questions  feel free to email us",
+	"We have sent you this email in response to your order pending. You will be able to see your order status after login to your account" => "We have sent you this email in response to your order pending. You will be able to see your order status after login to your account",
+	"Notification mail for order pending" => "Notification mail for order pending",
+	"notification mail for order pending" => "Notification mail for order pending",
 ];

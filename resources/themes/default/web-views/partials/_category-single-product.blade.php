@@ -52,10 +52,11 @@
                 </span>
                 </div>
             @endif
-            <div class="">
-                <a href="{{route('product',$product->slug)}}" class="text-capitalize fw-semibold">
+            <div class="globe-ptr">
+                <h1><a href="{{route('product',$product->slug)}}" class="text-capitalize fw-semibold">
                     {{ Str::limit(strtolower($product['name']), 18) }}
                 </a>
+                </h1>
             </div>
             <div class="justify-content-between ">
                 <div class="product-price d-flex flex-wrap gap-8 align-items-center row-gap-0">

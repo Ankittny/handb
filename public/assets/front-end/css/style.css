@@ -9612,3 +9612,21 @@ body *::-webkit-scrollbar-thumb {
   font-family: 'Open sans';
 }
 
+/* ++++++++++++++++++++++++++++++++++++++++++++++ all-home-page ============================== */
+
+.replica-text h1, .globe-ptr h1{
+    margin-bottom: 0px;
+}
+.ptr{
+    font-size: 13px;
+}
+.ptrs h1{
+    font-size: 17px;
+}
+.ft-bold h1{
+    font-size: 24px;
+}
+.ptrp h1{
+    font-size: 13px;
+    margin-bottom: 0px;
+}

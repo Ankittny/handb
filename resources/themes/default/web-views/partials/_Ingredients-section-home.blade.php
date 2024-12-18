@@ -26,7 +26,7 @@
                                         <img alt="{{ $ingredientsData->name }}"
                                             src="{{ getStorageImages(path:$ingredientsData->icon_full_url, type: 'category') }}">
                                     </div>
-                                    <p class="text-center fs-13 font-semibold mt-2 text-capitalize">{{Str::limit(strtolower($ingredientsData->name), 12)}}</p>
+                                    <h1 class="text-center fs-13 font-semibold mt-2 text-capitalize">{{Str::limit(strtolower($ingredientsData->name), 12)}}</h1>
                                 </a>
                         </div>
                         @endif

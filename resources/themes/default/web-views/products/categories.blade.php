@@ -34,7 +34,7 @@
             @foreach($categories as $categoryKey => $category)
             <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}" class="brand_div">
                 <img src="{{ getStorageImages(path: $category->icon_full_url, type: 'category') }}" alt="{{ $category['name'] }}">
-                <div>{{ $category['name'] }}</div>
+                <div class="ptrp"><h1>{{ $category['name'] }} </h1></div>
             </a>
             @endforeach
         </div>

@@ -31,8 +31,8 @@
                                 @php
                                     $date = new \DateTime($blog->updated_at);
                                 @endphp
-                                <div class="frequengtly-ft">
-                                  <h4 class="text-center fw-bold"> {{ $blog->title }}</h4> 
+                                <div class="frequengtly-ft ft-bold">
+                                  <h1 class="text-center fw-bold"> {{ $blog->title }}</h1> 
                                 </div>
                                 
         

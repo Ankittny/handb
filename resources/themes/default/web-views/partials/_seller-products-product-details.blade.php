@@ -23,10 +23,10 @@
         </div>
         <div class=" flash_deal_product_details pl-3 pr-3 pr-1 d-flex align-items-center">
             <div>
-                <div>
-                    <span class="flash-product-title">
+                <div class="globe-ptr">
+                    <h1 class="flash-product-title">
                         {{$product['name']}}
-                    </span>
+                    </h1>
                 </div>
                 @if($overallRating[0] != 0 )
                 <div class="flash-product-review">

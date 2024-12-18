@@ -31,7 +31,7 @@
         <div class="single-product-details">
             @if($overallRating[0] != 0 )
                 <div class="rating-show justify-content-between">
-                    <span class="d-inline-block font-size-sm text-body">
+                    <h1 class="d-inline-block font-size-sm text-body">
                         @for($inc=1;$inc<=5;$inc++)
                             @if ($inc <= (int)$overallRating[0])
                                 <i class="tio-star text-warning"></i>
@@ -42,7 +42,7 @@
                             @endif
                         @endfor
                         <!-- <label class="badge-style">( {{ count($product->reviews) }} )</label> -->
-                    </span>
+</h1>
                 </div>
             @endif
             <div>

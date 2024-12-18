@@ -53,10 +53,11 @@
                     </span>
                 </div>
             @endif
-            <div class="text-center">
-                <a href="{{route('product',$product->slug)}}">
+            <div class="text-center replica-text">
+                <h1><a href="{{route('product',$product->slug)}}">
                     {{ Str::limit($product['name'], 23) }}
                 </a>
+                </h1>
             </div>
             <div class="justify-content-between text-center">
                 <div class="product-price text-center d-flex flex-wrap justify-content-center align-items-center gap-8">

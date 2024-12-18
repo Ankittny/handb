@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="__i-1 bg-transparent text-center mb-0 min-height-auto">
-                                    <div class="px-0 pb-0">
+                                    <div class="px-0 pb-0 ptrs">
                                         @php($overallRating = getOverallRating($recommendedProduct['reviews']))
                                         @if($overallRating[0] != 0 )
                                             <div class="rating-show">
@@ -116,9 +116,9 @@
 
                                             </div>
                                         @endif
-                                        <h6 class="font-semibold pt-1 text-capitalize">
+                                        <h1 class="font-semibold pt-1 text-capitalize ">
                                             {{ Str::limit(strtolower($recommendedProduct['name']),30) }}
-                                        </h6>
+                                        </h1>
                                         <div class="mb-4 pt-1 d-flex flex-wrap justify-content-center align-items-center text-center gap-8">
                                             @if($recommendedProduct->discount > 0)
                                                 <del class="__text-12px __color-9B9B9B">

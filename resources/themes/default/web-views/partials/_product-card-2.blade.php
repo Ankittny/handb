@@ -21,10 +21,12 @@
             <div class="flash_deal_product_details pl-3 pr-3 pr-1 d-flex mt-3">
                 <div>
                     <div>
+                        <h1>
                         <a href="{{route('product',$product->slug)}}"
                            class="flash-product-title text-capitalize fw-semibold">
                             {{ Str::limit(strtolower($product['name']), 80) }}
                         </a>
+                        </h1>
                     </div>
                     @if($overallRating[0] != 0 )
                         <div class="flash-product-review">

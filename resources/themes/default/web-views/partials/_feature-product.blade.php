@@ -45,10 +45,10 @@
 </h1>
                 </div>
             @endif
-            <div>
-                <a href="{{route('product',$product->slug)}}" class="text-capitalize fw-semibold ">
+            <div class="ptr">
+               <h1> <a href="{{route('product',$product->slug)}}" class="text-capitalize fw-semibold ">
                     {{ Str::limit(strtolower($product['name']), 23) }}
-                </a>
+                </a></h1>
             </div>
             <div class="justify-content-between">
                 <div class="product-price">

@@ -9620,6 +9620,9 @@ body *::-webkit-scrollbar-thumb {
 .ptr{
     font-size: 13px;
 }
+.ptr h1{
+    font-size: 13px;
+}
 .ptrs h1{
     font-size: 17px;
 }

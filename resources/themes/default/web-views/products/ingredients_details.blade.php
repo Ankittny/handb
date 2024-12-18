@@ -63,10 +63,12 @@
                         </div>
                     </div>
                     <div class="single-product-details">
-                        <div class="text-center">
+                        <div class="text-center ptr">
+                            <h1>
                             <a href="{{ url('product/' . $item->slug) }}">
                                 {{ Str::limit($item->name, 30) }} <!-- Limit the name length -->
                             </a>
+                            </h1>
                         </div>
                         <div class="justify-content-between text-center">
                         <div class="product-price">

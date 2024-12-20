@@ -48,6 +48,7 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
+Route::get('pending-order', [BlogController::class, 'pending'])->name('pending');
 Route::controller(WebController::class)->group(function () {
     Route::get('maintenance-mode', 'maintenance_mode')->name('maintenance-mode');
 });

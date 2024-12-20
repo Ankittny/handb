@@ -8743,8 +8743,13 @@ return [
 	"registration_approved" => "Registration approved",
 	"4517 Washington Ave. Manchester, Kentucky 39495" => "4517 Washington Ave. Manchester  Kentucky 39495",
 	"healthandblossom blog details" => "Healthandblossom blog details",
-	"categoriesffff" => "Categoriesffff",
+	"Pending_Order" => "Pending Order",
+	"pending_order" => "Pending order",
+	"If you need help, or you have any other questions, feel free to email us" => "If you need help  or you have any other questions  feel free to email us",
+	"We have sent you this email in response to your order pending. You will be able to see your order status after login to your account" => "We have sent you this email in response to your order pending. You will be able to see your order status after login to your account",
+	"Notification mail for order pending" => "Notification mail for order pending",
 	"the_ranking_field_is_required" => "The ranking field is required",
 	"the_answer_field_is_required" => "The answer field is required",
 	"the_question_field_is_required" => "The question field is required",
+
 ];

@@ -8744,4 +8744,7 @@ return [
 	"4517 Washington Ave. Manchester, Kentucky 39495" => "4517 Washington Ave. Manchester  Kentucky 39495",
 	"healthandblossom blog details" => "Healthandblossom blog details",
 	"categoriesffff" => "Categoriesffff",
+	"the_ranking_field_is_required" => "The ranking field is required",
+	"the_answer_field_is_required" => "The answer field is required",
+	"the_question_field_is_required" => "The question field is required",
 ];

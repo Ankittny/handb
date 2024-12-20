@@ -9640,11 +9640,9 @@ body *::-webkit-scrollbar-thumb {
     margin-bottom: 0px;
 }
 
-
-
-
-
-
-
-
-
+.product-description span{
+    line-height: 1;
+}
+.product-description a{
+    font-size: 12px !important;
+}

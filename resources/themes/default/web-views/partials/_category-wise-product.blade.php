@@ -2,12 +2,12 @@
 <section class="container-fluid rtl pb-4 px-max-sm-0">
     <div class="__shadow-2">
         <div class="__p-20px rounded bg-white overflow-hidden">
-            <div class="d-flex __gap-6px flex-between px-sm-3">
-                <div class="category-product-view-title">
+         <div class="d-flex __gap-6px flex-between px-sm-3">
+         <h1><div class="category-product-view-title">
                 <span class="for-feature-title font-bold __text-20px text-uppercase">
                         {{$category['name']}}
                 </span>
-                </div>
+                </div></h1>
                 <div class="category-product-view-all">
                     <a class="text-capitalize view-all-text text-nowrap web-text-primary"
                        href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">

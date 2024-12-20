@@ -147,9 +147,9 @@
                 <div class="latest-product-margin">
                     <div class="d-flex justify-content-between mb-14px">
                         <div class="text-center">
-                            <span class="for-feature-title __text-22px font-bold text-center">
+                            <h1><span class="for-feature-title __text-22px font-bold text-center">
                                 {{ translate('latest_products')}}
-                            </span>
+                            </span></h1>
                         </div>
                         <div class="mr-1">
                             <a class="text-capitalize view-all-text web-text-primary"

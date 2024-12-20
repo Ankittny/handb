@@ -7,7 +7,12 @@
 
 @push('css_or_js')
     <link href="{{dynamicAsset(path: 'public/assets/back-end/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="{{ dynamicAsset(path: 'public/assets/back-end/css/tags-input.min.css') }}" rel="stylesheet">
+    <link href="{{ dynamicAsset(path: 'public/assets/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ dynamicAsset(path: 'public/assets/back-end/plugins/summernote/summernote.min.css') }}" rel="stylesheet">
 @endpush
+
+
 
 @section('content')
     <div class="content container-fluid">
@@ -49,7 +54,7 @@
                                     <tr id="data-{{$help->id}}">
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $help['question'] }}</td>
-                                        <td>{{ $help['answer'] }}</td>
+                                        <td>{{ strip_tags($help['answer']) }}</td>
                                         <td class="text-center">{{ $help['ranking'] }}</td>
 
                                         <td>
@@ -108,19 +113,36 @@
                     </div>
                     <form action="{{ route('admin.helpTopic.add-new') }}" method="post" id="addForm">
                         @csrf
+                        <ul class="nav nav-tabs w-fit-content mb-4">
+                                @foreach($languages as $lang)
+                                    <li class="nav-item text-capitalize">
+                                        <span
+                                            class="nav-link form-system-language-tab cursor-pointer {{ $lang == $defaultLanguage? 'active':''}}"
+                                            id="{{ $lang}}-link">
+                                            {{ucfirst(getLanguageName($lang)).'('.strtoupper($lang).')'}}
+                                        </span>
+                                    </li>
+                                @endforeach
+                            </ul>
                         <div class="modal-body text-start">
                             <div class="form-group">
                                 <label>{{translate('question')}}</label>
                                 <input type="text" class="form-control" name="question"
                                        placeholder="{{translate('type_Question')}}">
                             </div>
-
-
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>{{translate('answer')}}</label>
                                 <textarea class="form-control" name="answer" cols="5"
                                           rows="5" placeholder="{{translate('type_Answer')}}"></textarea>
+                            </div> -->
+
+                            <div class="form-group pt-2">
+                                         <label class="title-color" for="{{ $lang }}_content_writing_area">
+                                            {{ translate('Answer') }} ({{ strtoupper($lang) }})
+                                        </label>
+                                        <textarea class="summernote {{ $lang == $defaultLanguage ? 'content-writing-area' : '' }}" name="answer">{{ old('answer') }}</textarea>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -174,11 +196,18 @@
                         </div>
 
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>{{translate('answer')}}</label>
                             <textarea class="form-control" name="answer" cols="5"
                                       rows="5" placeholder="{{translate('type_Answer')}}"
                                       id="answer-field"></textarea>
+                        </div> -->
+
+                        <div class="form-group pt-2">
+                                         <label class="title-color" for="{{ $lang }}_content_writing_area">
+                                            {{ translate('Answer') }} ({{ strtoupper($lang) }})
+                                        </label>
+                                        <textarea name="answer" class="summernote {{ $lang == $defaultLanguage ? 'content-writing-area' : '' }}" name="answer" "></textarea>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
@@ -204,4 +233,10 @@
     <script src="{{dynamicAsset(path: 'public/assets/back-end/vendor/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{dynamicAsset(path: 'public/assets/back-end/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{dynamicAsset(path: 'public/assets/back-end/js/admin/business-setting/business-setting.js')}}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/products-management.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/tags-input.min.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/spartan-multi-image-picker.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/plugins/summernote/summernote.min.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/admin/product-add-update.js') }}"></script>
+    <script src="{{ dynamicAsset(path: 'public/assets/back-end/js/admin/product-add-colors-img.js') }}"></script>
 @endpush

@@ -31,15 +31,14 @@
                                 @php
                                     $date = new \DateTime($blog->updated_at);
                                 @endphp
-                                <div class="frequengtly-ft">
-                                  <h4 class="text-center fw-bold"> {{ $blog->title }}</h4> 
+                                <div class="frequengtly-ft ft-bold">
+                                  <h1 class="text-center fw-bold"> {{ $blog->title }}</h1>
                                 </div>
-                                
-        
+
+
                                 <div class="justify-content-between ">
-                                    <div class="product-price text-center d-flex flex-wrap justify-content-center align-items-center gap-8">
-                                        <span class="text-accent text-accents text-dark">
-                                         <?= $blog->description ?> </span>
+                                    <div class="product-description">
+                                         <p><?= $blog->description ?> </p>
                                     </div>
                                 </div>
                             </div>

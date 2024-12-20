@@ -9611,4 +9611,38 @@ body *::-webkit-scrollbar-thumb {
 .text-accent{
   font-family: 'Open sans';
 }
+.frequengtly-ft h1{
+    position: absolute;
+    z-index: 999;
+    font-weight: 700;
+    top: -135px;
+}
 
+/* ++++++++++++++++++++++++++++++++++++++++++++++ all-home-page ============================== */
+
+.replica-text h1, .globe-ptr h1{
+    margin-bottom: 0px;
+}
+.ptr{
+    font-size: 13px;
+}
+.ptr h1{
+    font-size: 13px;
+}
+.ptrs h1{
+    font-size: 17px;
+}
+.ft-bold h1{
+    font-size: 37px;
+}
+.ptrp h1{
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+
+.product-description span{
+    line-height: 1;
+}
+.product-description a{
+    font-size: 12px !important;
+}

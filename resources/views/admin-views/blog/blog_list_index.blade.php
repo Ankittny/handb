@@ -65,7 +65,7 @@
                         @endforeach
                         <div class="from_part_2">
                                         <label class="title-color">{{ translate('blog_banner') }}</label>
-                                        <span class="text-info"><span class="text-danger">*</span> {{ THEME_RATIO[theme_root_path()]['Category Image'] }}</span>
+                                        <span class="text-info"><span class="text-danger">*</span> Blog Image Ratio 1:1 (1307 x 400 px)</span>
                                         <div class="custom-file text-left">
                                             <input type="file" name="image" id="category-image"
                                                    class="custom-file-input image-preview-before-upload"

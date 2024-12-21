@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Http\Controllers\Web;
-
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
@@ -19,5 +18,10 @@ class BlogController extends Controller
     public function blog_Detail(Request $request, $slug){
         $blog = Blog::where('slug',$slug)->first();
         return view('web-views.blog.blog-detail', compact('blog'));
+    }
+
+    public function pending(){
+        Mail::to('kvikesh775@gmail.com')->send(new \App\Mail\PendingOrder(100206));
+        dd(56);
     }
 }

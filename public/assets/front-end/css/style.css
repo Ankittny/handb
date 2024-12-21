@@ -9647,9 +9647,12 @@ body *::-webkit-scrollbar-thumb {
     font-size: 12px !important;
 }
 .category-product-view-title h1,
- .feature-product-title h1, 
+ .feature-product-title h1,
  .latest-product-margin h1,
  .details h1,
   .arrival-title h1{
     font-size: 22px;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
 }

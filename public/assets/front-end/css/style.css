@@ -9646,3 +9646,10 @@ body *::-webkit-scrollbar-thumb {
 .product-description a{
     font-size: 12px !important;
 }
+.category-product-view-title h1,
+ .feature-product-title h1, 
+ .latest-product-margin h1,
+ .details h1,
+  .arrival-title h1{
+    font-size: 22px;
+}

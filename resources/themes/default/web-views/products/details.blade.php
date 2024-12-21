@@ -124,7 +124,7 @@
 
                     <div class="col-lg-7 col-md-8 col-12 mt-md-0 mt-sm-3 web-direction">
                         <div class="details __h-100">
-                            <h1><span class="mb-2 __inline-24">{{$product->name}}</span></h1>
+                            <span class="mb-2 __inline-24"><h1>{{$product->name}}</h1></span>
                             <div class="d-flex flex-wrap align-items-center mb-2 pro">
                                 <div class="star-rating me-2">
                                     @for($inc=1;$inc<=5;$inc++)

@@ -36,7 +36,7 @@ class HelpTopicController extends BaseController
         $defaultLanguage = $languages[0];
         $helps = $this->helpTopicRepo->getListWhere(orderBy: ['id' => 'desc'], filters: ['type' => 'default'],dataLimit: 'all');
         return view(HelpTopic::LIST[VIEW], compact('helps','categories','languages','defaultLanguage'));
-    }
+    }     
 
     public function add(HelpTopicAddRequest $request): RedirectResponse
     {

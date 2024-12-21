@@ -195,9 +195,8 @@
                                    id="question-filed">
                         </div>
 
-
                         <!-- <div class="form-group">
-                            <label>{{translate('answer')}}</label>
+                            <label>{{translate('answer')}}</label> 
                             <textarea class="form-control" name="answer" cols="5"
                                       rows="5" placeholder="{{translate('type_Answer')}}"
                                       id="answer-field"></textarea>
@@ -207,7 +206,7 @@
                                          <label class="title-color" for="{{ $lang }}_content_writing_area">
                                             {{ translate('Answer') }} ({{ strtoupper($lang) }})
                                         </label>
-                                        <textarea name="answer" class="summernote {{ $lang == $defaultLanguage ? 'content-writing-area' : '' }}" name="answer" "></textarea>
+                                        <textarea class="summernote {{ $lang == $defaultLanguage ? 'content-writing-area' : '' }}" name="answer" id="answer-field"></textarea>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
@@ -220,7 +219,7 @@
                     <div class="modal-footer bg-whitesmoke br">
                         <button type="button" class="btn btn-secondary"
                                 data-dismiss="modal">{{translate('close')}}</button>
-                        <button class="btn btn--primary">{{translate('update')}}</button>
+                        <button class="btn btn--primary">{{translate('update')}}</button> 
                     </div>
                 </form>
             </div>

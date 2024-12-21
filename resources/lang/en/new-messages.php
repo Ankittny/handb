@@ -8747,4 +8747,5 @@ return [
 	"the_ranking_field_is_required" => "The ranking field is required",
 	"the_answer_field_is_required" => "The answer field is required",
 	"the_question_field_is_required" => "The question field is required",
+	"FAQ_Update_successfully" => "FAQ Update successfully",
 ];

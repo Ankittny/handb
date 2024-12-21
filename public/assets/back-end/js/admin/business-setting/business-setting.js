@@ -85,7 +85,10 @@ $(document).on('click', '.edit', function () {
         dataType: "json",
         success: function (data) {
             $("#question-filed").val(data.question);
-            $("#answer-field").val(data.answer);
+            //CKEDITOR.replace(data.answer);
+            $('#answer-field').summernote('code', data.answer);
+            //CKEDITOR.instances['answer-field'].setData(data.answer)
+            //$("#answer-field").val(data.answer);
             $("#ranking-field").val(data.ranking);
             $("#update-form-submit").attr("action", route);
         }

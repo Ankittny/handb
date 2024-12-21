@@ -33,7 +33,7 @@
             <div class="container-fluid py-4 rtl px-0 px-md-3">
                 <div class="__inline-62 pt-3">
                     <div class="feature-product-title mt-0 web-text-primary">
-                        {{ translate('featured_products') }}
+                    <h1>{{ translate('featured_products') }}</h1>
                     </div>
                     <div class="text-end px-3 d-none d-md-block">
                         <a class="text-capitalize view-all-text web-text-primary" href="{{route('products',['data_from'=>'featured','page'=>1])}}">
@@ -112,7 +112,7 @@
                     <div class="section-header">
                         <div class="arrival-title d-block">
                             <div class="text-capitalize">
-                                {{ translate('new_arrivals')}}
+                            <h1> {{ translate('new_arrivals')}}</h1>
                             </div>
                         </div>
                     </div>

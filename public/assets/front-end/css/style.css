@@ -9611,6 +9611,13 @@ body *::-webkit-scrollbar-thumb {
 .text-accent{
   font-family: 'Open sans';
 }
+.frequengtly-ft h1{
+    position: absolute;
+    top: -125px;
+    z-index: 999;
+    font-weight: 700;
+}
+
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++ all-home-page ============================== */
 
@@ -9639,3 +9646,4 @@ body *::-webkit-scrollbar-thumb {
 .product-description a{
     font-size: 12px !important;
 }
+

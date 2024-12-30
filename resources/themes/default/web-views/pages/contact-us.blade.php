@@ -110,9 +110,10 @@
         "use strict";
         var onloadCallback = function () {
             grecaptcha.render('recaptcha_element', {
-                'sitekey': '{{ getWebConfig(name: 'recaptcha')['site_key'] }}'
+                'sitekey': '{{ getWebConfig(name: 'recaptcha')['site_key']}}'
             });
-        };
+        }
+    
     </script>
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async
             defer></script>

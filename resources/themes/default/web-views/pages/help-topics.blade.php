@@ -19,9 +19,9 @@
                 @php $length=count($helps); @endphp
                 @if(count($helps) > 0)
                     @php if($length%2!=0){$first=($length+1)/2;}else{$first=$length/2;}@endphp
-                    <div class="col-lg-2"></div>
-                    <section class="col-lg-10 mt-3">
-                        <section class="container pt-4 pb-5 ">
+                    <!-- <div class="col-lg-2"></div> -->
+                    <section class="col-lg-12 mt-3">
+                        <div class="container pt-4 pb-5 ">
                             <div class="row pt-4">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled">
@@ -78,7 +78,7 @@
                                 </div>
 
                             </div>
-                        </section>
+</div>
                     </section>
                 @else
                     <div class="col-12">

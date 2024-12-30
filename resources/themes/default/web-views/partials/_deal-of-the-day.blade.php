@@ -148,7 +148,7 @@
                     <div class="d-flex justify-content-between mb-14px">
                         <div class="text-center">
                             <span class="for-feature-title __text-22px font-bold text-center">
-                                {{ translate('latest_products')}}
+                            <h1>{{ translate('latest_products')}}</h1>
                             </span>
                         </div>
                         <div class="mr-1">

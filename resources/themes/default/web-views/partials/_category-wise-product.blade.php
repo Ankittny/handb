@@ -2,10 +2,10 @@
 <section class="container-fluid rtl pb-4 px-max-sm-0">
     <div class="__shadow-2">
         <div class="__p-20px rounded bg-white overflow-hidden">
-            <div class="d-flex __gap-6px flex-between px-sm-3">
-                <div class="category-product-view-title">
-                <span class="for-feature-title font-bold __text-20px text-uppercase">
-                        {{$category['name']}}
+         <div class="d-flex __gap-6px flex-between px-sm-3">
+         <div class="category-product-view-title">
+         <span class="for-feature-title font-bold __text-20px text-uppercase">
+         <h1>{{$category['name']}}</h1>
                 </span>
                 </div>
                 <div class="category-product-view-all">

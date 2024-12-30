@@ -21,14 +21,18 @@
                     @php if($length%2!=0){$first=($length+1)/2;}else{$first=$length/2;}@endphp
                     <!-- <div class="col-lg-2"></div> -->
                     <section class="col-lg-12 mt-3">
+<<<<<<< HEAD
                         <div class="container pt-4 pb-5 ">
+=======
+                        <section class="container pt-4 pb-5 ">
+>>>>>>> ba0125f5bb6472c6889e2e048c47bc0d98d30ac1
                             <div class="row pt-4">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <ul class="list-unstyled">
                                         @for($i=0;$i<$first;$i++)
                                             <div id="accordion">
-                                                <div class="row mb-0 text-black">
-                                                    <div class="col-1 mt-3">
+                                                <div class="row mb-0 text-black d-flex align-items-center">
+                                                    <div class="col-1">
                                                         <i class="czi-book text-muted mr-2"></i>
                                                     </div>
                                                     <div class="col-11">
@@ -45,17 +49,17 @@
                                                         {{ $helps[$i]['answer'] }}
                                                     </div>
                                                 </div>
-                                            </div>
+                                           
                                         @endfor
                                     </ul>
                                 </div>
 
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <ul class="list-unstyled">
                                         @for($i=$first; $i<$length; $i++)
                                             <div id="accordion">
-                                                <div class="row mb-0 text-black">
-                                                    <div class="col-1 mt-3">
+                                                <div class="row mb-0 text-black d-flex align-items-center">
+                                                    <div class="col-1">
                                                         <i class="czi-book text-muted mr-2"></i>
                                                     </div>
                                                     <div class="col-11">

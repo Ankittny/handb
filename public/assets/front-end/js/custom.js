@@ -1064,14 +1064,16 @@ function addToCart(form_id = "add-to-cart-form", redirect_to_checkout = false) {
             beforeSend: function () {
                 $("#loading").show();
             },
+
             success: function (response) {
                 console.log(response);
                 if (response.status === 2) {
                     $("#buyNowModal-body").html(
-                        response.shippingMethodHtmlView
+                        // response.shippingMethodHtmlView
                     );
-                    $("#quick-view").modal("hide");
-                    $("#buyNowModal").modal("show");
+                    location.href = $("#route-checkout-details").data("url");
+                    // $("#quick-view").modal("hide");
+                    // $("#buyNowModal").modal("show");
                     return false;
                 }
                 if (response.status == 1) {
@@ -2136,3 +2138,8 @@ $(".getDownloadFileUsingFileUrl").on("click", function () {
 $(".sidebar-overlay").on("click", function () {
     $(".cz-sidebar").removeClass("show active");
 });
+
+
+window.onload = function() {
+    document.getElementById('autoSubmitForm').submit();
+};

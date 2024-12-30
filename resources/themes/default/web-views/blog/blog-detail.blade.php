@@ -46,7 +46,7 @@
                     </div>
                     <div style="float:right;">
                                 <span class="card-text text-muted fs-7 mb-0">
-                                    <b>Author:</b> Added by Admin | <b>Date:</b> {{ $date->format('d F Y') }}
+                                    <b>Author:</b> Added by Health and Blossom | <b>Date:</b> {{ $date->format('d F Y') }}
                                 </span>
                                 </div>
                 </div>

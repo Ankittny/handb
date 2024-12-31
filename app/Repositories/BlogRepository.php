@@ -30,14 +30,14 @@ class BlogRepository implements BlogInterface
             'updated_at'
         ]);
         $blogcode = new Blog();
-        $blogcode->title = $request->title;
-        $blogcode->meta_title = $request->meta_title;
+        $blogcode->title            = $request->title;
+        $blogcode->meta_title       = $request->meta_title;
         $blogcode->meta_discription = $request->meta_discription;
-        $blogcode->keywords = $request->keywords;
-        $blogcode->slug = $request->slug;
-        $blogcode->cat_id = $request->cat_id;
-        $blogcode->description = $request->description;
-        $blogcode->image = $request->image_file;
+        $blogcode->keywords         = $request->keywords;
+        $blogcode->slug             = strtolower($request->slug);
+        $blogcode->cat_id           = $request->cat_id;
+        $blogcode->description      = $request->description;
+        $blogcode->image            = $request->image_file;
         return $blogcode->save();
     }
 
@@ -61,14 +61,14 @@ class BlogRepository implements BlogInterface
         $blogcode = Blog::find($data['id']);
         if ($blogcode) {
             $update_data = [
-                'title' => $request->title,
-                'meta_title' => $request->meta_title,
+                'title'            => $request->title,
+                'meta_title'       => $request->meta_title,
                 'meta_discription' => $request->meta_discription,
-                'keywords' => $request->keywords,
-                'description' => $request->description,
-                'slug'=>  $request->slug,
-              	'created_at' => now(),
-                'updated_at'=>now()
+                'keywords'         => $request->keywords,
+                'description'      => $request->description,
+                'slug'             =>  strtolower($request->slug),
+              	'created_at'       => now(),
+                'updated_at'       =>now()
             ];
             if (!empty($request->image_file)) {
                 $update_data['image'] = $request->image_file;

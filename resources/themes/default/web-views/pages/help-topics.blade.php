@@ -21,7 +21,11 @@
                     @php if($length%2!=0){$first=($length+1)/2;}else{$first=$length/2;}@endphp
                     <!-- <div class="col-lg-2"></div> -->
                     <section class="col-lg-12 mt-3">
+<<<<<<< HEAD
+                        <div class="container pt-4 pb-5 ">
+=======
                         <section class="container pt-4 pb-5 ">
+>>>>>>> ba0125f5bb6472c6889e2e048c47bc0d98d30ac1
                             <div class="row pt-4">
                                 <div class="col-sm-12">
                                     <ul class="list-unstyled">
@@ -78,7 +82,7 @@
                                 </div>
 
                             </div>
-                        </section>
+</div>
                     </section>
                 @else
                     <div class="col-12">

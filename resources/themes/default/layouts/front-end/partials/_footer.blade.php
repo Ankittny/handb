@@ -350,6 +350,6 @@
             <section id="cookie-section"></section>
         @endif
     </footer>
-        <script src="https://app.embed.im/snow.js" defer></script>
+        <!-- <script src="https://app.embed.im/snow.js" defer></script> -->
     
 </div>

@@ -9613,10 +9613,18 @@ body *::-webkit-scrollbar-thumb {
 }
 .frequengtly-ft h1{
     position: absolute;
+<<<<<<< HEAD
+    top: -125px;
+    z-index: 999;
+    font-weight: 700;
+}
+
+=======
     z-index: 999;
     font-weight: 700;
     top: -135px;
 }
+>>>>>>> ba0125f5bb6472c6889e2e048c47bc0d98d30ac1
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++ all-home-page ============================== */
 
@@ -9646,6 +9654,9 @@ body *::-webkit-scrollbar-thumb {
 .product-description a{
     font-size: 12px !important;
 }
+<<<<<<< HEAD
+
+=======
 .category-product-view-title h1,
  .feature-product-title h1,
  .latest-product-margin h1,
@@ -9656,3 +9667,4 @@ body *::-webkit-scrollbar-thumb {
     font-style: normal;
     text-align: center;
 }
+>>>>>>> ba0125f5bb6472c6889e2e048c47bc0d98d30ac1

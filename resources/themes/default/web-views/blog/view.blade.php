@@ -90,7 +90,7 @@
                 </div>
                 @endif
 
-
+                {{dd($blogs)}}
                     @foreach ($blogs as $blog)
                     @php
                       $date = new \DateTime($blog->updated_at);
@@ -100,21 +100,14 @@
                                 <div class="overflow-hidden position-relative">
                                     <div class="inline_product product-fix clickable ">
                                         <div class=" lias-int">
-                                            <a href="{{ route('blog-detail', $blog->slug) }}" class="w-100"></a>
-                                            <img alt=""
-                                                src="{{ asset('public/assets/back-end/bloges/') . '/' . $blog->image }}">
+                                            <a href="{{ route('blog-detail', $blog->slug) }}" class="w-100">
+                                            <img src="{{ asset('public/assets/back-end/bloges/') . '/' . $blog->image }}" alt="{{ asset('public/assets/back-end/bloges/') . '/' . $blog->image }}">
                                             </a>
                                         </div>
                                         <div class="text-timedate d-flex gap-2 mt-2">
                                             <p>Admin</p>
                                              <span>{{ \Carbon\Carbon::parse($blog->updated_at)->format('d F Y') }}</span>
                                             </div>
-
-                                        <!-- <div class="quick-view">
-                                        <a class="btn-circle stopPropagation action-product-quick-view" href="https://new.healthandblossom.com/blog-detail/new-test-detail:" data-product-id="616">
-                                            <i class="czi-eye align-middle"></i>
-                                        </a>
-                                    </div> -->
                                     </div>
                                     <div class="single-product-details">
 

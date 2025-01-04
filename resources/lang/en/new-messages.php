@@ -8752,4 +8752,8 @@ return [
 	"the_answer_field_is_required" => "The answer field is required",
 	"the_question_field_is_required" => "The question field is required",
 	"FAQ_Update_successfully" => "FAQ Update successfully",
+	"temporary_token_mismatch" => "Temporary token mismatch",
+	"otp_sent" => "Otp sent",
+	"otp_not_sent" => "Otp not sent",
+	"otp_notverified" => "Otp notverified",
 ];

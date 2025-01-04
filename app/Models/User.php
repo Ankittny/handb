@@ -99,6 +99,7 @@ class User extends Authenticatable
         'temp_block_time',
         'referral_code',
         'referred_by',
+        'phone_otp'
     ];
 
     /**

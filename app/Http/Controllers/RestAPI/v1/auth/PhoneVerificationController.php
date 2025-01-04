@@ -255,14 +255,6 @@ class PhoneVerificationController extends Controller
 
 
         }
-
-        // if (isset($user)) {
-        //     $token = $user->createToken('LaravelAuthApp')->accessToken;
-        //     return response()->json([
-        //         'message' => translate('otp_sent'),
-        //         'token' => $token
-        //     ], 200);
-        // }
     }
 
 
@@ -302,6 +294,7 @@ class PhoneVerificationController extends Controller
         $validator = Validator::make($request->all(), [
             'otp' => 'required',
             'phone' => 'required',
+            'cm_firebase_token' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -309,12 +302,24 @@ class PhoneVerificationController extends Controller
         }
         $user = User::where(['phone' => $request['phone'],'phone_otp'=>$request->otp])->first();
         if (isset($user)) {
+            $user->cm_firebase_token = $request->cm_firebase_token;
+            $user->save();
             $token = $user->createToken('LaravelAuthApp')->accessToken;
-            return response()->json([
-                'status' => true,
-                'message' => translate('otp_verified'),
-                'token' => $token
-            ], 200);
+            if(!empty($user->f_name) && !empty($user->l_name) && !empty($user->email)){
+                return response()->json([
+                    'status' => true,
+                    'message' => translate('otp_verified'),
+                    'token' => $token,
+                    'profile_status' => true
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => true,
+                    'message' => translate('otp_verified'),
+                    'token' => $token,
+                    'profile_status' => false
+                ], 200);
+            }
         } else {
             return response()->json([
                 'status' => false,

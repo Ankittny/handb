@@ -33,6 +33,8 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::post('check-phone', 'PhoneVerificationController@check_phone');
         Route::post('resend-otp-check-phone', 'PhoneVerificationController@resend_otp_check_phone');
         Route::post('verify-phone', 'PhoneVerificationController@verify_phone');
+        Route::post('send-otp','PhoneVerificationController@send_otp');
+        Route::post('otp-verify','PhoneVerificationController@verify_otp');
 
         Route::post('check-email', 'EmailVerificationController@check_email');
         Route::post('resend-otp-check-email', 'EmailVerificationController@resend_otp_check_email');
@@ -310,6 +312,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('place-api-details', 'MapApiController@place_api_details');
         Route::get('geocode-api', 'MapApiController@geocode_api');
     });
+
 
     Route::post('contact-us', 'GeneralController@contact_store');
     Route::put('customer/language-change', 'CustomerController@language_change')->middleware('auth:api');

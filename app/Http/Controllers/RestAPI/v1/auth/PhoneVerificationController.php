@@ -209,4 +209,119 @@ class PhoneVerificationController extends Controller
             ['message' => $message]
         ]], 403);
     }
+
+    public function send_otp(Request $request){
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+
+        $user = User::where(['phone' => $request['phone']])->first();
+        if(!empty($user)){
+            $user->phone = $request['phone'];
+            $user->save();
+            $result =  $this->resend_otp($request['phone']);
+            if($result==true){
+                return response()->json([
+                    'status' => true,
+                    'message' => translate('otp_sent'),
+                    'profile_status' => false
+                ], 200);
+            } else {
+                return response()->json(['errors' => [
+                    ['message' => translate('otp_not_sent')]
+                ]], 403);
+            }
+
+        } else {
+            $user->phone = $request['phone'];
+            if($user->save()){
+                $result =  $this->resend_otp($request['phone']);
+                if($result==true){
+                    return response()->json([
+                        'status' => true,
+                        'message' => translate('otp_sent'),
+                        'profile_status' => false
+                    ], 200);
+                } else {
+                    return response()->json(['errors' => [
+                        ['message' => translate('otp_not_sent')]
+                    ]], 403);
+                }
+            }
+
+
+        }
+
+        // if (isset($user)) {
+        //     $token = $user->createToken('LaravelAuthApp')->accessToken;
+        //     return response()->json([
+        //         'message' => translate('otp_sent'),
+        //         'token' => $token
+        //     ], 200);
+        // }
+    }
+
+
+    public function resend_otp($number){
+        $otp = rand(100000, 999999);
+        $client = new \GuzzleHttp\Client();
+        $url = "https://connectexpress.in/api/v3/index.php";
+        $params = [
+            'method' => 'sms',
+            'api_key' => '05c05017988bc8087a13f2c950e9f33fb1cfd38a',
+            'to' => $number,
+            'sender' => 'VEDULU',
+            'message' => "Your health and blossoms account login OTP is $otp. VEDULU",
+            'format' => 'php'
+        ];
+
+        try {
+            $response = $client->request('GET', $url, ['query' => $params]);
+            $responseBody = json_decode($response->getBody(), true);
+            $user = User::where(['phone' => $number])->first();
+            $user->phone_otp = $otp;
+            $user->save();
+            if ($responseBody['status'] == 'success') {
+               return true;
+            } else {
+                return false;
+            }
+
+        } catch (\Exception $e) {
+            return response()->json(['errors' => [
+                ['message' => translate('otp_not_sent')]
+            ]], 403);
+        }
+    }
+
+    public function verify_otp(Request $request){
+        $validator = Validator::make($request->all(), [
+            'otp' => 'required',
+            'phone' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+        $user = User::where(['phone' => $request['phone'],'phone_otp'=>$request->otp])->first();
+        if (isset($user)) {
+            $token = $user->createToken('LaravelAuthApp')->accessToken;
+            return response()->json([
+                'status' => true,
+                'message' => translate('otp_verified'),
+                'token' => $token
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => translate('otp_notverified'),
+                'token' => ""
+            ], 200);
+        }
+    }
+
 }

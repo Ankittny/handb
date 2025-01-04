@@ -484,10 +484,21 @@ class CartManager
                             return ['status' => 0, 'message' => translate('Selected_shipping_method_not_found')];
                         }
                     }
-                    //$shipping['cart_group_id'] = $cart['cart_group_id'];
-                    //$shipping['shipping_method_id'] = $request['shipping_method_id'];
-                    //$shipping['shipping_cost'] = $getShippingCost->cost ?? 0;
-                    //$shipping->save();
+                    // dd($request->all());
+                    if($request->buy_now==1){
+                        $shipping['cart_group_id'] = $cart['cart_group_id'];
+                        $shipping['shipping_method_id'] = $request['shipping_method_id'];
+                        $shipping['shipping_cost'] = $getShippingCost->cost ?? 0;
+                        $shipping->save();
+                    }
+
+                    if($request->buy_now==1){
+                        $shipping = new CartShipping();
+                        $shipping->cart_group_id = $cart['cart_group_id'];
+                        $shipping->shipping_method_id = 9;
+                        $shipping->shipping_cost = 0;
+                        $shipping->save();
+                    }
 
                     $cart['free_delivery_order_amount'] = OrderManager::free_delivery_order_amount($cart['cart_group_id']);
 

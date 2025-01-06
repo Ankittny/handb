@@ -8418,7 +8418,7 @@ input.form-control.fz-30 {
     border: 1px solid rgba(27, 127, 237, 0.1);
     background: #fff;
     box-shadow: 0px 0px 2px 0px rgba(0, 113, 220, 0.15);
-    padding: 27px 24px 29px;
+    padding: 15px 24px 29px;
 }
 .custom-control-input:checked ~ .custom-control-label::before {
     border-color: var(--base);
@@ -9613,18 +9613,14 @@ body *::-webkit-scrollbar-thumb {
 }
 .frequengtly-ft h1{
     position: absolute;
-<<<<<<< HEAD
     top: -125px;
     z-index: 999;
     font-weight: 700;
 }
-
-=======
     z-index: 999;
     font-weight: 700;
     top: -135px;
 }
->>>>>>> ba0125f5bb6472c6889e2e048c47bc0d98d30ac1
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++ all-home-page ============================== */
 
@@ -9693,4 +9689,9 @@ body *::-webkit-scrollbar-thumb {
     height: 450px;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.color-bc{
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
 }

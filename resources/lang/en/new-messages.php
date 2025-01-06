@@ -8756,4 +8756,6 @@ return [
 	"otp_sent" => "Otp sent",
 	"otp_not_sent" => "Otp not sent",
 	"otp_notverified" => "Otp notverified",
+	"Enter your Phone no" => "Enter your Phone no",
+	"Get Otp" => "Get Otp",
 ];

@@ -9654,9 +9654,9 @@ body *::-webkit-scrollbar-thumb {
 .product-description a{
     font-size: 12px !important;
 }
-<<<<<<< HEAD
 
-=======
+
+
 .category-product-view-title h1,
  .feature-product-title h1,
  .latest-product-margin h1,
@@ -9667,4 +9667,30 @@ body *::-webkit-scrollbar-thumb {
     font-style: normal;
     text-align: center;
 }
->>>>>>> ba0125f5bb6472c6889e2e048c47bc0d98d30ac1
+
+.block-google{
+    background-color: '';
+}
+.otp-card-image{
+    width: 300px;
+    margin: auto;
+}
+.number-verification h5{
+    font-size: 12px;
+}
+.block-verified{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 5px;
+ 
+}
+.bl-block{
+    padding: 2px 0px;
+    font-size: 14px;
+}
+.login-card{
+    background-image: url(../img/shopping.webp);
+    width: 100%;
+    height: 450px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

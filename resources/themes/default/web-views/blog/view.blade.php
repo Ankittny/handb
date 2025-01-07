@@ -90,7 +90,6 @@
                 </div>
                 @endif
 
-                {{dd($blogs)}}
                     @foreach ($blogs as $blog)
                     @php
                       $date = new \DateTime($blog->updated_at);

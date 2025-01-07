@@ -630,7 +630,7 @@ class CustomerController extends Controller
             'updated_at' => now(),
         ];
 
-        if ($request->has('email')) {
+        if ($request->email != $request->user()->email) {
             $userDetails['email'] = $request->email;
         }
 

@@ -625,11 +625,14 @@ class CustomerController extends Controller
         $userDetails = [
             'f_name' => $request->f_name,
             'l_name' => $request->l_name,
-            'email' => $request->email ?? "",
             'image' => $imageName,
             'password' => $pass,
             'updated_at' => now(),
         ];
+
+        if ($request->has('email')) {
+            $userDetails['email'] = $request->email;
+        }
 
         User::where(['id' => $request->user()->id])->update($userDetails);
 

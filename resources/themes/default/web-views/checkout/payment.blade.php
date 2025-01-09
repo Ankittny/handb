@@ -93,7 +93,7 @@
 
                                             <input type="hidden" name="external_redirect_link" value="{{ url('/').'/web-payment' }}">
                                             <label class="d-flex align-items-center gap-2 mb-0 form-check py-2 cursor-pointer">
-                                                <input type="radio" id="{{($payment_gateway->key_name)}}" name="online_payment" class="form-check-input custom-radio" value="{{($payment_gateway->key_name)}}">
+                                                <input type="radio" id="{{($payment_gateway->key_name)}}" name="online_payment" class="form-check-input custom-radio" checked value="{{($payment_gateway->key_name)}}">
                                                 <img width="30"
                                                 src="{{dynamicStorage(path: 'storage/app/public/payment_modules/gateway_image')}}/{{ $payment_gateway->additional_data && (json_decode($payment_gateway->additional_data)->gateway_image) != null ? (json_decode($payment_gateway->additional_data)->gateway_image) : ''}}" alt="">
                                                 <span class="text-capitalize form-check-label">

@@ -8758,4 +8758,7 @@ return [
 	"otp_notverified" => "Otp notverified",
 	"Enter your Phone no" => "Enter your Phone no",
 	"Get Otp" => "Get Otp",
+	"Enter_phone" => "Enter phone",
+	"Enter_mobile_number" => "Enter mobile number",
+	"Enter_Otp" => "Enter Otp",
 ];

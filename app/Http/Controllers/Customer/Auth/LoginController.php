@@ -15,7 +15,7 @@ use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-
+use Validator;
 class LoginController extends Controller
 {
     public $company_name;
@@ -66,7 +66,7 @@ class LoginController extends Controller
         ]);
 
         //recaptcha validation start
-        
+
             if (strtolower($request['default_recaptcha_id_customer_login']) != strtolower(Session('default_recaptcha_id_customer_login'))) {
                 if($request->ajax()) {
                     return response()->json([
@@ -145,7 +145,6 @@ class LoginController extends Controller
         }
 
         if (isset($user) && auth('customer')->attempt(['email' => $user['email'], 'password' => $request['password']], $remember)) {
-
             if (!$user->is_active) {
                 auth()->guard('customer')->logout();
                 if ($request->ajax()) {
@@ -277,6 +276,53 @@ class LoginController extends Controller
             'register_modal' => view(VIEW_FILE_NAMES['get_register_modal_data'])->render(),
         ]);
     }
+
+
+    public function verify_otp_web(Request $request){
+        $validator = Validator::make($request->all(), [
+            'otp' => 'required',
+            'phone' => 'required',
+            'cm_firebase_token' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+        $user = User::where(['phone' => $request['phone'],'phone_otp'=>$request->otp])->first();
+        $password = "123456789@!#";
+        $password_stor = bcrypt($password);
+        if (isset($user)) {
+            $user->cm_firebase_token = $request->cm_firebase_token;
+            $user->password = $password_stor;
+            $user->save();
+            $token = $user->createToken('LaravelAuthApp')->accessToken;
+            if(!empty($user->f_name) && !empty($user->l_name) && !empty($user->email)){
+               auth('customer')->attempt(['phone' => $user->phone, 'password' => $password]);
+                return response()->json([
+                    'status' => true,
+                    'message' => translate('otp_verified'),
+                    'token' => $token,
+                    'profile_status' => true
+                ], 200);
+            } else {
+                auth('customer')->attempt(['phone' => $user->phone, 'password' => $password]);
+
+                return response()->json([
+                    'status' => true,
+                    'message' => translate('otp_verified'),
+                    'token' => $token,
+                    'profile_status' => false
+                ], 200);
+            }
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => translate('otp_notverified'),
+                'token' => ""
+            ], 200);
+        }
+    }
+
 
 
 }

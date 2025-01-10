@@ -9684,9 +9684,8 @@ body *::-webkit-scrollbar-thumb {
     font-size: 14px;
 }
 .login-card{
-    background-image: url('../img/shopping.png');
+    background-image: url('../img/shoping.png');
     width: 100%;
-    height: 450px;
     background-repeat: no-repeat;
     background-size: cover;
 }

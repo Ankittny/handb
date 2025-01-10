@@ -318,6 +318,8 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer', 'as' => 'custom
         Route::get('logout', 'LoginController@logout')->name('logout');
         Route::get('get-login-modal-data', 'LoginController@get_login_modal_data')->name('get-login-modal-data');
 
+        Route::post('otp-verify-web','LoginController@verify_otp_web');
+
         Route::get('sign-up', 'RegisterController@register')->name('sign-up');
         Route::post('sign-up', 'RegisterController@submit');
 

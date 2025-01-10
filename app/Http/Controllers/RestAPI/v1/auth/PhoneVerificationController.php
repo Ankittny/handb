@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Modules\Gateways\Traits\SmsGateway;
-
+use Auth;
 class PhoneVerificationController extends Controller
 {
     public function check_phone(Request $request)
@@ -138,7 +138,7 @@ class PhoneVerificationController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+            return response()->json(['errors' => Helpers::error_processor($validator)], 200);
         }
 
         $max_otp_hit = Helpers::get_business_settings('maximum_otp_hit') ?? 5;
@@ -154,7 +154,7 @@ class PhoneVerificationController extends Controller
 
                 return response()->json(['errors' => [
                     ['message' => translate('please_try_again_after').' '.CarbonInterval::seconds($time)->cascade()->forHumans()]
-                ]], 403);
+                ]], 200);
             }
 
             $user->phone = $request['phone'];
@@ -207,18 +207,16 @@ class PhoneVerificationController extends Controller
 
         return response()->json(['errors' => [
             ['message' => $message]
-        ]], 403);
+        ]], 200);
     }
 
     public function send_otp(Request $request){
         $validator = Validator::make($request->all(), [
             'phone' => 'required',
         ]);
-
         if ($validator->fails()) {
-            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+            return response()->json(['errors' => Helpers::error_processor($validator)], 200);
         }
-
         $user = User::where(['phone' => $request['phone']])->first();
         if(!empty($user)){
             $user->phone = $request['phone'];
@@ -231,11 +229,8 @@ class PhoneVerificationController extends Controller
                     'profile_status' => false
                 ], 200);
             } else {
-                return response()->json(['errors' => [
-                    ['message' => translate('otp_not_sent')]
-                ]], 403);
+                return response()->json(['status'=>false,'message'=>translate('otp_not_sent')],200);
             }
-
         } else {
             $user = new User();
             $user->phone = $request['phone'];
@@ -248,9 +243,8 @@ class PhoneVerificationController extends Controller
                         'profile_status' => false
                     ], 200);
                 } else {
-                    return response()->json(['errors' => [
-                        ['message' => translate('otp_not_sent')]
-                    ]], 403);
+                    return response()->json(['status'=>false,'message'=>translate('otp_not_sent')],200);
+
                 }
             }
 
@@ -287,7 +281,7 @@ class PhoneVerificationController extends Controller
         } catch (\Exception $e) {
             return response()->json(['errors' => [
                 ['message' => translate('otp_not_sent')]
-            ]], 403);
+            ]], 200);
         }
     }
 
@@ -314,6 +308,51 @@ class PhoneVerificationController extends Controller
                     'profile_status' => true
                 ], 200);
             } else {
+                return response()->json([
+                    'status' => true,
+                    'message' => translate('otp_verified'),
+                    'token' => $token,
+                    'profile_status' => false
+                ], 200);
+            }
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => translate('otp_notverified'),
+                'token' => ""
+            ], 200);
+        }
+    }
+
+    public function verify_otp_web(Request $request){
+        $validator = Validator::make($request->all(), [
+            'otp' => 'required',
+            'phone' => 'required',
+            'cm_firebase_token' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+        $user = User::where(['phone' => $request['phone'],'phone_otp'=>$request->otp])->first();
+        $password = "123456789@!#";
+        $password_stor = bcrypt($password);
+        if (isset($user)) {
+            $user->cm_firebase_token = $request->cm_firebase_token;
+            $user->password = $password_stor;
+            $user->save();
+            $token = $user->createToken('LaravelAuthApp')->accessToken;
+            if(!empty($user->f_name) && !empty($user->l_name) && !empty($user->email)){
+               auth('customer')->attempt(['phone' => $user->phone, 'password' => $password]);
+                return response()->json([
+                    'status' => true,
+                    'message' => translate('otp_verified'),
+                    'token' => $token,
+                    'profile_status' => true
+                ], 200);
+            } else {
+                auth('customer')->attempt(['phone' => $user->phone, 'password' => $password]);
+
                 return response()->json([
                     'status' => true,
                     'message' => translate('otp_verified'),

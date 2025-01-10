@@ -81,13 +81,13 @@ class UserProfileController extends Controller
     public function getUserProfileUpdate(CustomerProfileUpdateRequest $request): RedirectResponse
     {
         $imageName = $request->file('image') ? ImageManager::update('profile/', auth('customer')->user()->image, 'webp', $request->file('image')) : auth('customer')->user()->image;
-
         User::find(auth('customer')->id())->update([
             'f_name' => $request['f_name'],
             'l_name' => $request['l_name'],
-            'phone' => $request['phone'],
+            'email' => $request['email'],
+            // 'phone' => $request['phone'],
             'image' => $imageName,
-            'password' => strlen($request['password']) > 5 ? bcrypt($request['password']) : auth('customer')->user()->password,
+            // 'password' => strlen($request['password']) > 5 ? bcrypt($request['password']) : auth('customer')->user()->password,
         ]);
         Toastr::info(translate('updated_successfully'));
         return redirect()->back();
@@ -765,8 +765,8 @@ class UserProfileController extends Controller
         }
         return back();
     }
-  
-  
+
+
    public function cancelWaybill($id){
         $order = Order::where('id',$id)->first();
         $client = new Client();

@@ -50,74 +50,79 @@
                         @endif
                         @endforeach
                     </div>
-                    <div class="text-black-50 text-center">
+                    {{-- <div class="text-black-50 text-center">
                         <small>
                             {{ translate('Enjoy_New_experience') }}
                             <a class="text-primary text-underline" href="{{route('customer.auth.sign-up')}}">
                                 {{ translate('sign_up') }}
                             </a>
                         </small>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 @endsection
-
 @push('script')
   <script>
-    $(".getotp").on("click", function (e) {
-        e.preventDefault();
-        let mobile = $("#mobile_number").val();
-            $.ajax({
-                url: "{{url('api/v1/auth/send-otp')}}",
-                type: "POST",
-                headers: {
-                    "Authorization": "Bearer " + "sfdsd12345678",
-                },
-                contentType: "application/json",
-                data: JSON.stringify({
-                    phone: mobile,
-                    _token: $('meta[name="csrf-token"]').attr("content"),
-                }),
-                success: function (data) {
-                    if (data.status == true) {
+let timerRunning = false; // Flag to check if the timer is already running
+$(".getotp").on("click", function (e) {
+    e.preventDefault();
+    let mobile = $("#mobile_number").val();
 
-                        let countDownDate = new Date().getTime() + 120000;
-                        function startCountdown() {
-                            let now = new Date().getTime();
-                            let distance = countDownDate - now;
-                            let seconds = Math.max(Math.floor((distance % (1000 * 60)) / 1000), 0);
-                            $(".verifyTimer").html("Resend Code (in "+seconds+" Secs)");
-                            if (distance < 0) {
-                                clearInterval(x);
-                                $(".resend-otp-button").prop('disabled', false);
-                                $(".show-button").hide();
-                                $(".hide-button").show();
-                                $(".show-otp").hide();
-                            }
+    // Make the AJAX request
+    $.ajax({
+        url: "{{url('api/v1/auth/send-otp')}}",
+        type: "POST",
+        headers: {
+            "Authorization": "Bearer " + "sfdsd12345678",
+        },
+        contentType: "application/json",
+        data: JSON.stringify({
+            phone: mobile,
+            _token: $('meta[name="csrf-token"]').attr("content"),
+        }),
+        success: function (data) {
+            if (data.status == true) {
+                if (!timerRunning) {
+                    timerRunning = true;
+                    let countDownDate = new Date().getTime() + 58000;
+                    let x = setInterval(function () {
+                        let now = new Date().getTime();
+                        let distance = countDownDate - now;
+                        let seconds = Math.max(Math.floor((distance % (1000 * 60)) / 1000), 0);
+
+                        $(".verifyTimer").html("Resend Code (in " + seconds + " Secs)");
+
+                        if (distance < 0) {
+                            clearInterval(x);
+                            timerRunning = false;
+                            $(".resend-otp-button").prop("disabled", false);
+                            $(".show-button").hide();
+                            $(".hide-button").show();
+                            $(".show-otp").hide();
                         }
+                    }, 1000);
+                }
 
-                        let x = setInterval(startCountdown, 1000);
-                        $(".resend-otp-button").prop('disabled', true);
-                        setTimeout(function(){
-                            $(".resend-otp-button").prop('disabled', false);
-                        },30000);
+                $(".resend-otp-button").prop("disabled", true);
+                setTimeout(function () {
+                    $(".resend-otp-button").prop("disabled", false);
+                }, 10000);
 
-                        $(".add-fadein").html("");
-                        $(".hide-button").hide();
-                        $(".show-button").show();
-                        $(".show-otp").show();
-                        console.log("Otp sent");
-                    } else {
-                        $(".add-fadein").html(data.errors[0].message);
-                    }
+                $(".add-fadein").html("");
+                $(".hide-button").hide();
+                $(".show-button").show();
+                $(".show-otp").show();
+                console.log("Otp sent");
+            } else {
+                $(".add-fadein").html(data.errors[0].message);
             }
-        });
+        },
     });
+});
+
 
     $(".VARIFYOTP").on("click", function (e) {
         e.preventDefault();
@@ -138,7 +143,12 @@
             }),
             success: function (data) {
                 if (data.status == true) {
-                    window.location.href = "{{url('/')}}";
+                    console.log(data.profile_status);
+                    if(data.profile_status==true){
+                        window.location.href = "{{url('/')}}";
+                    } else {
+                        window.location.href = "{{url('user-account')}}";
+                    }
                 } else {
                     if(typeof data.errors !== 'undefined' && data.errors[0] !== ''){
                         $(".add-fadein").html(data.errors[0].message);

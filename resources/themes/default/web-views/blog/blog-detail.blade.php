@@ -55,38 +55,6 @@
 
     </div>
 </div>
-
-
 @endsection
 
 
-@push('script')
-
-@if(isset($recaptcha) && $recaptcha['status'] == 1)
-<script type="text/javascript">
-    "use strict";
-    var onloadCallback = function() {
-        grecaptcha.render('recaptcha_element', {
-            'sitekey': '{{ getWebConfig(name: '
-            recaptcha ')['
-            site_key '] }}'
-        });
-    };
-</script>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async
-    defer></script>
-<script>
-    "use strict";
-    $("#getResponse").on('submit', function(e) {
-        var response = grecaptcha.getResponse();
-        if (response.length === 0) {
-            e.preventDefault();
-            toastr.error($('#message-please-check-recaptcha').data('text'));
-        }
-    });
-</script>
-@endif
-
-<script src="{{ theme_asset(path: 'public/assets/front-end/plugin/intl-tel-input/js/intlTelInput.js') }}"></script>
-<script src="{{ theme_asset(path: 'public/assets/front-end/js/country-picker-init.js') }}"></script>
-@endpush

@@ -9608,6 +9608,11 @@ body *::-webkit-scrollbar-thumb {
 .text-muted {
     color: #000 !important;
 }
+.text-font-size{
+    text-align: center;
+    font-size: 25px;
+}
+
 .text-accent{
   font-family: 'Open sans';
 }

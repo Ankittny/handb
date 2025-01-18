@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container-fluid py-4 py-lg-5 my-4 text-align-direction">
+<div class="text-align-direction">
     <div class="login-card">
         <div class="mx-auto __max-w-360 color-bc">
 

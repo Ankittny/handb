@@ -7,15 +7,8 @@
 <div class="text-align-direction">
     <div class="login-card">
         <div class="mx-auto __max-w-360 color-bc">
-<<<<<<< HEAD
-     
             <h2 class="text-center h4 mb-4 font-bold text-capitalize fs-18-mobile">Log In or Sign Up</h2>
       <hr>
-=======
-            <h2 class="text-center h4 mb-4 font-bold text-capitalize fs-18-mobile">Log In or Sign Up</h2>
-      <hr>
-
->>>>>>> e91dce37609985ec0c0bd0f5d2d0a7c970be4b9b
             <div class="number-verification mt-3">
                 <!-- <p class="text-center">Enter your mobile number</p>
                     <h5 class="text-center">We Will Send you On OTP Message </h5> -->
@@ -24,10 +17,9 @@
                         method="post" id="customer-login-form">
                         @csrf
                         <div class="form-group">
-<<<<<<< HEAD
-=======
 
->>>>>>> e91dce37609985ec0c0bd0f5d2d0a7c970be4b9b
+
+
                             <input class="form-control text-align-direction" type="number" name="mobile_number" id="mobile_number"
                                 value="{{old('user_id')}}" placeholder="{{ translate('Enter_mobile_number') }}"
                                 required>

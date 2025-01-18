@@ -9617,10 +9617,8 @@ body *::-webkit-scrollbar-thumb {
     z-index: 999;
     font-weight: 700;
 }
-    z-index: 999;
-    font-weight: 700;
-    top: -135px;
-}
+   
+
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++ all-home-page ============================== */
 

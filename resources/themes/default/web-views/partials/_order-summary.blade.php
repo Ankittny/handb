@@ -137,7 +137,7 @@
         @endif
 
         <div class="pt-4">
-            <a class="btn btn--primary btn-block proceed_to_next_button {{$cart->count() <= 0 ? 'disabled' : ''}} action-checkout-function">{{translate('proceed_to_Checkout')}}</a>
+            <a class="btn btn--primary btn-block  {{$cart->count() <= 0 ? 'disabled' : ''}} action-checkout-function">{{translate('proceed_to_Checkout')}}</a>
         </div>
 
         <div class="d-flex justify-content-center mt-3">

@@ -135,7 +135,7 @@
                 </div>
             </div>
         @endif
-        @if(Request::url()=="http://localhost/handb/checkout-details")
+        @if(Request::url()=="https://dev.healthandblossom.com/checkout-details" || Request::url()=="https://dev.healthandblossom.com/shop-cart")
             <div class="pt-4">
                 <a class="btn btn--primary btn-block  {{$cart->count() <= 0 ? 'disabled' : ''}} action-checkout-function">{{translate('proceed_to_Checkout')}}</a>
             </div>

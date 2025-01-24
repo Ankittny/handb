@@ -135,10 +135,16 @@
                 </div>
             </div>
         @endif
+        @if(Request::url()=="http://localhost/handb/checkout-details")
+            <div class="pt-4">
+                <a class="btn btn--primary btn-block  {{$cart->count() <= 0 ? 'disabled' : ''}} action-checkout-function">{{translate('proceed_to_Checkout')}}</a>
+            </div>
+        @else
+            <div class="pt-4">
+                <a class="btn btn--primary btn-block  {{$cart->count() <= 0 ? 'disabled' : ''}} action-checkout-function">{{translate('Pay_Now')}}</a>
+            </div>
 
-        <div class="pt-4">
-            <a class="btn btn--primary btn-block  {{$cart->count() <= 0 ? 'disabled' : ''}} action-checkout-function">{{translate('proceed_to_Checkout')}}</a>
-        </div>
+        @endif
 
         <div class="d-flex justify-content-center mt-3">
             <a href="{{route('home')}}" class="d-flex align-items-center gap-2 text-primary font-weight-bold">
@@ -156,7 +162,7 @@
                 class="text-base">{{ webCurrencyConverter(amount: $subTotal+$totalTax+$totalShippingCost-$coupon_dis-$totalDiscountOnProduct-$orderWiseShippingDiscount) }}</strong>
     </div>
     <a data-route="{{ Route::currentRouteName() }}"
-       class="btn btn--primary btn-block proceed_to_next_button text-capitalize {{$cart->count() <= 0 ? 'disabled' : ''}} action-checkout-function">{{translate('proceed_to_checkout')}}</a>
+       class="btn btn--primary btn-block proceed_to_next_button text-capitalize {{$cart->count() <= 0 ? 'disabled' : ''}} action-checkout-function">{{translate('Pay_Now')}}</a>
 </div>
 
 @push('script')

@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="container d-flex align-items-center justify-content-between" >
+        <div class="container" >
         <div class="card-right-style">
             <span class="card-text text-muted fs-7 mb-0">
                 <b>Author:</b> Added by Health and Blossom | <b>Date:</b> {{ $date->format('d F Y') }}

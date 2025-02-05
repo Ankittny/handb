@@ -44,7 +44,7 @@
                     </form>
                 </div> -->
 
-                <div class="mt-4">
+                <div class="">
                     @foreach ($recent_posts as $recent)
                         @if ($recent_posts->isEmpty())
                             <div class="col-12 text-center">
@@ -75,7 +75,7 @@
                 </div>
             </div>
 
-            <section class="col-lg-9">
+            <section class="col-lg-9 blog-description">
                 @php
                     use App\Models\Blog;
                     $blogs = Blog::where('status', 1)->paginate(10); // Limits the number of blogs to 10
@@ -94,7 +94,7 @@
                     @php
                       $date = new \DateTime($blog->updated_at);
                     @endphp
-                        <div class=" col-lg-3 col-md-4 col-sm-4 col-6  p-2">
+                        <div class=" col-lg-4 col-md-4 col-sm-4 col-6  p-2">
                             <div class="hidden-text">
                                 <div class="overflow-hidden position-relative">
                                     <div class="inline_product product-fix clickable ">
@@ -103,27 +103,31 @@
                                             <img src="{{ asset('public/assets/back-end/bloges/') . '/' . $blog->image }}" alt="{{ asset('public/assets/back-end/bloges/') . '/' . $blog->image }}">
                                             </a>
                                         </div>
+                                        <div class=" py-3">
                                         <div class="text-timedate d-flex gap-2 mt-2">
                                             <p>Admin</p>
                                              <span>{{ \Carbon\Carbon::parse($blog->updated_at)->format('d F Y') }}</span>
                                             </div>
-                                    </div>
-                                    <div class="single-product-details">
+                                            <div class="single-product-details">
 
-                                        <div class="frequengtly-ft">
-                                            <a href="blog-detail/{{$blog->slug ?? ""}}">
-                                                {{ $blog->title }}
-                                            </a>
+<div class="frequengtly-ft">
+    <a href="blog-detail/{{$blog->slug ?? ""}}">
+        {{ $blog->title }}
+    </a>
+</div>
+<!-- <div class="justify-content-between fx-justify ">
+        <?php
+            $string = strip_tags($blog->description);
+            $string = preg_replace('/\s+/', ' ', $string);
+            $string = substr($string, 0, 89) . (strlen($string) > 89 ? '...' : '');
+        ?>
+        <?= $string ?>
+</div> -->
+</div>
                                         </div>
-                                        <div class="justify-content-between fx-justify ">
-                                                <?php
-                                                    $string = strip_tags($blog->description);
-                                                    $string = preg_replace('/\s+/', ' ', $string);
-                                                    $string = substr($string, 0, 89) . (strlen($string) > 89 ? '...' : '');
-                                                ?>
-                                                <?= $string ?>
-                                        </div>
+
                                     </div>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -132,19 +136,7 @@
                 <div class="pagination-container">
                     {{ $blogs->links() }}
                 </div>
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
     </div>
     </section>
     </div>

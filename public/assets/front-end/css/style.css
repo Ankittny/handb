@@ -9536,9 +9536,9 @@ body *::-webkit-scrollbar-thumb {
 .lias-int img{
     border-radius: 10px 10px 0px 0px;
 }
-.product-fix{
+/* .product-fix{
     margin-top: -22px;
-}
+} */
 .for-hover-label::first-letter{
     text-transform: uppercase;
 }
@@ -9608,16 +9608,26 @@ body *::-webkit-scrollbar-thumb {
 .text-muted {
     color: #000 !important;
 }
+.text-font-size{
+    text-align: center;
+    font-size: 25px;
+}
+
 .text-accent{
   font-family: 'Open sans';
 }
-.frequengtly-ft h1{
-    position: absolute;
-    top: -125px;
-    z-index: 999;
-    font-weight: 700;
+.frequengtly-ft h1 {
+        position: absolute;
+        z-index: 999;
+        font-weight: 700;
+        bottom: 100%;
+        left: 50%;
+        transform: translate(-50%, -170px);
+        width: 100%;
+        color: white;
 }
-   
+
+
 
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++ all-home-page ============================== */
@@ -9675,7 +9685,7 @@ body *::-webkit-scrollbar-thumb {
 .block-verified{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 5px;
- 
+
 }
 .bl-block{
     padding: 2px 0px;
@@ -9691,4 +9701,8 @@ body *::-webkit-scrollbar-thumb {
     background: #fff;
     padding: 25px;
     border-radius: 10px;
+}
+
+.blog-description{
+    margin-top: 60px;
 }

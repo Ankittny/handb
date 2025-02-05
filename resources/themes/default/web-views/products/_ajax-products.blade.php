@@ -22,7 +22,7 @@
     <div class="d-flex justify-content-center align-items-center w-100 py-5">
         <div>
             <img src="{{ theme_asset(path: 'public/assets/front-end/img/media/product.svg') }}" class="img-fluid" alt="">
-            <h6 class="text-muted text-font">{{ translate('coming_soon') }}</h6>
+            <h6 class="text-muted text-font-size">{{ translate('coming_soon') }}</h6>
         </div>
     </div>
 @endif

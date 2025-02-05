@@ -78,7 +78,7 @@
             <section class="col-lg-9 blog-description">
                 @php
                     use App\Models\Blog;
-                    $blogs = Blog::where('status', 1)->paginate(10); // Limits the number of blogs to 10
+                    $blogs = Blog::where('status', 1)->latest()->paginate(12); // Limits the number of blogs to 10
                 @endphp
 
                 <div class="row">

@@ -8414,7 +8414,7 @@ input.form-control.fz-30 {
     max-width: 360px;
 }
 .login-card {
-    border-radius: 10px;
+    /* border-radius: 10px; */
     border: 1px solid rgba(27, 127, 237, 0.1);
     background: #fff;
     box-shadow: 0px 0px 2px 0px rgba(0, 113, 220, 0.15);
@@ -9536,9 +9536,9 @@ body *::-webkit-scrollbar-thumb {
 .lias-int img{
     border-radius: 10px 10px 0px 0px;
 }
-.product-fix{
+/* .product-fix{
     margin-top: -22px;
-}
+} */
 .for-hover-label::first-letter{
     text-transform: uppercase;
 }
@@ -9617,15 +9617,17 @@ body *::-webkit-scrollbar-thumb {
   font-family: 'Open sans';
 }
 .frequengtly-ft h1 {
-    position: absolute;
-    z-index: 999;
-    font-weight: 700;
-    top: -13%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    color: white;
+        position: absolute;
+        z-index: 999;
+        font-weight: 700;
+        bottom: 100%;
+        left: 50%;
+        transform: translate(-50%, -170px);
+        width: 100%;
+        color: white;
 }
+
+
 
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++ all-home-page ============================== */
@@ -9690,13 +9692,17 @@ body *::-webkit-scrollbar-thumb {
     font-size: 14px;
 }
 .login-card{
-    background-image: url(../img/shopping.webp);
+    background-image: url('../img/shoping.png');
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .color-bc{
     background: #fff;
-    padding: 20px;
+    padding: 25px;
     border-radius: 10px;
+}
+
+.blog-description{
+    margin-top: 60px;
 }

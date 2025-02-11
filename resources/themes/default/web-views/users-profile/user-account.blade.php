@@ -39,7 +39,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="card-inner">
                             <form class="mt-3 px-sm-2 pb-2" action="{{route('user-update')}}" method="post"
                                   id="profile_form"
@@ -97,9 +96,9 @@
                                         <label for="inputEmail4"
                                                class="mb-2 text-capitalize">{{translate('email')}} </label>
                                         <input type="email" class="form-control" id="account-email"
-                                               value="{{$customerDetail['email']}}" disabled>
+                                               value="{{$customerDetail['email']}}" name="email" >
                                     </div>
-                                    <div class="form-group col-md-6 mb-0">
+                                    {{-- <div class="form-group col-md-6 mb-0">
                                         <label for="si-password"
                                                class="mb-2 text-capitalize">{{translate('new_password')}}</label>
                                         <div class="password-toggle rtl">
@@ -113,9 +112,9 @@
                                             </label>
                                         </div>
                                         <span class="text-danger mx-1 password-error"></span>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="form-group col-md-6 mb-0">
+                                    {{-- <div class="form-group col-md-6 mb-0">
                                         <label for="newPass"
                                                class="mb-2 text-capitalize">{{translate('confirm_password')}} </label>
                                         <div class="password-toggle rtl">
@@ -131,7 +130,7 @@
                                             </div>
                                         </div>
                                         <div id='message' class="mt-1"></div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-12 text-end d-none d-md-block">
                                         <button type="submit" class="btn btn--primary px-4 fs-14 font-semi-bold py-2">
                                             {{ translate('update') }}

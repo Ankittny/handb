@@ -367,8 +367,8 @@ class CustomerController extends Controller
 
         return response()->json(['message' => translate('update_successful')], 200);
     }
-  
-  
+
+
   public function getPinCodeDetails($zip){
         $client = new Client();
         $url = "https://track.delhivery.com/c/api/pin-codes/json/?filter_codes=" . $zip;
@@ -601,7 +601,6 @@ class CustomerController extends Controller
         $validator = Validator::make($request->all(), [
             'f_name' => 'required',
             'l_name' => 'required',
-            'phone' => 'required',
         ], [
             'f_name.required' => translate('First name is required!'),
             'l_name.required' => translate('Last name is required!'),
@@ -626,11 +625,14 @@ class CustomerController extends Controller
         $userDetails = [
             'f_name' => $request->f_name,
             'l_name' => $request->l_name,
-            'phone' => $request->phone,
             'image' => $imageName,
             'password' => $pass,
             'updated_at' => now(),
         ];
+
+        if ($request->email != $request->user()->email) {
+            $userDetails['email'] = $request->email;
+        }
 
         User::where(['id' => $request->user()->id])->update($userDetails);
 

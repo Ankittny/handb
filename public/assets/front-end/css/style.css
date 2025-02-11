@@ -8414,11 +8414,11 @@ input.form-control.fz-30 {
     max-width: 360px;
 }
 .login-card {
-    border-radius: 10px;
+    /* border-radius: 10px; */
     border: 1px solid rgba(27, 127, 237, 0.1);
     background: #fff;
     box-shadow: 0px 0px 2px 0px rgba(0, 113, 220, 0.15);
-    padding: 27px 24px 29px;
+    padding: 15px 24px 29px;
 }
 .custom-control-input:checked ~ .custom-control-label::before {
     border-color: var(--base);
@@ -9536,9 +9536,9 @@ body *::-webkit-scrollbar-thumb {
 .lias-int img{
     border-radius: 10px 10px 0px 0px;
 }
-.product-fix{
+/* .product-fix{
     margin-top: -22px;
-}
+} */
 .for-hover-label::first-letter{
     text-transform: uppercase;
 }
@@ -9608,23 +9608,27 @@ body *::-webkit-scrollbar-thumb {
 .text-muted {
     color: #000 !important;
 }
+.text-font-size{
+    text-align: center;
+    font-size: 25px;
+}
+
 .text-accent{
   font-family: 'Open sans';
 }
-.frequengtly-ft h1{
-    position: absolute;
-<<<<<<< HEAD
-    top: -125px;
-    z-index: 999;
-    font-weight: 700;
+.frequengtly-ft h1 {
+        position: absolute;
+        z-index: 999;
+        font-weight: 700;
+        bottom: 100%;
+        left: 50%;
+        transform: translate(-50%, -170px);
+        width: 100%;
+        color: white;
 }
 
-=======
-    z-index: 999;
-    font-weight: 700;
-    top: -135px;
-}
->>>>>>> ba0125f5bb6472c6889e2e048c47bc0d98d30ac1
+
+
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++ all-home-page ============================== */
 
@@ -9654,9 +9658,9 @@ body *::-webkit-scrollbar-thumb {
 .product-description a{
     font-size: 12px !important;
 }
-<<<<<<< HEAD
 
-=======
+
+
 .category-product-view-title h1,
  .feature-product-title h1,
  .latest-product-margin h1,
@@ -9667,4 +9671,38 @@ body *::-webkit-scrollbar-thumb {
     font-style: normal;
     text-align: center;
 }
->>>>>>> ba0125f5bb6472c6889e2e048c47bc0d98d30ac1
+
+.block-google{
+    background-color: '';
+}
+.otp-card-image{
+    width: 300px;
+    margin: auto;
+}
+.number-verification h5{
+    font-size: 12px;
+}
+.block-verified{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 5px;
+
+}
+.bl-block{
+    padding: 2px 0px;
+    font-size: 14px;
+}
+.login-card{
+    background-image: url('../img/shoping.png');
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.color-bc{
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.blog-description{
+    margin-top: 60px;
+}

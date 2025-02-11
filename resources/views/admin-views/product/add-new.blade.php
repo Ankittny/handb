@@ -12,7 +12,7 @@
     <div class="content container-fluid">
         <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
             <h2 class="h1 mb-0 d-flex gap-2">
-                <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="">
+                <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/inhouse-product-list.png') }}" alt="{{ $product->alt_text ? $product->alt_text : 'Default Alt Text' }}">
                 {{ translate('add_New_Product') }}
             </h2>
         </div>
@@ -190,7 +190,7 @@
                                       title="{{
                                       translate('for_Ready_Product_deliveries,_customers_can_pay_&_instantly_download_pre-uploaded_digital_products').' '.
                                       translate('For_Ready_After_Sale_deliveries,_customers_pay_first_then_admin_uploads_the_digital_products_that_become_available_to_customers_for_download') }}">
-                                    <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="">
+                                    <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="{{ $product->alt_text ? $product->alt_text : 'Default Alt Text' }}">
                                 </span>
                                 <select name="digital_product_type" id="digital_product_type" class="form-control"
                                         required>
@@ -211,7 +211,7 @@
                                         <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
                                               title="{{ translate('create_a_unique_product_code_by_clicking_on_the_Generate_Code_button') }}">
                                             <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}"
-                                                 alt="">
+                                                 alt="{{ $product->alt_text ? $product->alt_text : 'Default Alt Text' }}">
                                         </span>
                                     </span>
                                     <span class="style-one-pro cursor-pointer user-select-none text--primary action-onclick-generate-number" data-input="#generate_number">
@@ -248,7 +248,7 @@
                                     <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
                                           title="{{ translate('add_the_product_search_tag_for_this_product_that_customers_can_use_to_search_quickly') }}">
                                         <img width="16" src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}"
-                                             alt="">
+                                             alt="{{ $product->alt_text ? $product->alt_text : 'Default Alt Text' }}">
                                     </span>
                                 </label>
                                 <input type="text" class="form-control" placeholder="{{ translate('enter_tag') }}"
@@ -277,7 +277,7 @@
 
                                     <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
                                           title="{{ translate('add_the_purchase_price_for_this_product') }}.">
-                                        <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="">
+                                        <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="{{ $product->alt_text ? $product->alt_text : 'Default Alt Text' }}">
                                     </span>
                                 </div>
                                 <input type="number" min="0" step="0.01"
@@ -294,7 +294,7 @@
 
                                     <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
                                           title="{{ translate('set_the_selling_price_for_each_unit_of_this_product._This_Unit_Price_section_won’t_be_applied_if_you_set_a_variation_wise_price') }}.">
-                                        <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="">
+                                        <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="{{ $product->alt_text ? $product->alt_text : 'Default Alt Text' }}">
                                     </span>
                                 </div>
                                 <input type="number" min="0" step="0.01"

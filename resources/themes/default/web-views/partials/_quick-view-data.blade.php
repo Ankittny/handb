@@ -34,13 +34,13 @@
                                         <div class="product-preview-item d-flex align-items-center justify-content-center">
                                             <img class="show-imag img-responsive max-height-500px"
                                                  src="{{ getStorageImages(path: $photo['image_name'], type: 'product') }}"
-                                                 alt="{{ translate('product') }}" width="">
+                                                 alt="{{$product->alt_tag ?? 'healthandblossom'}}" width="">
                                         </div>
                                     @else
                                         <div class="product-preview-item d-flex align-items-center justify-content-center">
                                             <img class="show-imag img-responsive max-height-500px"
                                                  src="{{ getStorageImages(path:$photo['image_name'], type: 'product') }}"
-                                                 alt="{{ translate('product') }}" width="">
+                                                 alt="{{$product->alt_tag ?? 'healthandblossom'}}" width="">
                                         </div>
                                     @endif
                                 @endforeach
@@ -49,7 +49,7 @@
                                     <div class="product-preview-item d-flex align-items-center justify-content-center">
                                         <img class="show-imag img-responsive max-height-500px"
                                              src="{{ getStorageImages(path: $photo, type: 'product') }}"
-                                             alt="{{ translate('product') }}">
+                                             alt="{{$product->alt_tag ?? 'healthandblossom'}}">
                                     </div>
                                 @endforeach
                             @endif
@@ -88,7 +88,7 @@
                                                    class="product-preview-thumb d-flex align-items-center justify-content-center">
                                                     <img class="click-img" id="preview-img{{$photo['color']}}"
                                                          src="{{ getStorageImages(path:$photo['image_name'], type: 'product') }}"
-                                                         alt="{{ translate('product') }}">
+                                                         alt="{{$product->alt_tag ?? 'healthandblossom'}}">
                                                 </a>
                                             </div>
                                         @else
@@ -97,7 +97,7 @@
                                                    class="product-preview-thumb d-flex align-items-center justify-content-center">
                                                     <img class="click-img" id="preview-img{{$key}}"
                                                          src="{{ getStorageImages(path: $photo['image_name'], type: 'product') }}"
-                                                         alt="{{ translate('product') }}">
+                                                         alt="{{$product->alt_tag ?? 'healthandblossom'}}">
                                                 </a>
                                             </div>
                                         @endif
@@ -109,7 +109,7 @@
                                                class="product-preview-thumb d-flex align-items-center justify-content-center">
                                                 <img class="click-img" id="preview-img{{$key}}"
                                                      src="{{ getStorageImages(path: $photo, type: 'product') }}"
-                                                     alt="{{ translate('product') }}">
+                                                     alt="{{$product->alt_tag ?? 'healthandblossom'}}">
                                             </a>
                                         </div>
                                     @endforeach

@@ -8756,4 +8756,9 @@ return [
 	"otp_sent" => "Otp sent",
 	"otp_not_sent" => "Otp not sent",
 	"otp_notverified" => "Otp notverified",
+	"Successfully_Updated" => "Successfully Updated",
+	"Default Information Tooltip" => "Default Information Tooltip",
+	"product_list_image" => "Product list image",
+	"alt_tag" => "Alt tag",
+	"alt_Tag" => "Alt Tag",
 ];

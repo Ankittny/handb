@@ -45,6 +45,11 @@
                                         <input type="url" name="url" class="form-control" id="url" required placeholder="{{ translate('enter_url') }}" value="{{$banner['url']}}">
                                     </div>
 
+                                    <div class="form-group mb-3">
+                                        <label for="alt_tag" class="title-color text-capitalize">{{ translate('alt_Tag') }}</label>
+                                        <input type="text" name="alt_tag" class="form-control" id="text" required placeholder="{{ translate('enter_alt_tag') }}" value="{{$banner['alt_tag']}}">
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="resource_id" class="title-color text-capitalize">{{ translate('resource_type') }}</label>
                                         <select class="js-example-responsive form-control w-100 action-display-data" name="resource_type" required>

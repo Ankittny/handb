@@ -17,6 +17,7 @@ return [
 	"brands" => "Brands",
 	"add_new" => "Add new",
 	"List" => "List",
+	"alt_tag"=>"alt_tag",
 	"categories" => "Categories",
 	"category" => "Category",
 	"sub_category" => "Sub category",

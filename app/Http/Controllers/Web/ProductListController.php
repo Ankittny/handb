@@ -217,7 +217,6 @@ class ProductListController extends Controller
                 'view' => view('web-views.products._ajax-products', compact('products'))->render()
             ], 200);
         }
-
         return view(VIEW_FILE_NAMES['products_view_page'], [
             'products' => $products,
             'data' => $data,
@@ -668,7 +667,6 @@ class ProductListController extends Controller
                 ])->render(),
             ], 200);
         }
-
         return view(VIEW_FILE_NAMES['products_view_page'], [
             'products' => $products,
             'tag_category' => $tagCategory,

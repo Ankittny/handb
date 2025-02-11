@@ -27,7 +27,7 @@
                                         <img class="cz-image-zoom img-responsive w-100"
                                             src="{{ getStorageImages(path: $photo['image_name'], type: 'product') }}"
                                             data-zoom="{{ getStorageImages(path: $photo['image_name'], type: 'product')  }}"
-                                            alt="{{ translate('product') }}" width="">
+                                            alt="{{$product->alt_tag ?? 'healthandblossom'}}" width="">
                                         <div class="cz-image-zoom-pane"></div>
                                     </div>
                                     @else
@@ -37,7 +37,7 @@
                                         <img class="cz-image-zoom img-responsive w-100"
                                             src="{{ getStorageImages(path: $photo['image_name'], type: 'product') }}"
                                             data-zoom="{{ getStorageImages(path: $photo['image_name'], type: 'product') }}"
-                                            alt="{{ translate('product') }}" width="">
+                                            alt="{{$product->alt_tag ?? 'healthandblossom'}}" width="">
                                         <div class="cz-image-zoom-pane"></div>
                                     </div>
                                     @endif
@@ -50,7 +50,7 @@
                                         <img class="cz-image-zoom img-responsive w-100"
                                             src="{{ getStorageImages($photo, type: 'product') }}"
                                             data-zoom="{{ getStorageImages(path: $photo, type: 'product') }}"
-                                            alt="{{ translate('product') }}" width="">
+                                            alt="{{$product->alt_tag ?? 'healthandblossom'}}" width="">
                                         <div class="cz-image-zoom-pane"></div>
                                     </div>
                                     @endforeach
@@ -89,7 +89,7 @@
                                                 <a class="product-preview-thumb color-variants-preview-box-{{ $photo['color'] }} {{$key==0?'active':''}} d-flex align-items-center justify-content-center"
                                                     id="preview-img{{$photo['color']}}"
                                                     href="#image{{$photo['color']}}">
-                                                    <img alt="{{ translate('product') }}"
+                                                    <img alt="{{$product->alt_tag ?? 'healthandblossom'}}"
                                                         src="{{ getStorageImages(path: $photo['image_name'], type: 'product') }}">
                                                 </a>
                                             </div>
@@ -97,7 +97,7 @@
                                             <div class="">
                                                 <a class="product-preview-thumb {{$key==0?'active':''}} d-flex align-items-center justify-content-center"
                                                     id="preview-img{{$key}}" href="#image{{$key}}">
-                                                    <img alt="{{ translate('product') }}"
+                                                    <img alt="{{$product->alt_tag ?? 'healthandblossom'}}"
                                                         src="{{ getStorageImages(path: $photo['image_name'], type: 'product') }}">
                                                 </a>
                                             </div>
@@ -108,7 +108,7 @@
                                             <div class="">
                                                 <a class="product-preview-thumb {{$key==0?'active':''}} d-flex align-items-center justify-content-center"
                                                     id="preview-img{{$key}}" href="#image{{$key}}">
-                                                    <img alt="{{ translate('product') }}"
+                                                    <img alt="{{$product->alt_tag ?? 'healthandblossom'}}"
                                                         src="{{ getStorageImages(path: $photo, type: 'product') }}">
                                                 </a>
                                             </div>
@@ -685,7 +685,7 @@
                                                     <div class="text-center text-capitalize">
                                                         <img class="mw-100"
                                                             src="{{theme_asset(path: 'public/assets/front-end/img/icons/empty-review.svg')}}"
-                                                            alt="">
+                                                            alt="{{$product->alt_tag ?? 'healthandblossom'}}">
                                                         <p class="text-capitalize">
                                                             <small>{{translate('No_review_given_yet')}}!</small>
                                                         </p>
@@ -926,7 +926,7 @@
                         <div class="px-3 py-3">
                             <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}} __img-20"
                                 src="{{ getStorageImages(path: imagePathProcessing(imageData: $value['image'],path: 'company-reliability'), type: 'source', source: 'public/assets/front-end/img'.'/'.$value['item'].'.png') }}"
-                                alt="">
+                                alt="{{$product->alt_tag ?? 'healthandblossom'}}">
                             <span>{{translate($value['title'])}}</span>
                         </div>
                     </div>
@@ -1035,7 +1035,7 @@
                         data-dismiss="modal">
                         <i class="fa fa-close"></i>
                     </button>
-                    <img class="element-center" id="attachment-view" src="" alt="">
+                    <img class="element-center" id="attachment-view" src="" alt="{{$product->alt_tag ?? 'healthandblossom'}}">
                 </div>
             </div>
         </div>

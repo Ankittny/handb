@@ -65,6 +65,11 @@
                                         <input type="url" name="url" class="form-control" id="url" required placeholder="{{ translate('Enter_url') }}">
                                     </div>
 
+                                    <div class="form-group mb-3">
+                                        <label for="alt_tag" class="title-color text-capitalize">{{ translate('alt_tag') }}</label>
+                                        <input type="text" name="alt_tag" class="form-control" id="name" required placeholder="{{ translate('alt_tag') }}">
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="resource_id"
                                                class="title-color text-capitalize">{{ translate('resource_type') }}</label>
@@ -87,6 +92,8 @@
                                             @endforeach
                                         </select>
                                     </div>
+
+                                    
 
                                     <div class="form-group mb-0 d--none" id="resource-category">
                                         <label for="name"

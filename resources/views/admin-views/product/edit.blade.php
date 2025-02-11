@@ -372,7 +372,7 @@
 
                                     <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
                                           title="{{ translate('if_Flat_discount_amount_will_be_set_as_fixed_amount.') }} {{ translate('if_Percentage_discount_amount_will_be_set_as_percentage.') }}">
-                                        <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="">
+                                        <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="{{ $altText ?? translate('Default Information Tooltip') }}">
                                     </span>
                                 </div>
 

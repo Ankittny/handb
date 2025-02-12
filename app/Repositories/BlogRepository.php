@@ -25,6 +25,7 @@ class BlogRepository implements BlogInterface
             'slug',
             'meta_title',
             'meta_discription',
+            'alt_tag',
             'keywords',
             'created_at',
             'updated_at'
@@ -33,6 +34,7 @@ class BlogRepository implements BlogInterface
         $blogcode->title            = $request->title;
         $blogcode->meta_title       = $request->meta_title;
         $blogcode->meta_discription = $request->meta_discription;
+        $blogcode->alt_tag = $request->alt_tag;
         $blogcode->keywords         = $request->keywords;
         $blogcode->slug             = strtolower($request->slug);
         $blogcode->cat_id           = $request->cat_id;
@@ -51,6 +53,7 @@ class BlogRepository implements BlogInterface
             'description',
             'meta_title',
             'meta_discription',
+            'alt_tag',
             'keywords',
           	'image',
             'slug',
@@ -64,6 +67,7 @@ class BlogRepository implements BlogInterface
                 'title'            => $request->title,
                 'meta_title'       => $request->meta_title,
                 'meta_discription' => $request->meta_discription,
+                'alt_tag'=>$request->alt_tag,
                 'keywords'         => $request->keywords,
                 'description'      => $request->description,
                 'slug'             =>  strtolower($request->slug),

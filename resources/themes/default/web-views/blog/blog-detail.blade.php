@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="">
                                     <a href="" class="w-100">
-                                        <img alt="" src="{{asset('public/assets/back-end/bloges/').'/'.$blog->image }}">
+                                        <img alt="{{$blog->alt_tag ?? 'healthandblossom'}}" src="{{asset('public/assets/back-end/bloges/').'/'.$blog->image }}">
                                     </a>
                                 </div>
 

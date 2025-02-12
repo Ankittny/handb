@@ -41,6 +41,11 @@
                         </div>
 
                         <div class="form-group">
+                           <label class="alt_tag">Alt Tag<span class="text-danger">*</span></label>
+                           <input type="text" name="alt_tag" class="form-control" value="" placeholder="{{ translate('alt_tag') }}" required>
+                        </div>
+
+                        <div class="form-group">
                            <label class="title-color">Keywords<span class="text-danger">*</span></label>
                            <input type="text" name="keywords" class="form-control" value="" placeholder="{{ translate('keywords') }}" required>
                         </div>

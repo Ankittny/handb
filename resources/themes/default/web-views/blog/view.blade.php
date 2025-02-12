@@ -58,7 +58,7 @@
                             <div class="d-flex">
                                 <div class="d-flex align-items-center justify-content-center p-3">
                                     <div class="flash-deals-background-image image-default-bg-color">
-                                        <img class="__img-125px" alt=""
+                                        <img class="__img-125px" alt="{{$blog->alt_tag ?? 'healthandblossom'}}"
                                             src="{{ asset('public/assets/back-end/bloges/') . '/' . $recent->image }}">
                                     </div>
                                 </div>
@@ -100,7 +100,7 @@
                                     <div class="inline_product product-fix clickable ">
                                         <div class=" lias-int">
                                             <a href="{{ route('blog-detail', $blog->slug) }}" class="w-100">
-                                            <img src="{{ asset('public/assets/back-end/bloges/') . '/' . $blog->image }}" alt="{{ asset('public/assets/back-end/bloges/') . '/' . $blog->image }}">
+                                            <img src="{{ asset('public/assets/back-end/bloges/') . '/' . $blog->image }}" alt="{{$blog->alt_tag ?? 'healthandblossom'}}">
                                             </a>
                                         </div>
                                         <div class=" py-3">

@@ -12,6 +12,7 @@ return [
 	"delivered" => "Delivered",
 	"returned" => "Returned",
 	"failed" => "Failed",
+	"alt_tag"=>"alt_tag",
 	"canceled" => "Canceled",
 	"product_management" => "Product management",
 	"brands" => "Brands",

@@ -8761,4 +8761,5 @@ return [
 	"Enter_phone" => "Enter phone",
 	"Enter_mobile_number" => "Enter mobile number",
 	"Enter_Otp" => "Enter Otp",
+	"alt_tag" => "Alt tag",
 ];

@@ -45,6 +45,7 @@ class Banner extends Model
         'published',
         'url',
         'resource_type',
+        'alt_tag',
         'resource_id',
         'title',
         'sub_title',

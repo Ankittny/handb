@@ -40,7 +40,7 @@
                     <div class="owl-theme owl-carousel hero-slider">
                         @foreach($main_banner as $key=>$banner)
                             <a href="{{$banner['url']}}" class="d-block" target="_blank">
-                                <img class=" __slide-img" alt=""
+                                <img class=" __slide-img" alt="{{$banner->alt_tag ?? 'healthandblossom'}}"
                                     src="{{ getStorageImages(path: $banner->photo_full_url, type: 'banner') }}">
                             </a>
                         @endforeach

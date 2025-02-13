@@ -41,6 +41,11 @@
                                     </div>
 
                                     <div class="form-group mb-3">
+                                        <label for="alt_tag" class="title-color text-capitalize">{{ translate('alt_tag') }}</label>
+                                        <input type="text" name="alt_tag" class="form-control" id="alt_tag" required placeholder="{{ translate('alt_tag') }}" value="{{$banner['alt_tag']}}">
+                                    </div>
+
+                                    <div class="form-group mb-3">
                                         <label for="name" class="title-color text-capitalize">{{ translate('banner_URL') }}</label>
                                         <input type="url" name="url" class="form-control" id="url" required placeholder="{{ translate('enter_url') }}" value="{{$banner['url']}}">
                                     </div>

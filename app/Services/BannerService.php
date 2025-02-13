@@ -19,6 +19,7 @@ class BannerService
         return [
             'banner_type' => $request['banner_type'],
             'resource_type' => $request['resource_type'],
+            'alt_tag'=>$request['alt_tag'],
             'resource_id' => $request[$request->resource_type . '_id'],
             'theme' => theme_root_path(),
             'title' => $request['title'],

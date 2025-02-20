@@ -283,7 +283,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post(Order::HNBINVOICE[URI] . '/{order_id}/{primary_id}', 'hnbinvoice')->name('hnbinvoice');
         });
     });
-  
+
 
     Route::group(['prefix' => 'hsn', 'as' => 'hsn.'], function () {
           Route::controller(HsnController::class)->group(function () {
@@ -295,7 +295,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
                Route::post(Hsn::DEL[URI], 'delete')->name('delete');
           });
     });
-  
+
     // Attribute
     Route::group(['prefix' => 'attribute', 'as' => 'attribute.','middleware'=>['module:product_management']], function () {
         Route::controller(AttributeController::class)->group(function (){
@@ -323,7 +323,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
 
     // Category
     Route::group(['prefix' => 'category', 'as' => 'category.','middleware'=>['module:product_management']], function () {
-        Route::controller(CategoryController::class)->group(function (){ 
+        Route::controller(CategoryController::class)->group(function (){
             Route::get(Category::LIST[URI], 'index')->name('view');
             Route::get(Category::INGREDIENTS[URI], 'getIngredientsView')->name('ingredient');
             Route::post(Category::ADD[URI], 'add')->name('store');
@@ -417,7 +417,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
 
     Route::group(['prefix' => 'report', 'as' => 'report.', 'middleware' => ['module:report']], function () {
         Route::controller(InhouseProductSaleController::class)->group(function () {
-            Route::get(InhouseProductSale::VIEW[URI], 'index')->name('inhouse-product-sale');
+            // Route::get(InhouseProductSale::VIEW[URI], 'index')->name('inhouse-product-sale');
         });
     });
 

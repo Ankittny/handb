@@ -9402,6 +9402,10 @@ body *::-webkit-scrollbar-thumb {
     .hightlight ul{
         margin-top: 10px;
     }
+
+    .overflow-hidden, .pro-dct img {
+        height: 285px !important;
+    }
 }
 
 

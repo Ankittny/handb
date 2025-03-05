@@ -12,6 +12,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\Requests\Admin\FlashDealAddRequest;
 use App\Http\Requests\Admin\FlashDealUpdateRequest;
 use App\Http\Requests\Admin\ProductIDRequest;
+use App\Models\FlashDeal as ModelsFlashDeal;
 use App\Services\FlashDealService;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\View\View;
@@ -51,6 +52,7 @@ class FlashDealController extends BaseController
             withCount: ['products'=>'products'],
             dataLimit: getWebConfig('pagination_limit')
         );
+        dd($flashDeals);
         $flashDealPriority = json_decode($this->businessSettingRepo->getFirstWhere(params: ['type' => 'flash_deal_priority'])['value']);
         return view(FlashDeal::LIST[VIEW], compact('flashDeals','flashDealPriority'));
     }
@@ -95,9 +97,8 @@ class FlashDealController extends BaseController
             scope: "active",
             relations: ['brand','category','seller.shop'],
             dataLimit: 'all');
-
-        $flashDealProducts = $this->flashDealProductRepo->getListWhere(filters:['flash_deal_id'=>$deal_id])->pluck('product_id')->toArray();
-
+        $flashDealProducts = ModelsFlashDeal::find($deal_id)->products()->pluck('product_id')->toArray();
+        //$flashDealProducts = $this->flashDealProductRepo->getListWhere(filters:['flash_deal_id'=>$deal_id])->pluck('product_id')->toArray();
         $deal = $this->flashDealRepo->getFirstWhere(params:['id'=>$deal_id],relations: ['products.product']);
 
         $dealProducts = $this->productRepo->getListWithScope(
@@ -106,7 +107,7 @@ class FlashDealController extends BaseController
             whereIn: ['id'=>$flashDealProducts],
             relations: ['brand','category','seller.shop'],
             dataLimit: getWebConfig('pagination_limit'));
-
+        //dd($dealProducts);
         return view(FlashDeal::ADD_PRODUCT[VIEW], compact('deal', 'products', 'dealProducts'));
     }
 

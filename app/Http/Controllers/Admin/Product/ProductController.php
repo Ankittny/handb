@@ -594,7 +594,7 @@ class ProductController extends BaseController
         $products = $this->productRepo->getListWhere(
             searchValue: $searchValue,
             filters: [
-                'added_by' => 'in_house',
+                // 'added_by' => 'in_house',
                 'status' => 1,
                 'category_id' => $request['category_id'],
                 'code' => $request['name'],
@@ -666,7 +666,7 @@ class ProductController extends BaseController
             'result' => view(Product::MULTIPLE_PRODUCT_DETAILS[VIEW], compact('selectedProducts'))->render(),
         ]);
     }
-  
+
   public function gethsncode(Request $request){
         $hsn = Hsncode::where('hsn_code_under_gst',$request->jsncode)->first();
         if ($hsn) {

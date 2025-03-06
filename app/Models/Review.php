@@ -97,18 +97,23 @@ class Review extends Model
         return $this->belongsTo(ReviewReply::class, 'id', 'review_id');
     }
 
-    public function getAttachmentFullUrlAttribute(): array|null
+    public function getAttachmentFullUrlAttribute():? array
     {
         $images = [];
         $value = $this->attachment;
-        if ($value) {
+        if (is_string($value)) {
+            $value = [$value]; 
+        }
+        if ($value && is_array($value)) {
             foreach ($value as $item) {
                 $item = isset($item['file_name']) ? $item : ['file_name' => $item, 'storage' => 'public'];
                 $images[] = $this->storageLink('review', $item['file_name'], $item['storage'] ?? 'public');
             }
         }
+    
         return $images;
     }
+    
     protected $appends = ['attachment_full_url'];
 
     protected static function boot()

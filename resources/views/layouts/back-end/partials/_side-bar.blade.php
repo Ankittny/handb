@@ -788,6 +788,19 @@
                                     </span>
                                         </a>
                                     </li>
+                                    <a class="nav-link" href="{{ route('admin.reviews.add') }}" title="{{ translate('add_review') }}">
+                                    <span class="tio-circle nav-indicator-icon"></span>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                        {{ translate('add_review') }}
+                                    </span>
+                                </a>
+
+                                <a class="nav-link" href="{{ route('admin.reviews.store') }}" title="{{ translate('store_review') }}">
+                                    <span class="tio-circle nav-indicator-icon"></span>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                        {{ translate('store_review') }}
+                                    </span>
+                                </a>
                                 </ul>
                             </li>
 

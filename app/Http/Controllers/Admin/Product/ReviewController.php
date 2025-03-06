@@ -77,7 +77,7 @@ class ReviewController extends BaseController
             foreach ($request->file('attachment') as $file) {
                 $fileName = time() . '-' . $file->getClientOriginalName();
                 $file->move(public_path('assets/back-end/review'), $fileName);
-                $attachments[] = 'assets/back-end/review/' . $fileName;
+                $attachments[] =  $fileName;
             }
         }
         $review = \App\Models\Review::create([

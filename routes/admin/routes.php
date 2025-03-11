@@ -417,7 +417,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
 
     Route::group(['prefix' => 'report', 'as' => 'report.', 'middleware' => ['module:report']], function () {
         Route::controller(InhouseProductSaleController::class)->group(function () {
-            // Route::get(InhouseProductSale::VIEW[URI], 'index')->name('inhouse-product-sale');
+            Route::get(InhouseProductSale::VIEW[URI], 'index')->name('inhouse-product-sale');
         });
     });
 

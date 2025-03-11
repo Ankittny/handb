@@ -32,6 +32,7 @@ if (!function_exists('getWebConfig')) {
                 session()->put($name, $config);
             }
         }
+        //echo "<pre>"; print_r($config); die;
         return $config;
     }
     function storageDataProcessing($name, $value)

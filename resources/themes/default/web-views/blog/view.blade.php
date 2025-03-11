@@ -110,20 +110,20 @@
                                             </div>
                                             <div class="single-product-details">
 
-<div class="frequengtly-ft">
-    <a href="blog-detail/{{$blog->slug ?? ""}}">
-        {{ $blog->title }}
-    </a>
-</div>
-<!-- <div class="justify-content-between fx-justify ">
-        <?php
-            $string = strip_tags($blog->description);
-            $string = preg_replace('/\s+/', ' ', $string);
-            $string = substr($string, 0, 89) . (strlen($string) > 89 ? '...' : '');
-        ?>
-        <?= $string ?>
-</div> -->
-</div>
+                                            <div class="frequengtly-ft">
+                                                <a href="blog-detail/{{$blog->slug ?? ""}}">
+                                                    {{ $blog->title }}
+                                                </a>
+                                            </div>
+                                            <!-- <div class="justify-content-between fx-justify ">
+                                                <?php
+                                                    $string = strip_tags($blog->description);
+                                                    $string = preg_replace('/\s+/', ' ', $string);
+                                                    $string = substr($string, 0, 89) . (strlen($string) > 89 ? '...' : '');
+                                                ?>
+                                                <?= $string ?>
+                                        </div> -->
+                                        </div>
                                         </div>
 
                                     </div>

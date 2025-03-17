@@ -594,7 +594,7 @@ class ProductController extends BaseController
         $products = $this->productRepo->getListWhere(
             searchValue: $searchValue,
             filters: [
-                // 'added_by' => 'in_house',
+                'added_by' => 'seller',
                 'status' => 1,
                 'category_id' => $request['category_id'],
                 'code' => $request['name'],

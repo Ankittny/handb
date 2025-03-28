@@ -35,6 +35,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use App\Models\Hsncode;
+use App\Models\BulkOrder;
 class ProductController extends BaseController
 {
     use FileManagerTrait {
@@ -162,6 +163,7 @@ class ProductController extends BaseController
         if ($request->ajax()) {
             return response()->json([], 200);
         }
+        
 
         $product = $this->productRepo->getFirstWhereWithoutGlobalScope(params: ['id' => $id], relations: ['digitalVariation','seoInfo']);
         $dataArray = $service->getUpdateProductData(request: $request, product: $product, updateBy: 'admin');
@@ -667,12 +669,42 @@ class ProductController extends BaseController
         ]);
     }
 
-  public function gethsncode(Request $request){
-        $hsn = Hsncode::where('hsn_code_under_gst',$request->jsncode)->first();
-        if ($hsn) {
-            return response()->json([
-                'tax' => $hsn->tax
-            ]);
-        }
+public function gethsncode(Request $request){
+            $hsn = Hsncode::where('hsn_code_under_gst', $request->jsncode)->first();
+            if ($hsn) {
+                    return response()->json([
+                            'tax' => $hsn->tax
+                    ]);
+            }
+    }
+
+    public function bulkOrder(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'nullable|integer',
+            'quantity' => 'required|integer|min:1',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone_number' => 'required|string|max:20',
+        ]);
+
+        $productId = $request->input('category_id', $request->product_id);
+
+        BulkOrder::create([
+            'product_id' => $productId,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'quantity' => $request->quantity,
+            
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Order placed successfully!']);
+    }
+
+    public function getBulkOrders(Request $request): View
+    {
+        $orders = BulkOrder::paginate(10);
+        return view('admin-views.product.bulk_product', compact('orders'));
     }
 }

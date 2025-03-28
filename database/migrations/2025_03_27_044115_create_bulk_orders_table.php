@@ -11,28 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('blogs')) {
-
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('bulk_orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cat_id');
-            $table->string('title');
-            $table->string('slug');
-            $table->text('description');
-            $table->string('image')->nullable();
-            $table->integer('status')->default(1);
+            $table->foreignId('product_id');
+            $table->integer('quantity');
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }
-}
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('bulk_orders');
     }
 };
-
-

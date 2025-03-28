@@ -298,6 +298,16 @@
                                                                         (<small>{{translate('tax')}} : </small>
                                                                         <small id="set-tax-amount"></small>)
                                                                     </small>
+                                                                    <div id="current_stock_div">
+                                                                    <div class="d-none d-sm-flex justify-content-start align-items-center me-2 text-dark">
+                                                                        <div class="product-description-label font-bold text-capitalize">
+                                                                            <strong>{{ translate('Current Stock') }}</strong> :
+                                                                        </div>
+                                                                        &nbsp; <strong id="current_stock_value" class="text-base text-dark">
+                                                                            {{ isset($product->current_stock) ? $product->current_stock : translate('Out of stock') }}
+                                                                        </strong>
+                                                                    </div>
+                                                                </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -334,6 +344,14 @@
                                                                     </div>
                                                                 </div>
                                                             </button>
+                                                            @if(isset($product) && $product->bulk_product_status == 1)
+                                                                <button type="button"  data-toggle="modal" data-target="#myModal"
+                                                                class="btn btn-secondary btn-sm btn-gap-{{ Session::get('direction') === 'rtl' ? 'left' : 'right' }}">
+                                                                    <i class="fa fa-box text-white" aria-hidden="true"></i>
+                                                                    <span class="fs-14 text-white align-bottom">{{ translate('bulk_order') }}</span>
+                                                                </button>
+                                                            @endif
+
                                                             @if(($product->added_by == 'seller' && ($sellerTemporaryClose || (isset($product->seller->shop) && $product->seller->shop->vacation_status && $currentDate >= $sellerVacationStartDate && $currentDate <= $sellerVacationEndDate))) ||
                                                                 ($product->added_by == 'admin' && ($inHouseTemporaryClose || ($inHouseVacationStatus && $currentDate >= $inHouseVacationStartDate && $currentDate <= $inHouseVacationEndDate))))
                                                                     <div class="alert alert-danger" role="alert">
@@ -886,7 +904,8 @@
                                                 </div>
                                                 @else
                                                 <div class="col-12 overflow-scroll fs-13 text-justify details-text-justify rich-editor-html-content">
-                                                    <div class="card-footer d-flex justify-content-center align-items-center">
+                                                    <div class="card
+                                                    -footer d-flex justify-content-center align-items-center">
                                                         <span class="text-capitalize">No ingredients available</span>
                                                     </div>
                                                 </div>
@@ -1042,6 +1061,49 @@
     </div>
 </div>
 
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Product Order</h4>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm">
+                @csrf
+                    <div class="form-group">
+                        <label for="category_id">Product ID:</label>
+                        <input type="hidden" class="form-control" id="category_id" name="category_id" value="{{$product->id}}" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number:</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" min="1" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @include('layouts.front-end.partials.modal._chatting',['seller'=>$product->seller, 'user_type'=>$product->added_by])
 
 
@@ -1052,3 +1114,27 @@
 @push('script')
 <script src="{{ theme_asset(path: 'public/assets/front-end/js/product-details.js') }}"></script>
 @endpush
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#orderForm').submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "{{ route('bulk_order') }}",
+            type: "POST",
+            data: $(this).serialize(),
+            success: function(response) {
+                if (response.success) {
+                    alert(response.message);
+                    $('#myModal').modal('hide'); 
+                    $('#orderForm')[0].reset();
+                }
+            },
+            error: function(xhr) {
+                alert("Error: " + xhr.responseText);
+            }
+        });
+    });
+});
+</script>

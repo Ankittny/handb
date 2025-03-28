@@ -36,6 +36,7 @@ use App\Http\Controllers\Payment_Methods\SenangPayController;
 use App\Http\Controllers\Payment_Methods\MercadoPagoController;
 use App\Http\Controllers\Payment_Methods\BkashPaymentController;
 use App\Http\Controllers\Payment_Methods\PaystackController;
+use App\Http\Controllers\Admin\Product\ProductController;
 use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
@@ -476,6 +477,9 @@ if (!$is_published) {
 Route::get('web-payment', 'Customer\PaymentController@web_payment_success')->name('web-payment-success');
 Route::get('payment-success', 'Customer\PaymentController@success')->name('payment-success');
 Route::get('payment-fail', 'Customer\PaymentController@fail')->name('payment-fail');
+Route::post('/bulk_order', [ProductController::class, 'bulkOrder'])->name('bulk_order');
+Route::get('admin/product/bulk-products', [ProductController::class, 'getBulkOrders'])->name('admin.product.bulk-products');
+
 
 Route::get('/test', function () {
     return view('welcome');

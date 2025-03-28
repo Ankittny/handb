@@ -88,6 +88,7 @@ class Product extends Model
         'attributes',
         'current_stock',
         'minimum_order_qty',
+        'bulk_product_status',
         'video_provider',
         'video_url',
         'status',

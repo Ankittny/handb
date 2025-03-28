@@ -437,6 +437,14 @@
                                             </span>
                                         </a>
                                     </li>
+                                    <li class="nav-item {{Request::is('admin/products/bulk-products')?'active':''}}">
+                                        <a class="nav-link"
+                                           title="{{translate('bulk_Products')}}"
+                                           href="{{route('admin.product.bulk-products')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('bulk_Products')}}</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/products/'.Product::PRODUCT_GALLERY[URI])?'active':''}}">

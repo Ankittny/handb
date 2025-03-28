@@ -471,6 +471,26 @@
                                        name="shipping_cost" class="form-control" required>
                             </div>
                         </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="form-group">
+                    <div class="d-flex gap-2">
+                        <label class="title-color" for="bulk_product_status">{{ translate('Bulk Product Status') }}</label>
+                        <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
+                              title="{{ translate('Select whether this product should be active or inactive in bulk.') }}">
+                            <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="">
+                        </span>
+                    </div>
+                    <select class="form-control" name="bulk_product_status" id="bulk_product_status" required>
+                    <option value="1" {{ isset($product) ? ($product->bulk_product_status == 1 ? 'selected' : '') : (old('bulk_product_status', 1) == 1 ? 'selected' : '') }}>
+                        {{ translate('Active') }}
+                    </option>
+                    <option value="0" {{ isset($product) ? ($product->bulk_product_status == 0 ? 'selected' : '') : (old('bulk_product_status', 1) == 0 ? 'selected' : '') }}>
+                        {{ translate('Inactive') }}
+                    </option>
+                </select>
+
+                </div>
+            </div>
                         <div class="col-md-6 physical_product_show" id="shipping_cost_multy">
                             <div class="form-group">
                                 <div

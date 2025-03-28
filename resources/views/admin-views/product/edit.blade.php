@@ -494,10 +494,24 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="form-group">
+                            <div class="d-flex gap-2">
+                                <label class="title-color" for="bulk_product_status">{{ translate('Bulk Product Status') }}</label>
+                                <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
+                                    title="{{ translate('Select whether this product should be active or inactive in bulk.') }}">
+                                    <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}" alt="">
+                                </span>
+                            </div>
+                            <select class="form-control" name="bulk_product_status" id="bulk_product_status" required>
+                                <option value="1" {{ $product->bulk_product_status == 1 ? 'selected' : '' }}>{{ translate('Active') }}</option>
+                                <option value="0" {{ $product->bulk_product_status == 0 ? 'selected' : '' }}>{{ translate('Inactive') }}</option>
+                            </select>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
-
             <div class="card mt-3 rest-part digitalProductVariationSetupSection">
                 <div class="card-header">
                     <div class="d-flex gap-2">
@@ -663,8 +677,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="mt-3 rest-part">
                 <div class="row g-2">
                     <div class="col-md-3">

@@ -75,6 +75,7 @@ return [
 	"about_us" => "About Us",
 	"faq" => "FAQ",
 	"social_media" => "Social media",
+	"bulk_product_status" => "Bulk product status",
 	"Report" => "Report",
 	"Analytics" => "Analytics",
 	"add-review" => "Add Review",

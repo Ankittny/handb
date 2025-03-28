@@ -103,6 +103,16 @@ enum Product
         VIEW => 'admin-views.product.bulk-import'
     ];
 
+    const BULK_PRODUCT = [
+        URI => 'bulk-products',
+        VIEW => 'admin-views.product.bulk_product'
+    ];
+
+    const BULK_EXPORT_AJAX = [
+        URI => 'admin.bulkorders.update',
+        VIEW => ''
+    ];
+
     const UPDATED_PRODUCT_LIST = [
         URI => 'updated-product-list',
         VIEW => 'admin-views.product.updated-product-list'

@@ -258,6 +258,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::get(Product::MULTIPLE_PRODUCT_DETAILS[URI], 'getMultipleProductDetailsView')->name('multiple-product-details');
             Route::get(Product::PRODUCT_GALLERY[URI], 'getProductGalleryView')->name('product-gallery');
             Route::get(Product::STOCK_LIMIT_STATUS[URI] . '/{type}', 'getStockLimitStatus')->name('stock-limit-status');
+            Route::get(Product::BULK_PRODUCT[URI], 'getBulkOrders')->name('bulk-products');
+            Route::post(Product::BULK_EXPORT_AJAX[URI], 'updateBulkProduct')->name('bulk-export-ajax');
         });
     });
 
@@ -570,7 +572,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post(Review::REVIEW_REPLY[URI], 'addReviewReply')->name('add-review-reply');
             Route::get(Review::ADD_REVIEW[URI], 'add_review')->name('add');
             Route::post(Review::REVIEW[URI], 'store_review')->name('store');
-           
+
         });
     });
 

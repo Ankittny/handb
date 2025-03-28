@@ -9,5 +9,5 @@ class BulkOrder extends Model
 {
     use HasFactory;
     protected $table = 'bulk_orders';
-    protected $fillable = ['product_id','quantity', 'name','email', 'phone_number'];
+    protected $fillable = ['product_id','quantity', 'name','email', 'phone_number','status'];
 }

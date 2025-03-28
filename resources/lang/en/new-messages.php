@@ -8785,4 +8785,5 @@ return [
 	"Phone Number" => "Phone Number",
 	"Created At" => "Created At",
 	"No bulk orders found." => "No bulk orders found.",
+	"Bulk_Order" => "Bulk Order",
 ];

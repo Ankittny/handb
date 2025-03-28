@@ -478,7 +478,7 @@ Route::get('web-payment', 'Customer\PaymentController@web_payment_success')->nam
 Route::get('payment-success', 'Customer\PaymentController@success')->name('payment-success');
 Route::get('payment-fail', 'Customer\PaymentController@fail')->name('payment-fail');
 Route::post('/bulk_order', [ProductController::class, 'bulkOrder'])->name('bulk_order');
-Route::get('admin/product/bulk-products', [ProductController::class, 'getBulkOrders'])->name('admin.product.bulk-products');
+// Route::get('admin/product/bulk-products', [ProductController::class, 'getBulkOrders'])->name('admin.product.bulk-products');
 
 
 Route::get('/test', function () {

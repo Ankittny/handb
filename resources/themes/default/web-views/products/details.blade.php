@@ -127,7 +127,7 @@
                         <div class="col-lg-7 col-md-8 col-12 mt-md-0 mt-sm-3 web-direction">
                             <div class="details __h-100">
                                 <span class="mb-2 __inline-24">
-                                    <h1>{{ $product->name }}</h1>
+                                    <h1 class="text-start">{{ $product->name }}</h1>
                                 </span>
                                 <div class="d-flex flex-wrap align-items-center mb-2 pro">
                                     <div class="star-rating me-2">
@@ -290,7 +290,7 @@
                                                         value="{{ $product->minimum_order_qty ?? 1 }}"
                                                         data-producttype="{{ $product->product_type }}"
                                                         min="{{ $product->minimum_order_qty ?? 1 }}"
-                                                        max="{{ $product['product_type'] == 'physical' ? $product->current_stock : 100 }}">
+                                                        max="{{ $product['product_type'] == 'physical' ? $product->current_stock : 100 }}" readonly>
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-number __p-10 web-text-primary"
                                                             type="button"
@@ -389,7 +389,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    @if (!empty($product->feature_key))
+                                    @if (!empty($product->feature_key) && $product->feature_key ==".")
                                         <div class="hightlight d-flex ">
                                             <span class="">Highlight</span>
                                             <?php
@@ -401,7 +401,7 @@
                                     @endif
                                     @if (!empty($product->return_policy))
                                         <div class="payment-secure mt-2">
-                                            <P class="fw-semi-bold">Safe and Secure Payments.Easy returns.100% Authentic
+                                            <P class="fw-semi-bold fw-bold">Safe and Secure Payments.Easy returns.100% Authentic
                                                 products.
                                             <p>
                                         </div>
@@ -582,7 +582,7 @@
                                 <div class="accordion__custom custom-cr" id="accordion">
                                     <div class="">
                                         <div class="card-header card-head-txt" id="heading-0">
-                                            <h6 class="faq-title txt-mb-title mb-0 py-2 collapsed" data-toggle="collapse"
+                                            <h6 class="faq-title txt-mb-title mb-0 py-2 fw-bold collapsed" data-toggle="collapse"
                                                 data-target="#collapse-0" aria-expanded="false"
                                                 aria-controls="collapse-0">
                                                 Features
@@ -598,14 +598,14 @@
                                     </div>
                                     <div class="card">
                                         <div class="card-header card-head-txt" id="heading-1">
-                                            <h6 class="faq-title txt-mb-title mb-0 py-2 collapsed" data-toggle="collapse"
+                                            <h6 class="faq-title txt-mb-title mb-0 fw-bold py-2 collapsed" data-toggle="collapse"
                                                 data-target="#collapse-1" aria-expanded="false"
                                                 aria-controls="collapse-1">
                                                 Ingredients
                                             </h6>
                                         </div>
 
-                                        <div id="collapse-1" class="collapse" aria-labelledby="heading-1"
+                                        <div id="collapse-1" class="collapse"  aria-labelledby="heading-1"
                                             data-parent="#accordion" style="">
                                             <div class="card-body">
                                                 <?= $product->ingredients1 ?>
@@ -613,8 +613,8 @@
                                         </div>
                                     </div>
                                     <div class="card">
-                                        <div class="card-header card-head-txt" id="heading-2">
-                                            <h6 class="faq-title txt-mb-title mb-0 py-2 collapsed" data-toggle="collapse"
+                                        <div class="card-header card-head-txt"  id="heading-2">
+                                            <h6 class="faq-title txt-mb-title fw-bold mb-0 py-2 collapsed" data-toggle="collapse"
                                                 data-target="#collapse-2" aria-expanded="false"
                                                 aria-controls="collapse-2">
                                                 How To Use
@@ -630,7 +630,7 @@
                                     </div>
                                     <div class="card">
                                         <div class="card-header card-head-txt" id="heading-3">
-                                            <h6 class="faq-title txt-mb-title mb-0 py-2 collapsed" data-toggle="collapse"
+                                            <h6 class="faq-title txt-mb-title fw-bold mb-0 py-2 collapsed" data-toggle="collapse"
                                                 data-target="#collapse-3" aria-expanded="false"
                                                 aria-controls="collapse-3">
                                                 Overview
@@ -646,7 +646,7 @@
                                     </div>
                                     <div class="card">
                                         <div class="card-header card-head-txt" id="heading-5">
-                                            <h6 class="faq-title txt-mb-title mb-0 py-2 collapsed" data-toggle="collapse"
+                                            <h6 class="faq-title txt-mb-title fw-bold mb-0 py-2 collapsed" data-toggle="collapse"
                                                 data-target="#collapse-5" aria-expanded="false"
                                                 aria-controls="collapse-5">
                                                 Disclaimer

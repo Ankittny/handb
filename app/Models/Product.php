@@ -118,6 +118,7 @@ class Product extends Model
         'feature_key',
       	'keywords',
         'alt_tag',
+        'max_order_qty',
     ];
 
     /**
@@ -170,6 +171,7 @@ class Product extends Model
         'digital_product_extensions' => 'array',
         'thumbnail_storage_type'=>'string',
         'digital_file_ready_storage_type'=>'string',
+        'max_order_qty'=> 'string',
     ];
 
     protected $appends = ['is_shop_temporary_close', 'thumbnail_full_url', 'color_images_full_url', 'meta_image_full_url', 'images_full_url', 'digital_file_ready_full_url'];

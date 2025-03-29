@@ -17,6 +17,7 @@ use App\Contracts\Repositories\ReviewRepositoryInterface;
 use App\Contracts\Repositories\TranslationRepositoryInterface;
 use App\Contracts\Repositories\VendorRepositoryInterface;
 use App\Contracts\Repositories\WishlistRepositoryInterface;
+use App\Contracts\Repositories\WholsalerRepositoryInterface;
 use App\Enums\ViewPaths\Admin\Product;
 use App\Enums\WebConfigKey;
 use App\Events\ProductRequestStatusUpdateEvent;
@@ -35,6 +36,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use App\Models\Hsncode;
+use App\Models\Wholsale;
 use App\Models\BulkOrder;
 use Validator;
 
@@ -62,6 +64,7 @@ class ProductController extends BaseController
         private readonly ReviewRepositoryInterface                  $reviewRepo,
         private readonly BannerRepositoryInterface                  $bannerRepo,
         private readonly ProductService                             $productService,
+        private WholsalerRepositoryInterface                        $wholsalerRepo,
     ) {}
 
     /**
@@ -87,7 +90,8 @@ class ProductController extends BaseController
         $languages = getWebConfig(name: 'pnc_language') ?? null;
         $defaultLanguage = $languages[0];
         $digitalProductFileTypes = ['audio', 'video', 'document', 'software'];
-        return view(Product::ADD[VIEW], compact('categories', 'brands', 'brandSetting', 'ingredients', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes'));
+        $hsn = Hsncode::where(['status'=>1])->get();
+        return view(Product::ADD[VIEW], compact('categories', 'brands','hsn','brandSetting', 'ingredients', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes'));
     }
 
     public function add(ProductAddRequest $request, ProductService $service): JsonResponse|RedirectResponse
@@ -162,8 +166,9 @@ class ProductController extends BaseController
         $attributes = $this->attributeRepo->getList(orderBy: ['name' => 'desc'], dataLimit: 'all');
         $defaultLanguage = $languages[0];
         $digitalProductFileTypes = ['audio', 'video', 'document', 'software'];
-
-        return view(Product::UPDATE[VIEW], compact('product', 'categories', 'ingredients', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes'));
+        $hsn = Hsncode::where('status',1)->get();
+        $wholsalerData = Wholsale::where('product_id', $id)->orderBy('id','asc')->get();
+        return view(Product::UPDATE[VIEW], compact('product', 'categories','wholsalerData','ingredients', 'brands', 'brandSetting','hsn', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes'));
     }
 
     public function update(ProductUpdateRequest $request, ProductService $service, string|int $id): JsonResponse|RedirectResponse
@@ -171,8 +176,6 @@ class ProductController extends BaseController
         if ($request->ajax()) {
             return response()->json([], 200);
         }
-
-
         $product = $this->productRepo->getFirstWhereWithoutGlobalScope(params: ['id' => $id], relations: ['digitalVariation', 'seoInfo']);
         $dataArray = $service->getUpdateProductData(request: $request, product: $product, updateBy: 'admin');
 
@@ -186,6 +189,18 @@ class ProductController extends BaseController
             params: ['product_id' => $product['id']],
             data: $service->getProductSEOData(request: $request, product: $product, action: 'update')
         );
+
+        // add by ankit for wholsaler
+        $wholsalerData = [];
+        foreach ($request['min-qty'] as $key => $minQty) {
+            $wholsalerData[] = [
+                'min_qty' => $minQty,
+                'max_qty' => $request['max-qty'][$key],
+                'price'   => $request['price'][$key],
+            ];
+        }
+        $this->wholsalerRepo->add(wholsalerData: $wholsalerData, productId: $request['product_id']);
+
 
         Toastr::success(translate('product_updated_successfully'));
         return redirect()->route(Product::VIEW[ROUTE], ['addedBy' => $product['added_by'], 'id' => $product['id']]);
@@ -720,7 +735,6 @@ class ProductController extends BaseController
 
 
     public function updateBulkProduct(Request $request){
-        //dd($request->all());
         $orderupdate = BulkOrder::find($request->order_id);
         $orderupdate->status = (int)$request->status;
         if($orderupdate->save()){

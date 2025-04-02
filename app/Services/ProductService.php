@@ -242,7 +242,7 @@ class ProductService
         }
         return $result;
     }
-  
+
    public function getPrice($request): array
     {
         $prices = array_filter($request->all(), function($key) {
@@ -261,7 +261,7 @@ class ProductService
     public function getSkuCombinationView(object $request): string
     {
         $colorsActive = ($request->has('colors_active') && $request->has('colors') && count($request['colors']) > 0) ? 1 : 0;
-        $unitPrice = self::getPrice($request);
+        $unitPrice =   self::getPrice($request);
         $getQuantity = self::getQuantity($request);
         $productName = $request['name'][array_search('en', $request['lang'])];
         $options = $this->getOptions(request: $request);
@@ -427,6 +427,7 @@ class ProductService
             'video_provider' => 'youtube',
             'video_url' => $request['video_url'],
             'status' => $addedBy == 'admin' ? 1 : 0,
+            'max_order_qty' => $request['max_order_qty'],
             'request_status' => $addedBy == 'admin' ? 1 : (getWebConfig(name: 'new_product_approval') == 1 ? 0 : 1),
             'shipping_cost' => $request['product_type'] == 'physical' ? currencyConverter(amount: $request['shipping_cost']) : 0,
             'multiply_qty' => ($request['product_type'] == 'physical') ? ($request['multiply_qty'] == 'on' ? 1 : 0) : 0, //to be changed in form multiply_qty
@@ -483,6 +484,7 @@ class ProductService
             'digital_product_type' => $request['product_type'] == 'digital' ? $request['digital_product_type'] : null,
             'details' => $request['description'][array_search('en', $request['lang'])],
             'colors' => $this->getColorsObject(request: $request),
+            'max_order_qty' => $request['max_order_qty'],
             //'choice_options' => $request['product_type'] == 'physical' ? json_encode($this->getChoiceOptions(request: $request)) : json_encode([]),
             'variation' => $request['product_type'] == 'physical' ? json_encode($variations) : json_encode([]),
             'digital_product_file_types' => $request->has('extensions_type') ? $request->get('extensions_type') : [],
@@ -555,8 +557,8 @@ class ProductService
 
         return $dataArray;
     }
-  
-  
+
+
    public function getIngredientsObject(object $request): bool|string
     {
         if ($request->has('ingredients')) {
@@ -668,6 +670,7 @@ class ProductService
                 'images' => json_encode(['def.png']),
                 'thumbnail' => $thumbnail[1] ?? $thumbnail[0],
                 'status' => 0,
+                'max_order_qty' => $request['max_order_qty'],
                 'request_status' => 1,
                 'colors' => json_encode([]),
                 'attributes' => json_encode([]),

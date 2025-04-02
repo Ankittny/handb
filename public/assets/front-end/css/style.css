@@ -915,6 +915,12 @@ a {
     border-radius: 5px;
     margin: 0;
     padding: 5px;
+
+}
+.cz-product-gallery{
+    position: sticky;
+    top: 0px;
+    width: 100%;
 }
 
 .__h-100 {
@@ -3023,7 +3029,7 @@ a {
 }
 
 .__inline-45 body {
-    font-family: "Titillium Web", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .__inline-45 .product-qty span {
@@ -3291,7 +3297,7 @@ a {
 }
 
 .__inline-47 body {
-    font-family: "Titillium Web", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .__inline-47 .card {
@@ -3417,7 +3423,7 @@ a {
 }
 
 .__inline-49 body {
-    font-family: "Titillium Web", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .__inline-49 .card {
@@ -3532,7 +3538,7 @@ a {
 }
 
 .__inline-53 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .__inline-53 .card {
@@ -3780,7 +3786,7 @@ a {
 }
 
 .__inline-60 body {
-    font-family: "Titillium Web", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .__inline-60 .product-qty span {
@@ -4185,7 +4191,7 @@ a {
 }
 
 .__inline-64 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .__inline-64 .card {
@@ -5363,7 +5369,7 @@ a {
     font-weight: 700;
     font-size: 28px;
     line-height: 33px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .store-report-content .left-content-card .info .subtitle sub {
@@ -8490,11 +8496,14 @@ input.form-control.fz-30 {
 .feature-product {
     direction: ltr;
 }
-.cz-product-gallery-icons {
+.text-align-direction .cz-product-gallery-icons {
     position: absolute;
     z-index: 9999;
     top: 0;
     right: 0;
+}
+.table-hading-color .table-dark tr th {
+   color: #ffffff !important;
 }
 
 .text-break-word {
@@ -9237,7 +9246,7 @@ body *::-webkit-scrollbar-thumb {
     position: absolute;
     z-index: 1070;
     margin: 0.25rem;
-    font-family: sans-serif;
+    font-family:"Open sans", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -9322,7 +9331,7 @@ body *::-webkit-scrollbar-thumb {
 .footer-slide-item p {
     color: #262d34;
 
-    font-family: "Open Sans";
+    font-family: "Open Sans",sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
@@ -9361,10 +9370,10 @@ body *::-webkit-scrollbar-thumb {
 }
 
 .hightlight span, ul{
-    font-family:'Open Sans';
+    font-family:'Open Sans'sans-serif;
 }
 .payment-secure p{
-    font-family:'Open Sans';
+    font-family:'Open Sans' sans-serif;
 }
 .hightlight{
     white-space: nowrap;
@@ -9618,7 +9627,7 @@ body *::-webkit-scrollbar-thumb {
 }
 
 .text-accent{
-  font-family: 'Open sans';
+  font-family: 'Open sans'sans-serif;
 }
 .frequengtly-ft h1 {
         position: absolute;

@@ -285,7 +285,6 @@ class ProductController extends Controller
         if ($validator->errors()->count() > 0) {
             return response()->json(['errors' => Helpers::error_processor($validator)]);
         }
-
         //combinations end
         $product->variation      = $request->product_type == 'physical' ? json_encode($variations) : json_encode([]);
         $product->unit_price = Convert::usd($request->unit_price);

@@ -87,6 +87,7 @@ class Cart extends Model
         'shipping_cost',
         'shipping_type',
         'is_guest',
+        'type'
     ];
 
     public function cartShipping(): HasOne

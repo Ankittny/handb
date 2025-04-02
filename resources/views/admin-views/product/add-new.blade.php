@@ -53,14 +53,14 @@
                                 </label>
                                 <textarea class="summernote {{ $lang == $defaultLanguage ? 'product-description-default-language' : '' }}" name="description[]">{{ old('details') }}</textarea>
                             </div>
-                          
+
                            <div class="form-group pt-4">
                                 <label class="title-color"
                                        for="{{ $lang }}_how_to_use">{{ translate('how_to_use') }}
                                     ({{ strtoupper($lang) }})</label>
                                 <textarea name="how_to_use" class="summernote {{ $lang == $defaultLanguage ? 'product-how_to_use-default-language' : '' }}">{{ old('details') }}</textarea>
                             </div>
-                          
+
                           <div class="form-group pt-2">
                                 <label class="title-color" for="{{ $lang }}_ingredients">
                                     {{ translate('Ingredients') }} ({{ strtoupper($lang) }})
@@ -81,7 +81,7 @@
                                 </label>
                                 <textarea class="summernote {{ $lang == $defaultLanguage ? 'product-disclaimer-default-language' : '' }}" name="disclaimer">{{ old('disclaimer') }}</textarea>
                             </div>
-                          	
+
                           <!-- Return Policy -->
                             <div class="form-group pt-2">
                                 <label class="title-color" for="{{ $lang }}_return_policy">
@@ -96,8 +96,8 @@
                                 </label>
                                 <textarea class="summernote {{ $lang == $defaultLanguage ? 'product-feature_key-default-language' : '' }}" name="feature_key">{{ old('feature_key') }}</textarea>
                             </div>
-                          
-                          
+
+
                         </div>
                     @endforeach
                 </div>
@@ -375,8 +375,11 @@
                             <div class="d-flex gap-2 mb-2">
                                 <label class="title-color mb-0" for="hsn_code_under_gst">{{ translate('HSN Code') }}</label>
                             </div>
-                            <select class="js-select2-custom form-control" name="hsn_code_under_gst" id="hsn_code_under_gst" disabled>
+                            <select class="js-select2-custom form-control" name="hsn_code_under_gst" id="hsn_code_under_gst" >
                                 <option value="">{{ translate('select_hsn_code') }}</option>
+                                @foreach($hsn as $itesm)
+                                  <option value="{{ $itesm->hsn_code_under_gst }}" {{ $product->hsn_code_under_gst == $itesm->hsn_code_under_gst ? 'selected' : '' }}>{{ $itesm->hsn_code_under_gst }} - {{ $itesm->description }}</option>
+                                @endforeach
                             </select>
                         </div>
                         </div>
@@ -761,7 +764,7 @@
                                 </label>
                                 <textarea rows="4" type="text" name="meta_description" id="meta_description" class="form-control"></textarea>
                             </div>
-                          
+
                           <div class="form-group">
                                 <label class="title-color" for="keywords">{{ translate('Keywords') }}</label>
                                 <input type="text" name="keywords" class="form-control" placeholder="{{ translate('enter_keywords') }}">
@@ -770,10 +773,10 @@
                                 <label class="title-color" for="alt_tag">{{ translate('Alt Tag') }}</label>
                                 <input type="text" name="alt_tag" class="form-control" placeholder="{{ translate('enter_alt_tag') }}">
                             </div>
-                          
+
                         </div>
-                      
-                      	
+
+
 
                         <div class="col-md-4">
                             <div class="d-flex justify-content-center">
@@ -908,7 +911,7 @@
                 // Append the HSN code to the dropdown
                 $('#hsn_code_under_gst').append('<option value="' + item.hsn_code_under_gst + '">' + item.hsn_code_under_gst + '</option>');
             });
-               
+
             },
             error: function(xhr, status, error) {
                 console.error('Error:', error);
@@ -918,7 +921,8 @@
     });
 
     $('#hsn_code_under_gst').on('change', function() {
-        var selectedHsnCode = $(this).val(); 
+        var selectedHsnCode = $(this).val();
+
         $.ajax({
             url: "{{ route('admin.products.gethsncode') }}", // Correctly rendered URL in JavaScript
             type: 'POST',
@@ -939,7 +943,7 @@
                 alert('An error occurred while canceling the order.');
             }
         });
-            
+
     });
 </script>
 @endpush

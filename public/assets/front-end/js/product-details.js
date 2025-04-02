@@ -59,7 +59,6 @@ function loadReviewOnDetailsPage() {
 
 $("#chat-form").on("submit", function (e) {
     e.preventDefault();
-
     $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="_token"]').attr("content"),

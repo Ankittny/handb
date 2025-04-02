@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 if (!function_exists('digital_payment_success')) {
     function digital_payment_success($paymentData)
     {
+        //dd("this is test");
         if (isset($paymentData) && $paymentData['is_paid'] == 1) {
             $generateUniqueId = OrderManager::gen_unique_id();
             $orderIds = [];

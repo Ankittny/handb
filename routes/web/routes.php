@@ -290,6 +290,7 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.', 'namespace' => 'Web'], functi
         Route::post('updateQuantity-guest', 'updateQuantity_guest')->name('updateQuantity.guest');
         Route::post('order-again', 'orderAgain')->name('order-again')->middleware('customer');
         Route::post('select-cart-items', 'updateCheckedCartItems')->name('select-cart-items');
+        Route::post('change_quantity', 'changeQuantity')->name('change_quantity');
     });
 });
 
@@ -478,7 +479,7 @@ Route::get('web-payment', 'Customer\PaymentController@web_payment_success')->nam
 Route::get('payment-success', 'Customer\PaymentController@success')->name('payment-success');
 Route::get('payment-fail', 'Customer\PaymentController@fail')->name('payment-fail');
 Route::post('/bulk_order', [ProductController::class, 'bulkOrder'])->name('bulk_order');
-Route::get('admin/product/bulk-products', [ProductController::class, 'getBulkOrders'])->name('admin.product.bulk-products');
+// Route::get('admin/product/bulk-products', [ProductController::class, 'getBulkOrders'])->name('admin.product.bulk-products');
 
 
 Route::get('/test', function () {

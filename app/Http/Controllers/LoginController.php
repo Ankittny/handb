@@ -34,7 +34,7 @@ class LoginController extends Controller
         abort_if(!$user_type, 404 );
         $role = array_search($user_type,$loginTypes,true);
         abort_if($role == null ,404);
-
+        dd("this is test"); die;
         $custome_recaptcha = new CaptchaBuilder;
         $custome_recaptcha->build();
         Session::put('six_captcha', $custome_recaptcha->getPhrase());

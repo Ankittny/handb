@@ -206,6 +206,8 @@
                             </div>
                         @endif
                     @endforeach
+
+
                     <table
                         class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table __cart-table">
                         <tbody>
@@ -219,7 +221,6 @@
                             ?>
                         @foreach($group as $cart_key=>$cartItem)
                             @php($product = $cartItem->allProducts)
-
                             <?php
                                 $getProductCurrentStock = $product->current_stock;
                                 if(!empty($product->variation)) {
@@ -310,11 +311,16 @@
                                                         </span>
                                                     </div>
                                                 @endif
-
                                                 @if($product->product_type == 'physical' && $getProductCurrentStock < $cartItem['quantity'])
-                                                    <div class="d-flex text-danger font-bold">
-                                                        <span>{{ translate('Out_Of_Stock') }}</span>
-                                                    </div>
+                                                        @if($cartItem->type !=1)
+                                                            <div class="d-flex text-danger font-bold">
+                                                                <span>{{ translate('Out_Of_Stock') }}</span>
+                                                            </div>
+                                                        @else
+                                                            <div class="d-flex text-success font-bold">
+                                                                <span>{{ translate('Bulk_Order') }}</span>
+                                                            </div>
+                                                        @endif
                                                 @endif
                                             </div>
                                         </div>
@@ -339,9 +345,57 @@
                                 <td class="__w-15p text-center">
 
                                     @php($minimum_order=\App\Utils\ProductManager::get_product($cartItem['product_id']))
+
                                     @if ($checkProductStatus == 1)
+                                        @if($cartItem['type']===1)
+
+                                                    <?php
+                                                        $bulk_product = \App\Models\Wholsale::where('product_id',$cartItem['product_id'])->first();
+                                                        // echo "<pre>"; print_r($bulk_product);
+                                                    ?>
+
+
+
+                                                <div class="qty d-flex justify-content-center align-items-center gap-3">
+                                                    {{-- <span class="qty_minus action-update-cart-quantity-list  sdfsdf"
+                                                        data-minimum-order="{{ $bulk_product->min_qty }}"
+                                                        data-cart-id="{{ $cartItem['id'] }}"
+                                                        data-increment="{{ '-1' }}"
+                                                        data-event="{{ $cartItem['quantity'] == $bulk_product->min_qty ? 'delete':'minus' }}"
+                                                        data-cart-type="{{$cartItem['type']}}"
+                                                        >
+
+
+
+                                                        @if($getProductCurrentStock < $cartItem['quantity'] || $cartItem['quantity'] == (isset($cartItem->product->minimum_order_qty) ? $cartItem->product->minimum_order_qty : 1))
+                                                            <i class="tio-delete text-danger"></i>
+                                                        @else
+                                                            <i class="tio-remove"></i>
+                                                        @endif
+
+                                                    </span> --}}
+                                                        <input type="text" class="qty_input cartQuantity{{ $cartItem['id'] }} action-change-update-cart-quantity-list"
+                                                            value="{{$cartItem['quantity']}}"
+                                                            name="quantity[{{ $cartItem['id'] }}]"
+                                                            id="cart_quantity_web{{$cartItem['id']}}"
+                                                            data-current-stock="{{ $bulk_product->max_qty }}"
+                                                            data-minimum-order="{{ $bulk_product->min_qty }}"
+                                                            data-cart-id="{{ $cartItem['id'] }}"
+                                                            data-increment="{{ '0' }}"
+                                                            data-cart-type="{{$cartItem['type']}}"
+
+                                                            data-min="{{ isset($bulk_product->min_qty) ? $bulk_product->min_qty : 1 }}"
+                                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')" readonly>
+                                                        {{-- <span class="qty_plus action-update-cart-quantity-list"
+                                                            data-minimum-order="{{ $bulk_product->min_qty }}"
+                                                            data-cart-id="{{ $cartItem['id'] }}"
+                                                            data-increment="{{ '1' }}">
+                                                                <i class="tio-add"></i>
+                                                        </span> --}}
+                                                    </div>
+                                      @else
                                         <div class="qty d-flex justify-content-center align-items-center gap-3">
-                                                <span class="qty_minus action-update-cart-quantity-list"
+                                                <span class="qty_minus action-update-cart-quantity-list  sdfsdf"
                                                       data-minimum-order="{{ $product->minimum_order_qty }}"
                                                       data-cart-id="{{ $cartItem['id'] }}"
                                                       data-increment="{{ '-1' }}"
@@ -354,6 +408,9 @@
                                                     @endif
 
                                                 </span>
+
+
+
                                             <input type="text" class="qty_input cartQuantity{{ $cartItem['id'] }} action-change-update-cart-quantity-list"
                                                    value="{{$cartItem['quantity']}}"
                                                    name="quantity[{{ $cartItem['id'] }}]"
@@ -372,6 +429,8 @@
                                                     <i class="tio-add"></i>
                                             </span>
                                         </div>
+
+                                        @endif
                                     @else
                                         <div class="qty d-flex justify-content-center align-items-center gap-3">
                                             <span class="action-update-cart-quantity-list cursor-pointer"

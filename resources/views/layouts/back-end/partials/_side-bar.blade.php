@@ -437,10 +437,10 @@
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/products/bulk-products')?'active':''}}">
+                                    <li class="nav-item Request::is('admin/products/'.Product::BULK_PRODUCT[URI])?'active':''}}">
                                         <a class="nav-link"
                                            title="{{translate('bulk_Products')}}"
-                                           href="{{route('admin.product.bulk-products')}}">
+                                           href="{{route('admin.products.bulk-products')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{translate('bulk_Products')}}</span>
                                         </a>

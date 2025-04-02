@@ -56,7 +56,7 @@ class RazorPayController extends Controller
         if ($validator->fails()) {
             return response()->json($this->response_formatter(GATEWAYS_DEFAULT_400, null, $this->error_processor($validator)), 400);
         }
-		
+
       $user_info = ShippingAddress::select('contact_person_name','email','address_type','address','city','phone')->where('id', session()->get('address_id'))->first();
       $data = $this->payment::where(['id' => $request['payment_id']])->where(['is_paid' => 0])->first();
         if (!isset($data)) {
@@ -72,6 +72,7 @@ class RazorPayController extends Controller
             $business_name = "my_business";
             $business_logo = url('/');
         }
+       // dd($data);
 	   return view('payment.razor-pay', compact('data', 'payer', 'business_logo', 'business_name','user_info'));
        // return view('payment.razor-pay', compact('data', 'payer', 'business_logo', 'business_name'));
     }
@@ -81,7 +82,6 @@ class RazorPayController extends Controller
         $input = $request->all();
         $api = new Api(config('razor_config.api_key'), config('razor_config.api_secret'));
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
-
         if (count($input) && !empty($input['razorpay_payment_id'])) {
             $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' => $payment['amount']));
 

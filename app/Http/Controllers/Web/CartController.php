@@ -147,6 +147,16 @@ class CartController extends Controller
         ];
     }
 
+
+    public function changeQuantity(Request $request){
+        $finel_price = $request->convert_price;
+        $price       =  Helpers::currency_converter($finel_price);
+        return [
+            'status' => true,
+            'price' => $price
+        ];
+    }
+
     public function addToCart(Request $request): JsonResponse|RedirectResponse
     {
         $cart = CartManager::add_to_cart($request);
@@ -212,7 +222,6 @@ class CartController extends Controller
     public function updateQuantity(Request $request)
     {
         $response = CartManager::update_cart_qty($request);
-
         session()->forget('coupon_code');
         session()->forget('coupon_type');
         session()->forget('coupon_bearer');

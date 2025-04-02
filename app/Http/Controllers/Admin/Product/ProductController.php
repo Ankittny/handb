@@ -17,6 +17,7 @@ use App\Contracts\Repositories\ReviewRepositoryInterface;
 use App\Contracts\Repositories\TranslationRepositoryInterface;
 use App\Contracts\Repositories\VendorRepositoryInterface;
 use App\Contracts\Repositories\WishlistRepositoryInterface;
+use App\Contracts\Repositories\WholsalerRepositoryInterface;
 use App\Enums\ViewPaths\Admin\Product;
 use App\Enums\WebConfigKey;
 use App\Events\ProductRequestStatusUpdateEvent;
@@ -35,7 +36,10 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use App\Models\Hsncode;
+use App\Models\Wholsale;
 use App\Models\BulkOrder;
+use Validator;
+
 class ProductController extends BaseController
 {
     use FileManagerTrait {
@@ -60,9 +64,8 @@ class ProductController extends BaseController
         private readonly ReviewRepositoryInterface                  $reviewRepo,
         private readonly BannerRepositoryInterface                  $bannerRepo,
         private readonly ProductService                             $productService,
-    )
-    {
-    }
+        private WholsalerRepositoryInterface                        $wholsalerRepo,
+    ) {}
 
     /**
      * @param Request|null $request
@@ -77,8 +80,8 @@ class ProductController extends BaseController
 
     public function getAddView(): View
     {
-        $categories = $this->categoryRepo->getListWhere(filters: ['position' => 0,'organic_status' => '0'], dataLimit: 'all');
-        $ingredients = $this->categoryRepo->getListWhere(filters: ['position' => 0,'organic_status' => '1'], dataLimit: 'all');
+        $categories = $this->categoryRepo->getListWhere(filters: ['position' => 0, 'organic_status' => '0'], dataLimit: 'all');
+        $ingredients = $this->categoryRepo->getListWhere(filters: ['position' => 0, 'organic_status' => '1'], dataLimit: 'all');
         $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
         $brandSetting = getWebConfig(name: 'product_brand');
         $digitalProductSetting = getWebConfig(name: 'digital_product');
@@ -87,7 +90,8 @@ class ProductController extends BaseController
         $languages = getWebConfig(name: 'pnc_language') ?? null;
         $defaultLanguage = $languages[0];
         $digitalProductFileTypes = ['audio', 'video', 'document', 'software'];
-        return view(Product::ADD[VIEW], compact('categories', 'brands', 'brandSetting','ingredients','digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes'));
+        $hsn = Hsncode::where(['status'=>1])->get();
+        return view(Product::ADD[VIEW], compact('categories', 'brands','hsn','brandSetting', 'ingredients', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes'));
     }
 
     public function add(ProductAddRequest $request, ProductService $service): JsonResponse|RedirectResponse
@@ -131,21 +135,29 @@ class ProductController extends BaseController
         $categories = $this->categoryRepo->getListWhere(filters: ['position' => 0], dataLimit: 'all');
         $subCategory = $this->categoryRepo->getFirstWhere(params: ['id' => $request['sub_category_id']]);
         $subSubCategory = $this->categoryRepo->getFirstWhere(params: ['id' => $request['sub_sub_category_id']]);
-        return view(Product::LIST[VIEW], compact('products', 'sellers', 'brands',
-            'categories', 'subCategory', 'subSubCategory', 'filters', 'type'));
+        return view(Product::LIST[VIEW], compact(
+            'products',
+            'sellers',
+            'brands',
+            'categories',
+            'subCategory',
+            'subSubCategory',
+            'filters',
+            'type'
+        ));
     }
 
     public function getUpdateView(string|int $id): View|RedirectResponse
     {
         $product = $this->productRepo->getFirstWhereWithoutGlobalScope(params: ['id' => $id], relations: ['translations', 'seoInfo']);
         if (!$product) {
-            Toastr::error(translate('product_not_found').'!');
+            Toastr::error(translate('product_not_found') . '!');
             return redirect()->route('admin.products.list', ['in_house']);
         }
 
         $product['colors'] = json_decode($product['colors']);
-        $categories = $this->categoryRepo->getListWhere(filters: ['position' => 0,'organic_status' => '0'], dataLimit: 'all');
-        $ingredients = $this->categoryRepo->getListWhere(filters: ['position' => 0,'organic_status' => '1'], dataLimit: 'all');
+        $categories = $this->categoryRepo->getListWhere(filters: ['position' => 0, 'organic_status' => '0'], dataLimit: 'all');
+        $ingredients = $this->categoryRepo->getListWhere(filters: ['position' => 0, 'organic_status' => '1'], dataLimit: 'all');
         $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
         $brandSetting = getWebConfig(name: 'product_brand');
         $digitalProductSetting = getWebConfig(name: 'digital_product');
@@ -154,8 +166,9 @@ class ProductController extends BaseController
         $attributes = $this->attributeRepo->getList(orderBy: ['name' => 'desc'], dataLimit: 'all');
         $defaultLanguage = $languages[0];
         $digitalProductFileTypes = ['audio', 'video', 'document', 'software'];
-
-        return view(Product::UPDATE[VIEW], compact('product', 'categories','ingredients', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes'));
+        $hsn = Hsncode::where('status',1)->get();
+        $wholsalerData = Wholsale::where('product_id', $id)->orderBy('id','asc')->get();
+        return view(Product::UPDATE[VIEW], compact('product', 'categories','wholsalerData','ingredients', 'brands', 'brandSetting','hsn', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes'));
     }
 
     public function update(ProductUpdateRequest $request, ProductService $service, string|int $id): JsonResponse|RedirectResponse
@@ -163,9 +176,7 @@ class ProductController extends BaseController
         if ($request->ajax()) {
             return response()->json([], 200);
         }
-        
-
-        $product = $this->productRepo->getFirstWhereWithoutGlobalScope(params: ['id' => $id], relations: ['digitalVariation','seoInfo']);
+        $product = $this->productRepo->getFirstWhereWithoutGlobalScope(params: ['id' => $id], relations: ['digitalVariation', 'seoInfo']);
         $dataArray = $service->getUpdateProductData(request: $request, product: $product, updateBy: 'admin');
 
         $this->productRepo->update(id: $id, data: $dataArray);
@@ -178,6 +189,18 @@ class ProductController extends BaseController
             params: ['product_id' => $product['id']],
             data: $service->getProductSEOData(request: $request, product: $product, action: 'update')
         );
+
+        // add by ankit for wholsaler
+        $wholsalerData = [];
+        foreach ($request['min-qty'] as $key => $minQty) {
+            $wholsalerData[] = [
+                'min_qty' => $minQty,
+                'max_qty' => $request['max-qty'][$key],
+                'price'   => $request['price'][$key],
+            ];
+        }
+        $this->wholsalerRepo->add(wholsalerData: $wholsalerData, productId: $request['product_id']);
+
 
         Toastr::success(translate('product_updated_successfully'));
         return redirect()->route(Product::VIEW[ROUTE], ['addedBy' => $product['added_by'], 'id' => $product['id']]);
@@ -254,12 +277,12 @@ class ProductController extends BaseController
 
     public function getView(string $addedBy, string|int $id): View|RedirectResponse
     {
-        $productActive = $this->productRepo->getFirstWhereActive(params: ['id' => $id], relations: ['digitalVariation','seoInfo']);
+        $productActive = $this->productRepo->getFirstWhereActive(params: ['id' => $id], relations: ['digitalVariation', 'seoInfo']);
         if (!$productActive) {
-            Toastr::error(translate('product_not_found').'!');
+            Toastr::error(translate('product_not_found') . '!');
             return redirect()->route('admin.products.list', ['in_house']);
         }
-        $relations = ['category', 'brand', 'reviews', 'rating', 'orderDetails', 'orderDelivered', 'digitalVariation','seoInfo'];
+        $relations = ['category', 'brand', 'reviews', 'rating', 'orderDetails', 'orderDelivered', 'digitalVariation', 'seoInfo'];
         $product = $this->productRepo->getFirstWhereWithoutGlobalScope(params: ['id' => $id], relations: $relations);
         $product['priceSum'] = $product?->orderDelivered->sum('price');
         $product['qtySum'] = $product?->orderDelivered->sum('qty');
@@ -285,7 +308,7 @@ class ProductController extends BaseController
 
     public function getDigitalVariationCombinationView(Request $request, ProductService $service): JsonResponse
     {
-        $product = $this->productRepo->getFirstWhere(params: ['id' => $request['product_id']], relations: ['digitalVariation','seoInfo']);
+        $product = $this->productRepo->getFirstWhere(params: ['id' => $request['product_id']], relations: ['digitalVariation', 'seoInfo']);
         $combinationView = $service->getDigitalVariationCombinationView(request: $request, product: $product);
         return response()->json(['view' => $combinationView]);
     }
@@ -653,7 +676,6 @@ class ProductController extends BaseController
         } else {
             return response()->json(['status' => 'multiple_product', 'product_count' => $products->count()]);
         }
-
     }
 
     public function getMultipleProductDetailsView(Request $request): JsonResponse
@@ -669,24 +691,29 @@ class ProductController extends BaseController
         ]);
     }
 
-public function gethsncode(Request $request){
-            $hsn = Hsncode::where('hsn_code_under_gst', $request->jsncode)->first();
-            if ($hsn) {
-                    return response()->json([
-                            'tax' => $hsn->tax
-                    ]);
-            }
+    public function gethsncode(Request $request)
+    {
+        $hsn = Hsncode::where('hsn_code_under_gst', $request->jsncode)->first();
+        if ($hsn) {
+            return response()->json([
+                'tax' => $hsn->tax
+            ]);
+        }
     }
 
     public function bulkOrder(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'product_id' => 'nullable|integer',
             'quantity' => 'required|integer|min:1',
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'phone_number' => 'required|string|max:20',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'message' => $validator->messages()]);
+        }
 
         $productId = $request->input('category_id', $request->product_id);
 
@@ -696,15 +723,28 @@ public function gethsncode(Request $request){
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'quantity' => $request->quantity,
-            
         ]);
-
         return response()->json(['success' => true, 'message' => 'Order placed successfully!']);
     }
 
     public function getBulkOrders(Request $request): View
     {
         $orders = BulkOrder::paginate(10);
-        return view('admin-views.product.bulk_product', compact('orders'));
+        return view(Product::BULK_PRODUCT[VIEW], compact('orders'));
+    }
+
+
+    public function updateBulkProduct(Request $request){
+        $orderupdate = BulkOrder::find($request->order_id);
+        $orderupdate->status = (int)$request->status;
+        if($orderupdate->save()){
+            return response()->json([
+                'success' => true
+            ]);
+        } else{
+            return response()->json([
+                'success' => false
+            ]);
+        }
     }
 }

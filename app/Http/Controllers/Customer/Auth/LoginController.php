@@ -296,8 +296,10 @@ class LoginController extends Controller
             $user->password = $password_stor;
             $user->save();
             $token = $user->createToken('LaravelAuthApp')->accessToken;
+
             if(!empty($user->f_name) && !empty($user->l_name) && !empty($user->email)){
                auth('customer')->attempt(['phone' => $user->phone, 'password' => $password]);
+               CartManager::cart_to_db();
                 return response()->json([
                     'status' => true,
                     'message' => translate('otp_verified'),
@@ -306,7 +308,7 @@ class LoginController extends Controller
                 ], 200);
             } else {
                 auth('customer')->attempt(['phone' => $user->phone, 'password' => $password]);
-
+                CartManager::cart_to_db();
                 return response()->json([
                     'status' => true,
                     'message' => translate('otp_verified'),

@@ -318,9 +318,10 @@ class CartManager
         $variations = [];
         $user = Helpers::get_customer($request);
         $guestId = session('guest_id') ?? ($request->guest_id ?? 0);
-
-        if (($product['product_type'] == 'physical') && ($product['current_stock'] < $request['quantity'])) {
-            return ['status' => 0, 'message' => translate('out_of_stock!')];
+        if($request->type != 'wholesale'){
+            if (($product['product_type'] == 'physical') && ($product['current_stock'] < $request['quantity'])) {
+                return ['status' => 0, 'message' => translate('out_of_stock!')];
+            }
         }
 
         if ($user == 'offline') {
@@ -375,7 +376,13 @@ class CartManager
                 }
             }
         } else {
-            $price = $product->unit_price;
+            if ($request->type == 'wholesale') {
+                $quentity = $request['wholsale_quantity'];
+                $price = $request->wholesale_price/$quentity;
+            } else {
+                $quentity = $request['quantity'];
+                $price = $product->unit_price;
+            }
         }
 
         $tax = Helpers::tax_calculation(product: $product, price: $price, tax: $product['tax'], tax_type: 'percent');
@@ -385,12 +392,13 @@ class CartManager
             'customer_id' => ($user == 'offline' ? $guestId : $user->id),
             'product_id' => $request['id'],
             'product_type' => $product['product_type'],
-            'quantity' => $request['quantity'],
-            'price' => $price,
+            'quantity' => $quentity,
+            'price' =>  $price,
             'tax' => $tax,
             'tax_model' => $product->tax_model,
             'discount' => $getProductDiscount,
             'is_checked' => 1,
+            'type' => $request->type =='wholesale' ? '1' : '0',
             'slug' => $product['slug'],
             'name' => $product['name'],
             'thumbnail' => $product['thumbnail'],
@@ -665,6 +673,7 @@ class CartManager
         }
     }
 
+
     public static function update_cart_qty($request): array
     {
         $user = Helpers::get_customer($request);
@@ -796,8 +805,10 @@ class CartManager
     public static function product_stock_check($carts): bool
     {
         $status = true;
-
         foreach ($carts as $cart) {
+            if($cart->type==1){
+                return $status;
+            } else {
             if ($cart->product) {
                 $product = $cart->product;
                 $count = count(json_decode($product->variation));
@@ -816,6 +827,8 @@ class CartManager
                 $status = false;
             }
         }
+        }
+
         return $status;
     }
 

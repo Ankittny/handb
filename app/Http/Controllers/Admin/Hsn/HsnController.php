@@ -10,7 +10,7 @@ use App\Services\HsnService;
 use Brian2694\Toastr\Facades\Toastr;
 
 use App\Models\Hsncode;
-
+use App\Models\Category;
 
 class HsnController extends Controller
 {
@@ -19,8 +19,8 @@ class HsnController extends Controller
         private readonly HsnService                         $hsnService,
     )
     {
-    } 
-    
+    }
+
     public function list(Request $request){
         $searchValue = $request->input('searchValue');
         $query = Hsncode::select('id', 'hsn_code_under_gst', 'description', 'tax', 'created_at', 'updated_at')
@@ -32,7 +32,8 @@ class HsnController extends Controller
         });
     }
         $hsnCode = $query->paginate(8);
-        return view(Hsn::LIST[VIEW], compact('hsnCode'));
+        $categories = Category::where(['organic_status'=>'0'])->get();
+        return view(Hsn::LIST[VIEW], compact('hsnCode','categories'));
     }
 
     public function add(HsnRequest $request, HsnService $hsnservice)
@@ -42,7 +43,7 @@ class HsnController extends Controller
             Toastr::success(translate('hsn_added_successfully'));
             return redirect()->route('admin.hsn.list');
         }
-        
+
     }
 
     public function updateview(Request $request){
@@ -56,7 +57,7 @@ class HsnController extends Controller
             Toastr::success(translate('hsn_updated_successfully'));
             return redirect()->route('admin.hsn.list');
         }
-    } 
+    }
 
     public function delete(Request $request, HsnService $hsnservice)
     {
@@ -70,5 +71,5 @@ class HsnController extends Controller
         $data = Hsncode::select('category_id','hsn_code_under_gst')->where('category_id', $request->category_hsn_id)->get();
         return response()->json($data);
     }
-    
+
 }

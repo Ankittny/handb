@@ -626,6 +626,7 @@ class CartManager
         }
     }
 
+
     public static function update_cart_qty($request): array
     {
         $user = Helpers::get_customer($request);

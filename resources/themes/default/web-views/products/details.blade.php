@@ -8,27 +8,6 @@
         'product' => $product,
     ])
     <link rel="stylesheet" href="{{ theme_asset(path: 'public/assets/front-end/css/product-details.css') }}" />
-
-    <style>
-        .order-table {
-            width: 100%;
-            background: #f8f9fa;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        .table th, .table td {
-            text-align: center;
-            vertical-align: middle;
-        }
-        .btn-control {
-            font-size: 1rem;
-            padding: 5px 10px;
-        }
-        .buy-btn {
-            margin-top: 10px;
-        }
-    </style>
 @endpush
 
 @section('content')
@@ -447,7 +426,7 @@
                                                         <input type="hidden" name="wholesale_id" value="{{$wholesale->id}}">
                                                         <input type="hidden" name="type" value="wholesale">
                                                         <input type="hidden" name="wholesale_price" id="wholesaleconvertprice{{$wholesale->id}}" value="{{$wholesale->wholesale_price}}">
-                                                        <td><button type="button" onclick="BuyNowWholesale(this.form); return false;">Buy Now</button></td>
+                                                        <td><button class="btn btn-secondary btn-sm" type="button" onclick="BuyNowWholesale(this.form); return false;">Buy Now</button></td>
                                                     </form>
                                                 </tr>
                                                 @endforeach
@@ -1114,27 +1093,27 @@
                                     ($inHouseVacationStatus &&
                                         $currentDate >= $inHouseVacationStartDate &&
                                         $currentDate <= $inHouseVacationEndDate))))
-                        <button
-                            class="btn btn-secondary btn-sm btn-gap-{{ Session::get('direction') === 'rtl' ? 'left' : 'right' }}"
-                            type="button" disabled>
-                            {{ translate('buy_now') }}
-                        </button>
-                        <button
-                            class="btn btn--primary btn-sm string-limit btn-gap-{{ Session::get('direction') === 'rtl' ? 'left' : 'right' }}"
-                            type="button" disabled>
-                            {{ translate('add_to_cart') }}
-                        </button>
-                    @else
-                        <button
-                            class="btn btn-secondary btn-sm btn-gap-{{ Session::get('direction') === 'rtl' ? 'left' : 'right' }} action-buy-now-this-product"
-                            type="button">
-                            <span class="string-limit">{{ translate('buy_now') }}</span>
-                        </button>
-                        <button
-                            class="btn btn--primary btn-sm string-limit btn-gap-{{ Session::get('direction') === 'rtl' ? 'left' : 'right' }} action-add-to-cart-form"
-                            type="button">
-                            <span class="string-limit">{{ translate('add_to_cart') }}</span>
-                        </button>
+                            <button
+                                class="btn btn-secondary btn-sm btn-gap-{{ Session::get('direction') === 'rtl' ? 'left' : 'right' }}"
+                                type="button" disabled>
+                                {{ translate('buy_now') }}
+                            </button>
+                            <button
+                                class="btn btn--primary btn-sm string-limit btn-gap-{{ Session::get('direction') === 'rtl' ? 'left' : 'right' }}"
+                                type="button" disabled>
+                                {{ translate('add_to_cart') }}
+                            </button>
+                        @else
+                            <button
+                                class="btn btn-secondary btn-sm btn-gap-{{ Session::get('direction') === 'rtl' ? 'left' : 'right' }} action-buy-now-this-product"
+                                type="button">
+                                <span class="string-limit">{{ translate('buy_now') }}</span>
+                            </button>
+                            <button
+                                class="btn btn--primary btn-sm string-limit btn-gap-{{ Session::get('direction') === 'rtl' ? 'left' : 'right' }} action-add-to-cart-form"
+                                type="button">
+                                <span class="string-limit">{{ translate('add_to_cart') }}</span>
+                            </button>
                     @endif
                 </div>
             </div>
@@ -1192,63 +1171,6 @@
         </div>
     </div>
     <!-- Bootstrap 5 Styled Modal -->
-<!-- Bootstrap 5 Styled Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow-lg rounded-4">
-            <div class="modal-header" style="background-color: #413737; color: white;">
-                <h5 class="modal-title fw-bold" id="modalTitle" style="color: white;">Place Your Order</h5>
-                <button type="button" class="btn-close close-modal" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
-            </div>
-            <div class="modal-body p-4">
-                <form id="orderForm">
-                    @csrf
-                    <input type="hidden" class="form-control" id="category_id" name="category_id" value="{{$product->id}}" readonly>
-
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name:</label>
-                        <input type="text" class="form-control border-" id="name" name="name" value="{{ auth('customer')->check() ? auth('customer')->user()->f_name.' '.auth('customer')->user()->l_name : '' }}">
-                        <span class="text-danger" id="error-name"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email:</label>
-                        <input type="email" class="form-control border-" id="email" name="email" value="{{ auth('customer')->check() ? auth('customer')->user()->email : '' }}">
-                        <span class="text-danger" id="error-email"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="phone_number" class="form-label">Phone Number:</label>
-                        <input type="number" class="form-control border-" id="phone_number" name="phone_number" maxlength="10" value="{{ auth('customer')->check() ? auth('customer')->user()->phone : '' }}">
-                        <span class="text-danger" id="error-phone-number"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="quantity" class="form-label">Quantity:</label>
-                        <input type="number" class="form-control border-" id="quantity" name="quantity" min="1">
-                        <span class="text-danger" id="error-quantity"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="query" class="form-label">Query:</label>
-                        <textarea class="form-control border-" id="query" name="query" rows="3"></textarea>
-                    </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn--primary element-center btn-gap-right " id="order-now-btn">
-                            Order Now
-                            <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px;display:none"></i>
-                        </button>
-
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
     @include('layouts.front-end.partials.modal._chatting', [
         'seller' => $product->seller,
         'user_type' => $product->added_by,
@@ -1347,9 +1269,6 @@
             }
         });
     }
-
-
-
     function BuyNowWholesale(form) {
         const formData = new FormData(form);
         formData.append('quantity', 1);
@@ -1365,10 +1284,6 @@
                 console.log(response);
                 if (response.status == 1) {
                     document.getElementById('loading').style.display = 'none';
-                    // Swal.fire({
-                    //     title: "Buy Now",
-                    //     text: response.message,
-                    // });
                     window.location.replace("{{ url('shop-cart') }}");
                 } else {
                     Swal.fire({

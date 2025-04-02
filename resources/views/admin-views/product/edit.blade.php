@@ -577,21 +577,22 @@
                 </div>
 
                 <div class="card-body">
+                    <div id="wholesale-fields">
+
                     @foreach ($wholsalerData as $wholsaler)
-                        <div id="wholesale-fields">
                             <div class="row align-items-end wholesale-row">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="pb-1 title-color">Min Qty:</label>
                                         <input type="number" name="min-qty[]" class="form-control" id="max_order_last_qty"
-                                            value="{{ $wholsaler->min_qty }}" required>
+                                            value="{{ $wholsaler->min_qty ?? "" }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="pb-1 title-color">Max Qty:</label>
                                         <input type="number" name="max-qty[]" class="form-control"
-                                            value="{{ $wholsaler->max_qty }}" required>
+                                            value="{{ $wholsaler->max_qty ?? "" }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -605,8 +606,9 @@
                                     <button type="button" class="btn btn-danger remove-field">Remove</button>
                                 </div>
                             </div>
-                        </div>
+
                     @endforeach
+                </div>
                     <button type="button" id="add-field" class="btn btn-primary mt-3">Add More</button>
                 </div>
 

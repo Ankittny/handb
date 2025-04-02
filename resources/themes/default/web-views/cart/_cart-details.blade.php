@@ -311,16 +311,21 @@
                                                         </span>
                                                     </div>
                                                 @endif
+
+                                                @if($cartItem->type ==1)
+                                                <div class="d-flex  font-bold">
+                                                    <span class="text-success">{{ translate('Bulk_Order') }}</span>
+                                                    <span>The delivery charge will be borne by the customer.</span>
+                                                </div>
+
+                                                @endif
+
                                                 @if($product->product_type == 'physical' && $getProductCurrentStock < $cartItem['quantity'])
-                                                        @if($cartItem->type !=1)
+
                                                             <div class="d-flex text-danger font-bold">
                                                                 <span>{{ translate('Out_Of_Stock') }}</span>
                                                             </div>
-                                                        @else
-                                                            <div class="d-flex text-success font-bold">
-                                                                <span>{{ translate('Bulk_Order') }}</span>
-                                                            </div>
-                                                        @endif
+
                                                 @endif
                                             </div>
                                         </div>
@@ -349,10 +354,9 @@
                                     @if ($checkProductStatus == 1)
                                         @if($cartItem['type']===1)
 
-                                                    <?php
-                                                        $bulk_product = \App\Models\Wholsale::where('product_id',$cartItem['product_id'])->first();
-                                                        // echo "<pre>"; print_r($bulk_product);
-                                                    ?>
+                                            <?php
+                                                $bulk_product = \App\Models\Wholsale::where('product_id',$cartItem['product_id'])->first();
+                                            ?>
 
 
 

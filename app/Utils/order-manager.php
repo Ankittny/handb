@@ -356,7 +356,6 @@ class OrderManager
 
     public static function coupon_process($data, $coupon)
     {
-        dd($data);
         $req = array_key_exists('request', $data) ? $data['request'] : null;
         $coupon_discount = 0;
         if (session()->has('coupon_discount')) {
@@ -645,6 +644,7 @@ class OrderManager
                 'discount_type' => 'discount_on_product',
                 'variant' => $cartSingleItem['variant'],
                 'variation' => $cartSingleItem['variations'],
+                'type' => $cartSingleItem['type'],
                 'delivery_status' => 'pending',
                 'shipping_method_id' => null,
                 'payment_status' => 'unpaid',
@@ -665,9 +665,11 @@ class OrderManager
                 ]);
             }
 
-            Product::where(['id' => $product['id']])->update([
-                'current_stock' => $product['current_stock'] - $cartSingleItem['quantity']
-            ]);
+            if ($cartSingleItem['type'] != 1) {
+                Product::where(['id' => $product['id']])->update([
+                    'current_stock' => $product['current_stock'] - $cartSingleItem['quantity']
+                ]);
+            }
 
             DB::table('order_details')->insert($orderDetails);
         }
@@ -1430,7 +1432,7 @@ class OrderManager
             'totalAmount' => ($total + $shipping - $extraDiscount - $couponDiscount),
         ];
     }
-  
+
   public static function getOrderTotalPriceSummarySingle($order,$orderid): array
     {
         $itemPrice = 0;
@@ -1451,7 +1453,7 @@ class OrderManager
             $itemDiscount += $detail['discount'];
             $taxTotal += $detail['tax'];
             $totalItemQuantity += $detail['qty'];
-        
+
         $total = $itemPrice + $taxTotal - $itemDiscount;
         $shipping = $order['shipping_cost'];
         if ($order['extra_discount_type'] == 'percent') {
@@ -1478,5 +1480,5 @@ class OrderManager
         ];
        }
      }
-    }	
+    }
 }

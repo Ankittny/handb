@@ -799,6 +799,7 @@ class WebController extends Controller
                 $newSellers = $sellerList->sortByDesc('id')->take(12);
                 $topRatedShops = $sellerList->where('rating_count', '!=', 0)->sortByDesc('average_rating')->take(12);
             }
+            // echo VIEW_FILE_NAMES['cart_list']; die;/
             return view(VIEW_FILE_NAMES['cart_list'], compact('topRatedShops', 'newSellers', 'currentDate', 'request'));
         }
         Toastr::info(translate('invalid_access'));
@@ -1211,6 +1212,7 @@ class WebController extends Controller
   //  }
 
     public function order_note(Request $request){
+
         if ($request->has('order_note')) {
             session::put('order_note', $request['order_note']);
         }
@@ -1238,19 +1240,20 @@ class WebController extends Controller
                     ]);
                 }
             }
-if (empty(auth('customer')->user())) {
-            $shippingAddress = ShippingAddress::updateOrCreate(
-                ['customer_id' => session('guest_id')],
-                [
-                    'zip' => $addresscheck['delivery_codes'][0]['postal_code']['pin'],
-                    'city' => $addresscheck['delivery_codes'][0]['postal_code']['city'],
-                    'country' => "India",
-                    'state' => $addresscheck['delivery_codes'][0]['postal_code']['state_code']
-                ]
-            );
-}
+            if (empty(auth('customer')->user())) {
+                        $shippingAddress = ShippingAddress::updateOrCreate(
+                            ['customer_id' => session('guest_id')],
+                            [
+                                'zip' => $addresscheck['delivery_codes'][0]['postal_code']['pin'],
+                                'city' => $addresscheck['delivery_codes'][0]['postal_code']['city'],
+                                'country' => "India",
+                                'state' => $addresscheck['delivery_codes'][0]['postal_code']['state_code']
+                            ]
+                        );
+            }
 
             self::delivery_cost($addresscheck['delivery_codes'][0]['postal_code']['pin'],$addresscheck);
+
             $response = self::checkValidationForCheckoutPages($request);
             return response()->json($response);
         } else {
@@ -1307,10 +1310,11 @@ if (empty(auth('customer')->user())) {
             }
 
             $cartList = Cart::with('product')->groupBy('cart_group_id')->where(['cart_group_id' => $groupId, 'is_checked' => 1])->get();
-            $productStockCheck = CartManager::product_stock_check($cartList);
-            if (!$productStockCheck) {
-                $productStockStatus = false;
-            }
+                $productStockCheck = CartManager::product_stock_check($cartList);
+                if (!$productStockCheck) {
+                    $productStockStatus = false;
+                }
+
 
             foreach ($cartList as $cartKey => $cart) {
                 if ($cartKey == 0) {
@@ -1893,8 +1897,12 @@ if (empty(auth('customer')->user())) {
 
                 $data = json_decode($response->getBody(), true);
                 if ($data && isset($data[0]['total_amount']) && $data[0]['total_amount'] != 0) {
-                 Cart::where(['product_id' => $itemsData->product_id, 'customer_id' => auth('customer')->id()])->update(['delivery_cost' => currencyConverter(amount: $data[0]['total_amount']*$itemsData->quantity)]);
-                    $totalShippingCost += currencyConverter(amount: $data[0]['total_amount']*$itemsData->quantity);
+                    Cart::where(['product_id' => $itemsData->product_id, 'customer_id' => auth('customer')->id(),'type'=>0])->update(['delivery_cost' => currencyConverter(amount: $data[0]['total_amount']*$itemsData->quantity)]);
+                    if($itemsData->type==1){
+                        $totalShippingCost = 0;
+                    } else {
+                        $totalShippingCost += currencyConverter(amount: $data[0]['total_amount']*$itemsData->quantity);
+                    }
                 } else {
                     \Log::warning('No valid shipping cost found for pincode ' . $d_pin);
                 }

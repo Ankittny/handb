@@ -16,6 +16,7 @@ use App\Models\Review;
 use App\Models\Seller;
 use App\Models\Tag;
 use App\Models\Wishlist;
+use App\Models\Wholsale;
 use App\Repositories\DealOfTheDayRepository;
 use App\Repositories\WishlistRepository;
 use App\Traits\ProductTrait;
@@ -60,6 +61,7 @@ class ProductDetailsController extends Controller
             'theme_all_purpose' => self::theme_all_purpose($slug),
         };
     }
+
 
     public function getDefaultTheme(string $slug): View|RedirectResponse
     {
@@ -125,11 +127,11 @@ class ProductDetailsController extends Controller
             $inHouseVacationEndDate = $product['added_by'] == 'admin' ? $inHouseVacation['vacation_end_date'] : null;
             $inHouseVacationStatus = $product['added_by'] == 'admin' ? $inHouseVacation['status'] : false;
             $inHouseTemporaryClose = $product['added_by'] == 'admin' ? $temporaryClose['status'] : false;
-
+            $wholsale = Wholsale::where('product_id', $product['id'])->orderBy('id','asc')->get();
             return view(VIEW_FILE_NAMES['products_details'], compact('product', 'countWishlist', 'countOrder', 'relatedProducts',
                 'dealOfTheDay', 'currentDate', 'sellerVacationStartDate', 'sellerVacationEndDate', 'sellerTemporaryClose',
                 'inHouseVacationStartDate', 'inHouseVacationEndDate', 'inHouseVacationStatus', 'inHouseTemporaryClose', 'overallRating',
-                'wishlistStatus', 'productReviews', 'rating', 'totalReviews', 'productsForReview', 'moreProductFromSeller', 'decimalPointSettings'));
+                'wishlistStatus', 'productReviews', 'rating', 'totalReviews', 'productsForReview', 'moreProductFromSeller', 'decimalPointSettings','wholsale'));
         }
 
         Toastr::error(translate('not_found'));

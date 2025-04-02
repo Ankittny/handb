@@ -72,7 +72,7 @@ let timerRunning = false; // Flag to check if the timer is already running
 $(".getotp").on("click", function (e) {
     e.preventDefault();
     let mobile = $("#mobile_number").val();
-
+    $("#loading").css("display", "block");
     // Make the AJAX request
     $.ajax({
         url: "{{url('api/v1/auth/send-otp')}}",
@@ -87,6 +87,7 @@ $(".getotp").on("click", function (e) {
         }),
         success: function (data) {
             if (data.status == true) {
+                $("#loading").css("display", "none");
                 if (!timerRunning) {
                     timerRunning = true;
                     let countDownDate = new Date().getTime() + 58000;
@@ -130,6 +131,7 @@ $(".getotp").on("click", function (e) {
         e.preventDefault();
         let mobile = $("#mobile_number").val();
         let otp = $("#otp-number").val();
+        $("#loading").css("display", "block");
         $.ajax({
             url: "{{url('customer/auth/otp-verify-web')}}",
             type: "POST",
@@ -145,6 +147,7 @@ $(".getotp").on("click", function (e) {
             }),
             success: function (data) {
                 if (data.status == true) {
+                    $("#loading").css("display", "none");
                     console.log(data.profile_status);
                     if(data.profile_status==true){
                         window.location.href = "{{url('/')}}";

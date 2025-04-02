@@ -61,6 +61,7 @@ class OrderDetail extends Model
         'variation',
       	'delivery_service_name',
       	'third_party_delivery_tracking_id',
+        'type',
     ];
 
     protected $casts = [

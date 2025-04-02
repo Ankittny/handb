@@ -290,6 +290,7 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.', 'namespace' => 'Web'], functi
         Route::post('updateQuantity-guest', 'updateQuantity_guest')->name('updateQuantity.guest');
         Route::post('order-again', 'orderAgain')->name('order-again')->middleware('customer');
         Route::post('select-cart-items', 'updateCheckedCartItems')->name('select-cart-items');
+        Route::post('change_quantity', 'changeQuantity')->name('change_quantity');
     });
 });
 

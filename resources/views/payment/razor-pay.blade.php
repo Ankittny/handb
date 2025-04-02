@@ -13,7 +13,9 @@
       <p>you should receive a confirmation email soon.  </p>
       @php
         $numberOnly = preg_replace('/\D/', '', webCurrencyConverter($data->payment_amount));
-        $numberOnly1 = substr($numberOnly, 0, -2);
+        // $numberOnly1 = substr($numberOnly, 0, -2);
+        $numberOnly1 = $numberOnly;
+        // dd($numberOnly1);
     @endphp
     <form action="{!!route('razor-pay.payment',['payment_id'=>$data->id])!!}" id="form" method="POST">
     @csrf
@@ -35,7 +37,7 @@
     </form>
       </button>
     </div>
-    
+
 </div>
 
 
@@ -71,7 +73,7 @@
             margin: 0;
             background-repeat: no-repeat;
             background-attachment: fixed;
-  
+
 }
 
 .wrapper-1{
@@ -85,7 +87,7 @@ flex-direction: column;
   text-align:center;
 }
 h1{
-   
+
   font-size:4em;
   letter-spacing:3px;
   color:#5892FF ;
@@ -111,7 +113,7 @@ h1{
   box-shadow: 0 10px 16px 1px rgba(174, 199, 251, 1);
 }
 .footer-like{
-  margin-top: auto; 
+  margin-top: auto;
   background:#D7E6FE;
   padding:6px;
   text-align:center;
@@ -150,10 +152,10 @@ h1{
   margin-top:50px;
   box-shadow:4px 8px 40px 8px rgba(26, 10, 0,  0.2);
 }
-  
+
 }
-        
-        
+
+
 </style>
     <script type="text/javascript">
         "use strict";

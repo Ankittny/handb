@@ -8796,4 +8796,9 @@ return [
 	"set_the_max_order_quantity_that_customers_must_choose._Otherwise,_the_checkout_process_won’t_start" => "Set the max order quantity that customers must choose. Otherwise  the checkout process won’t start",
 	"max_order_quantity" => "Max order quantity",
 	"total_price dsfsdf" => "Total price dsfsdf",
+	"wholesale_order" => "Wholesale order",
+	"Bulk_order" => "Bulk order",
+	"Bulk Order" => "Bulk Order",
+	"Please_remove_this_unavailable_product_for_continuesdfsdf" => "Please remove this unavailable product for continuesdfsdf",
+	"Order_not_found" => "Order not found",
 ];

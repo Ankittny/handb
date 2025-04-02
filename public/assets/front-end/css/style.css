@@ -8502,6 +8502,9 @@ input.form-control.fz-30 {
     top: 0;
     right: 0;
 }
+.table-hading-color .table-dark tr th {
+   color: #ffffff !important;
+}
 
 .text-break-word {
     word-break: break-word;

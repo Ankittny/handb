@@ -14,7 +14,6 @@ function updateCartCommon(minimum_order_qty, key, incr, e, quantity_id) {
 
     let quantity = parseInt($("#" + quantity_id + key).val()) + parseInt(incr);
     let exQuantity = $("#" + quantity_id + key);
-
     if (exQuantity.val() > exQuantity.data('current-stock') && e == 'minus') {
         removeProductFromCartList(key)
         return false;
@@ -105,10 +104,9 @@ function quantityListener() {
         } else {
             qty.siblings('.qty_minus').html('<i class="tio-remove"></i>')
         }
-
         try {
             if (qty.val() > currentStockQuantity) {
-                qty.siblings('.qty_minus').html('<i class="tio-delete text-danger fs-12"></i>')
+                qty.siblings('.qty_minus').html('<i class="tio-delete text-danger dsfsf fs-12"></i>')
             }
         }catch (e) {
         }

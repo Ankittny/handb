@@ -27,9 +27,9 @@
         <label class="badge badge-soft-success float-right __inline-2">{{translate('software_version')}}
             : {{ env('SOFTWARE_VERSION') }}</label>
         @php($eCommerceLogo = getWebConfig(name: 'company_web_logo'))
-        <a class="d-flex justify-content-center mb-5" href="{{ route('home') }}">
+        {{-- <a class="d-flex justify-content-center mb-5" href="{{ route('home') }}">
             <img class="z-index-2 onerror-logo" height="40" src="{{asset('assets/back-end/company/').'/'.$eCommerceLogo['key']}}" alt="Logo">
-        </a>
+        </a> --}}
 
         <div class="row justify-content-center">
             <div class="col-md-7 col-lg-5">

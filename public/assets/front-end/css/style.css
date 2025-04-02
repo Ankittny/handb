@@ -8531,6 +8531,24 @@ input.form-control.fz-30 {
 .__h-44 {
     height: 44px;
 }
+.order-table {
+    width: 100%;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+.btn-control {
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+.buy-btn {
+    margin-top: 10px;
+}
 
 .pos-btn {
     display: inline-block;

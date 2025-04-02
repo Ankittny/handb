@@ -799,7 +799,7 @@ class WebController extends Controller
                 $newSellers = $sellerList->sortByDesc('id')->take(12);
                 $topRatedShops = $sellerList->where('rating_count', '!=', 0)->sortByDesc('average_rating')->take(12);
             }
-            // echo VIEW_FILE_NAMES['cart_list']; die;/
+            //  echo VIEW_FILE_NAMES['cart_list']; die;
             return view(VIEW_FILE_NAMES['cart_list'], compact('topRatedShops', 'newSellers', 'currentDate', 'request'));
         }
         Toastr::info(translate('invalid_access'));

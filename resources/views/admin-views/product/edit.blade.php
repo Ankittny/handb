@@ -578,8 +578,8 @@
 
                 <div class="card-body">
                     <div id="wholesale-fields">
-                    @foreach ($wholsalerData as $wholsaler)
 
+                    @foreach ($wholsalerData as $wholsaler)
                             <div class="row align-items-end wholesale-row">
                                 <div class="col-md-3">
                                     <div class="form-group">

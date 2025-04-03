@@ -77,7 +77,6 @@ function removeProductFromCartList(key) {
 $('.qty_plus').on('click', function () {
     var $qty = $(this).parent().find('input');
     var currentVal = parseInt($qty.val());
-    alert(currentVal);
     if (!isNaN(currentVal)) {
         $qty.val(currentVal + 1);
     }

@@ -363,7 +363,7 @@
                                     name="minimum_order_qty" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3" id="max_order_qty">
+                        {{-- <div class="col-md-6 col-lg-4 col-xl-3" id="max_order_qty">
                             <div class="form-group">
                                 <div class="d-flex gap-2">
                                     <label class="title-color"
@@ -379,7 +379,7 @@
                                     step="1" placeholder="{{ translate('max_order_quantity') }}"
                                     name="max_order_qty" class="form-control" id="max_order_number" required>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show" id="quantity">
                             <div class="form-group">
                                 <div class="d-flex gap-2">
@@ -1636,8 +1636,8 @@
         });
 
         $(function(){
-            $("#max_order_number").on('input', function() {
-                let max_order_qty = $("#max_order_number").val();
+            $("#current_stock").on('input', function() {
+                let max_order_qty = $("#current_stock").val();
                 $("#max_order_last_qty").val(parseInt(max_order_qty)+1);
             });
         });

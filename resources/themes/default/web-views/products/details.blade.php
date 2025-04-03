@@ -447,7 +447,7 @@
                                                 <input type="hidden" name="wholesale_id" value="{{$wholesale->id}}">
                                                 <input type="hidden" name="type" value="wholesale">
                                                 <input type="hidden" name="wholesale_price" id="wholesaleconvertprice{{$wholesale->id}}" value="{{$wholesale->wholesale_price}}">
-                                                <td><button class="" type="button" onclick="BuyNowWholesale(this.form); return false;">Buy Now</button></td>
+                                                <td><button class="btn btn-secondary btn-sm" type="button" onclick="BuyNowWholesale(this.form); return false;">Buy Now</button></td>
                                             </form>
                                         </tr>
                                         @endforeach

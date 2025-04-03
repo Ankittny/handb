@@ -806,6 +806,13 @@ class WebController extends Controller
         return redirect('/');
     }
 
+    public function deleteCartItem($id){
+        Cart::where('id', $id)->delete();
+        Toastr::info(translate('Cart Remove Successful!'));
+        return redirect()->back();
+    }
+
+
     //ajax filter (category based)
     public function seller_shop_product(Request $request, $id): View|JsonResponse
     {

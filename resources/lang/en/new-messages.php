@@ -8801,4 +8801,5 @@ return [
 	"Bulk Order" => "Bulk Order",
 	"Please_remove_this_unavailable_product_for_continuesdfsdf" => "Please remove this unavailable product for continuesdfsdf",
 	"Order_not_found" => "Order not found",
+	"Cart Remove Successful!" => "Cart Remove Successful!",
 ];

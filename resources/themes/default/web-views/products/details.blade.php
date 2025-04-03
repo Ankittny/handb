@@ -392,51 +392,6 @@
                                             </div>
                                         @endif
                                     </div>
-
-
-
-                                    @if($product->bulk_product_status==1)
-                                        <table class="table table-bordered table-hading-color bulk-table" style="display: none;">
-                                            <thead class="table-dark">
-                                                <tr>
-                                                    <th>Min Qty</th>
-                                                    <th>Max Qty</th>
-                                                    <th>Price</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                               @if($wholsale->count()> 0)
-                                                @foreach($wholsale as $wholesale)
-                                                <tr>
-                                                    <td>{{$wholesale->min_qty}}</td>
-                                                    <td>
-                                                        <button class="btn btn-outline-primary btn-control" onclick="changeQuantity(-1,'orderQuantity{{$wholesale->id}}','wholesalePrice{{$wholesale->id}}','{{$wholesale->max_qty}}','{{$wholesale->min_qty}}',{{$wholesale->wholesale_price}},'wholesaleconvertprice{{$wholesale->id}}','orderQuantityrr{{$wholesale->id}}')">-</button>
-                                                        <span id="orderQuantity{{$wholesale->id}}">{{$wholesale->max_qty}}</span>
-                                                        <button class="btn btn-outline-primary btn-control" onclick="changeQuantity(1, 'orderQuantity{{$wholesale->id}}','wholesalePrice{{$wholesale->id}}','{{$wholesale->max_qty}}','{{$wholesale->min_qty}}',{{$wholesale->wholesale_price}},'wholesaleconvertprice{{$wholesale->id}}','orderQuantityrr{{$wholesale->id}}')">+</button>
-                                                    </td>
-                                                    <td id="wholesalePrice{{$wholesale->id}}">{{webCurrencyConverter(amount: $wholesale->wholesale_price)}}</td>
-                                                    <form id="wholesaleForm{{$wholesale->id}}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="id" value="{{$product->id}}">
-                                                        {{-- <input type="hidden" name="product_variation_code" value="">
-                                                        <input type="hidden" name="quantity" value="{{$wholesale->max_qty}}"> --}}
-                                                        <input type="hidden" name="wholsale_quantity" id="orderQuantityrr{{$wholesale->id}}" value="{{$wholesale->max_qty}}">
-                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                        <input type="hidden" name="wholesale_id" value="{{$wholesale->id}}">
-                                                        <input type="hidden" name="type" value="wholesale">
-                                                        <input type="hidden" name="wholesale_price" id="wholesaleconvertprice{{$wholesale->id}}" value="{{$wholesale->wholesale_price}}">
-                                                        <td><button class="btn btn-secondary btn-sm" type="button" onclick="BuyNowWholesale(this.form); return false;">Buy Now</button></td>
-                                                    </form>
-                                                </tr>
-                                                @endforeach
-                                              @endif
-                                            </tbody>
-                                        </table>
-                                    @endif
-
-
-
                                     @if (!empty($product->feature_key) && $product->feature_key ==".")
                                         <div class="hightlight d-flex ">
                                             <span class="">Highlight</span>
@@ -463,7 +418,43 @@
                                         </div>
                                     </div>
                                 </form>
-
+                                @if($product->bulk_product_status==1)
+                                <table class="table table-bordered table-hading-color bulk-table" style="display: none;">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Min Qty</th>
+                                            <th>Max Qty</th>
+                                            <th>Price</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       @if($wholsale->count()> 0)
+                                        @foreach($wholsale as $wholesale)
+                                        <tr>
+                                            <td>{{$wholesale->min_qty}}</td>
+                                            <td>
+                                                <button class="btn btn-outline-primary btn-control" onclick="changeQuantity(-1,'orderQuantity{{$wholesale->id}}','wholesalePrice{{$wholesale->id}}','{{$wholesale->max_qty}}','{{$wholesale->min_qty}}',{{$wholesale->wholesale_price}},'wholesaleconvertprice{{$wholesale->id}}','orderQuantityrr{{$wholesale->id}}')">-</button>
+                                                <span id="orderQuantity{{$wholesale->id}}">{{$wholesale->max_qty}}</span>
+                                                <button class="btn btn-outline-primary btn-control" onclick="changeQuantity(1, 'orderQuantity{{$wholesale->id}}','wholesalePrice{{$wholesale->id}}','{{$wholesale->max_qty}}','{{$wholesale->min_qty}}',{{$wholesale->wholesale_price}},'wholesaleconvertprice{{$wholesale->id}}','orderQuantityrr{{$wholesale->id}}')">+</button>
+                                            </td>
+                                            <td id="wholesalePrice{{$wholesale->id}}">{{webCurrencyConverter(amount: $wholesale->wholesale_price)}}</td>
+                                            <form id="wholesaleForm{{$wholesale->id}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$product->id}}">
+                                                <input type="hidden" name="wholsale_quantity" id="orderQuantityrr{{$wholesale->id}}" value="{{$wholesale->max_qty}}">
+                                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                <input type="hidden" name="wholesale_id" value="{{$wholesale->id}}">
+                                                <input type="hidden" name="type" value="wholesale">
+                                                <input type="hidden" name="wholesale_price" id="wholesaleconvertprice{{$wholesale->id}}" value="{{$wholesale->wholesale_price}}">
+                                                <td><button class="" type="button" onclick="BuyNowWholesale(this.form); return false;">Buy Now</button></td>
+                                            </form>
+                                        </tr>
+                                        @endforeach
+                                      @endif
+                                    </tbody>
+                                </table>
+                            @endif
 
                                 <!-- <div class="vp-front-accordian">
                                     <div class="menu--caret-accordion open">

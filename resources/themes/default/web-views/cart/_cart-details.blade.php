@@ -357,7 +357,7 @@
                                         @if($cartItem['type']===1)
 
                                             <?php
-                                                $bulk_product = \App\Models\Wholsale::where('product_id',$cartItem['product_id'])->first();
+                                                $bulk_product = \App\Models\Wholsale::where(['product_id'=>$cartItem['product_id']])->first();
                                             ?>
 
 
@@ -392,6 +392,8 @@
 
                                                             data-min="{{ isset($bulk_product->min_qty) ? $bulk_product->min_qty : 1 }}"
                                                             oninput="this.value = this.value.replace(/[^0-9]/g, '')" readonly>
+
+                                                            <span><a class="text-danger" href="{{ url('delete-cart-item'.'/'.$cartItem['id'])}}"><i class="tio-delete text-danger"></i></a></span>
                                                         {{-- <span class="qty_plus action-update-cart-quantity-list"
                                                             data-minimum-order="{{ $bulk_product->min_qty }}"
                                                             data-cart-id="{{ $cartItem['id'] }}"

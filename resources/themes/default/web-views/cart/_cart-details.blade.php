@@ -313,19 +313,21 @@
                                                 @endif
 
                                                 @if($cartItem->type ==1)
-                                                <div class="d-flex  font-bold">
-                                                    <span class="text-success">{{ translate('Bulk_Order') }}</span>
-                                                    <span>The delivery charge will be borne by the customer.</span>
+                                                <div class="d-flex font-bold">
+                                                    <span class="text-success">{{ translate('Bulk_Order') }}<br>
+                                                        <span class="text-muted">The delivery charge will be borne by the customer.</span>
+                                                    </span>
+
                                                 </div>
 
                                                 @endif
 
                                                 @if($product->product_type == 'physical' && $getProductCurrentStock < $cartItem['quantity'])
-
+                                                        @if($cartItem->type ==0)
                                                             <div class="d-flex text-danger font-bold">
                                                                 <span>{{ translate('Out_Of_Stock') }}</span>
                                                             </div>
-
+                                                        @endif
                                                 @endif
                                             </div>
                                         </div>
@@ -727,10 +729,15 @@
                                                 )
                                             @else
                                                 ({{ translate('incl'). webCurrencyConverter(amount: $cartItem['tax']*$cartItem['quantity'])}})
-                                                ({{ translate('incl').webCurrencyConverter(amount: $cartItem['tax']*$cartItem['quantity'])}})
                                             @endif
+
                                         </span>
                                     </div>
+                                    @if($cartItem->type ==1)
+                                        <span class="text-success">{{ translate('Bulk_Order') }}<br>
+                                            <span class="text-muted">The delivery charge will be borne by the customer.</span>
+                                        </span>
+                                    @endif
 
                                     @if ($shipping_type != 'order_wise')
                                         <div class="d-flex flex-wrap gap-2 {{ $checkProductStatus == 0?'custom-cart-opacity-50':'' }}">
@@ -741,7 +748,9 @@
 
                                     @if($product->product_type == 'physical' && $getProductCurrentStock < $cartItem['quantity'])
                                         <div class="d-flex text-danger font-bold">
+                                            @if($cartItem->type ==0)
                                             <span>{{ translate('Out_Of_Stock') }}</span>
+                                            @endif
                                         </div>
                                     @endif
                                 </div>
